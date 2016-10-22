@@ -8,7 +8,7 @@ This simple library connects MobX to Angular 2 components.
 ## Why use MobX
 The advantages of MobX are:
 * Normalized - MobX lets you define computed values that are based on the minimal state
-* Reactivity - MobX Automatically figures out when to re-invoke subscribers according to which observables they used. This allows for extremely performant applications
+* Reactivity - MobX Automatically figures out when to re-invoke subscribers according to which observables they use. This allows for extremely performant applications
 * Plain objects - Use plain objects and classes with MobX decorators, or even observe existing objects (from external sources for example)
 * MobX is being used heavily in the community (mainly with React)
 
@@ -44,5 +44,11 @@ class Component {
 
 ## Example
 See the `example` folder.
+
 To run it, clone this repo and run:
-`npm run example`
+```
+$ cd example
+$ npm install
+$ npm install -g angular-cli
+$ ng serve
+```
