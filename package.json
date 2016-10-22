@@ -1,0 +1,35 @@
+{
+  "name": "ng2-mobx",
+  "version": "1.0.0",
+  "description": "Angular 2 connector to MobX",
+  "main": "dist/ng2-mobx.js",
+  "typings": "dist/ng2-mobx.d.ts",
+  "scripts": {
+    "test": "",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/500tech/ng2-mobx.git"
+  },
+  "keywords": [
+    "mobx",
+    "angular2",
+    "ng2"
+  ],
+  "author": "Adam Klein <adam@500tech.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/500tech/ng2-mobx/issues"
+  },
+  "homepage": "https://github.com/500tech/ng2-mobx#readme",
+  "dependencies": {
+    "mobx": "2.6.0",
+    "rxjs": "5.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/rx": "2.5.33",
+    "ts-helpers": "^1.1.1",
+    "typescript": "^2.0.0"
+  }
+}
