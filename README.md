@@ -20,7 +20,17 @@ But, you will find yourself repeating boilerplate code, such as disposing of sub
 Also, this library offers a quick conversion of MobX observable attributes to RX observables, which allows you to use them with `async` pipe.
 
 ## Usages
+
+Install:
 ```
+$ npm install --save ng2-mobx
+```
+
+Use either with `@observe` or `@connect`:
+
+```
+import { observe, connect } from 'ng2-mobx';
+
 class Component {
   // Observe a property by name
   // attribute$ will be an RX observable:
