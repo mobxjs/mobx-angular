@@ -1,0 +1,14 @@
+<div>
+  <input placeholder="filter todos" [ngModel]="filter" (ngModelChange)="changeFilter($event)"/>
+</div>
+<form (submit)="addTodo()">
+  <input name="title" [(ngModel)]="title" />
+  <button>Add todo</button>
+</form>
+<ul>
+  <li *ngFor="let todo of todos$ | async">
+    <input type="checkbox" [checked]="todo.completed" (change)="todo.toggle()" />
+    <span [ngClass]="{complete: todo.completed}">{{todo.title}}</span>
+  </li>
+</ul>
+{{ uncompletedItems$ | async }} more to go!

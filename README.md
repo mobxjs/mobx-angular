@@ -19,9 +19,27 @@ But, you will find yourself repeating boilerplate code, such as disposing of sub
 
 Also, this library offers a quick conversion of MobX observable attributes to RX observables, which allows you to use them with `async` pipe.
 
-## Usage
+## Usages
 ```
+class Component {
+  // Observe a property by name
+  // attribute$ will be an RX observable:
+  @observe(store, 'attribute') attribute$;
 
+  // Observe a property by function:
+  // attribute$ will be an RX observable:
+  @observe(() => store.attribute) attribute$;
+
+  // auto-run this function and save the returned properties on the component instance
+  @connect
+  mapStateToThis() {
+    // When using OnPush, mark the component for change detection:
+    this.changeDetectorRef.markForCheck();
+    return  {
+      attribute: store.attribute
+    };
+  }
+}
 ```
 
 ## Example
