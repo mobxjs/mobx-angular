@@ -12,7 +12,7 @@ The advantages of MobX are:
 * Plain objects - Use plain objects and classes with MobX decorators, or even observe existing objects (from external sources for example)
 * MobX is being used heavily in the community (mainly with React)
 
-[Read more about MobX](mobxjs.github.io/mobx)
+[Read more about MobX](http://mobxjs.github.io/mobx)
 
 ## Why use this library
 You can easily use plain MobX with Angular 2 without this library.
