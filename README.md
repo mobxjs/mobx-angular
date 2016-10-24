@@ -32,6 +32,7 @@ Use either with `@observe` or `@connect`:
 
 ```
 import { observe, connect } from 'ng2-mobx';
+import { store } from './store';
 
 class Component {
   // Observe a property by name
