@@ -1,7 +1,7 @@
 # ng2-mobx
 
 ## MobX connector for Angular 2
-MobX is a modern reactive state management library:
+MobX is a modern reactive state management library.
 
 This simple library connects MobX to Angular 2 components.
 
@@ -11,6 +11,8 @@ The advantages of MobX are:
 * Reactivity - MobX Automatically figures out when to re-invoke subscribers according to which observables they use. This allows for extremely performant applications
 * Plain objects - Use plain objects and classes with MobX decorators, or even observe existing objects (from external sources for example)
 * MobX is being used heavily in the community (mainly with React)
+
+[Read more about MobX](mobxjs.github.io/mobx)
 
 ## Why use this library
 You can easily use plain MobX with Angular 2 without this library.
@@ -51,6 +53,8 @@ class Component {
   }
 }
 ```
+## Injectable stores
+If your store is injectable, you have to use the connect pattern, and then access the store on `this`.
 
 ## Example
 See the `example` folder, specifically these files:
