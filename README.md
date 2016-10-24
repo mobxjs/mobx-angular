@@ -53,7 +53,9 @@ class Component {
 ```
 
 ## Example
-See the `example` folder.
+See the `example` folder, specifically these files:
+/example/src/app/stores/todos.ts
+/example/src/app/app.component.ts
 
 To run it, clone this repo and run:
 ```
