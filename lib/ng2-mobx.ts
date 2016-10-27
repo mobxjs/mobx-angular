@@ -1,50 +1,37 @@
-import { reaction, autorun } from 'mobx';
-import { Observable } from 'rxjs';
+import { Directive, ViewContainerRef, TemplateRef, NgModule } from '@angular/core';
+import { autorun } from 'mobx';
 
-const noop = () => {}
+@Directive({ selector: '[mobxAutorun]' })
+class MobxAutorunDirective {
+  private templateBindings = {};
+  private dispose:any;
 
-function createOnDestroy(target) {
-  if (!target.mobxObservables) {
-    const oldNgOnDestroy = target.ngOnDestroy ? target.ngOnDestroy.bind(target) : noop;
+  constructor(
+    private templateRef: TemplateRef<any>,
+    private viewContainer: ViewContainerRef) {}
 
-    target.mobxObservables = [];
-    target.ngOnDestroy = () => {
-      oldNgOnDestroy();
-      target.mobxObservables.forEach((dispose) => dispose());
-    }
+  ngAfterViewInit() {
+    const view = this.viewContainer.createEmbeddedView(this.templateRef);
+
+    if (this.dispose) this.dispose();
+
+    this.dispose = autorun(() => {
+      view['detectChanges']();
+    });
+  }
+
+  ngOnDestroy() {
+    this.dispose();
   }
 }
 
-export function observe(observed, key = undefined) {
-  const fn = key ? () => observed[key] : observed;
-
-  return function (target, propertyKey: string) {
-    createOnDestroy(target);
-
-    const rxObservable = Observable.create((observer) => {
-      const dispose = reaction(fn, (data) => observer.next(data), true);
-
-      target.mobxObservables.push(dispose);
-    });
-
-    target[propertyKey] = rxObservable;
-  }
-}
-
-export function connect(target, propertyKey) {
-  target._oldNgOnInit = target.ngOnInit || noop;
-
-  target.ngOnDestroy = target.ngOnDestroy || noop;
-
-  target.ngOnInit = function() {
-    createOnDestroy(this);
-    this._oldNgOnInit();
-
-    const dispose = autorun(() => {
-      const mapped = this[propertyKey]();
-      Object.assign(this, mapped);
-    });
-
-    this.mobxObservables.push(dispose);
-  }
+@NgModule({
+  declarations: [
+    MobxAutorunDirective
+  ],
+  exports: [
+    MobxAutorunDirective
+  ]
+})
+export class Ng2MobxModule {
 }

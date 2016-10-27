@@ -1,20 +1,22 @@
-<section class="todoapp">
-	<header class="header">
-		<h1>todos</h1>
-    <input class="new-todo" placeholder="filter todos" [ngModel]="filter" (ngModelChange)="changeFilter($event)"/>
-		<input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="title" (keyup.enter)="addTodo()">
-	</header>
-	<section class="main">
-		<ul class="todo-list">
-			<li *ngFor="let todo of todos$ | async" [class.completed]="todo.completed">
-				<div class="view">
-					<input class="toggle" type="checkbox" [checked]="todo.completed" (change)="todo.toggle()">
-					<label>{{todo.title}}</label>
-				</div>
-			</li>
-		</ul>
-	</section>
-	<footer class="footer">
-		<span class="todo-count"><strong>{{uncompletedItems$ | async}}</strong> more to go</span>
-	</footer>
-</section>
+<div *mobxAutorun>
+  <section class="todoapp">
+  	<header class="header">
+  		<h1>todos</h1>
+      <input class="new-todo" placeholder="filter todos" [ngModel]="todos.filter" (ngModelChange)="todos.changeFilter($event)"/>
+  		<input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="title" (keyup.enter)="addTodo()">
+  	</header>
+  	<section class="main">
+  		<ul class="todo-list">
+  			<li *ngFor="let todo of todos.filteredTodos" [class.completed]="todo.completed">
+  				<div class="view">
+  					<input class="toggle" type="checkbox" [checked]="todo.completed" (change)="todo.toggle()">
+  					<label>{{todo.title}}</label>
+  				</div>
+  			</li>
+  		</ul>
+  	</section>
+  	<footer class="footer">
+  		<span class="todo-count"><strong>{{todos.uncompletedItems}}</strong> more to go</span>
+  	</footer>
+  </section>
+</div>

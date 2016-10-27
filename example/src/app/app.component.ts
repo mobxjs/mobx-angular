@@ -1,28 +1,16 @@
-import { Component } from '@angular/core';
-import { observe, connect } from 'ng2-mobx';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import todos from './stores/todos';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title:string = '';
 
-  @observe(todos, 'filteredTodos') todos$;
-  @observe(() => todos.uncompletedItems.length) uncompletedItems$;
-
-  @connect
-  mapStateToThis() {
-    return {
-      filter: todos.filter
-    }
-  }
-
-  changeFilter(value) {
-    todos.changeFilter(value);
-  }
+  todos = todos;
 
   addTodo() {
     todos.addTodo(this.title);

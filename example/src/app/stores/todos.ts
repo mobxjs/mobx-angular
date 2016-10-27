@@ -29,7 +29,7 @@ class Todos {
   }
 
   @computed get uncompletedItems() {
-    return this.todos.filter((todo) => !todo.completed);
+    return this.todos.filter((todo) => !todo.completed).length;
   }
 }
 export default new Todos();
