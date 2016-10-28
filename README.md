@@ -15,47 +15,59 @@ The advantages of MobX are:
 <a href="http://mobxjs.github.io/mobx" target="_blank">Read more about MobX</a>
 
 ## Why use this library
-You can easily use plain MobX with Angular 2 without this library.
+Performance and magic!
 
-But, you will find yourself repeating boilerplate code, such as disposing of subscribers when a component destroys (or worse - forgetting to do that).
+This library brings the magic of automatic data binding, together with incredibly high performance.
 
-Also, this library offers a quick conversion of MobX observable attributes to RX observables, which allows you to use them with `async` pipe.
+You can use it together with OnPush strategy, and wrap your template with a *mobxAutorun directive.
+The directive will automatically run the change detection whenever any observables your template uses change.
 
-## Usages
+It will also dispose of the autorun callback when the component is destroyed.
+
+## Usage
 
 Install:
 ```
 $ npm install --save ng2-mobx
 ```
 
-Use either with `@observe` or `@connect`:
-
+Import the Ng2MobxModule:
 ```
-import { observe, connect } from 'ng2-mobx';
-import { store } from './store';
+import { Ng2MobxModule } from 'ng2-mobx';
 
-class Component {
-  // Observe a property by name
-  // attribute$ will be an RX observable:
-  @observe(store, 'attribute') attribute$;
+@NgModule({
+    imports: [..., Ng2MobxModule]
+})
+export class MyModule {}
+```
 
-  // Observe a property by function:
-  // attribute$ will be an RX observable:
-  @observe(() => store.attribute) attribute$;
+Then use *mobxDirective together with OnPush:
+```
+import {store} from './store/counter';
 
-  // auto-run this function and save the returned properties on the component instance
-  @connect
-  mapStateToThis() {
-    // When using OnPush, mark the component for change detection:
-    this.changeDetectorRef.markForCheck();
-    return  {
-      attribute: store.attribute
-    };
-  }
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
+    <div *mboxAutorun>
+      {{ store.value }} - {{ store.computedValue }}
+      <button (click)="store.action">Action</button>
+    </div>
+  `
+})
+export class AppComponent {
+    store = store;
 }
 ```
+
 ## Injectable stores
-If your store is injectable, you have to use the connect pattern, and then access the store on `this`.
+You can easily make your stores injectable:
+```
+@Injectable()
+class Store {
+  @observable value;
+  @action doSomething() { ... }
+}
+```
 
 ## Example
 See the `example` folder, specifically these files:
