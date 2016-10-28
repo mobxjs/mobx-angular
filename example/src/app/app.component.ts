@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import todos from './stores/todos';
 
+let counter = 0;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,5 +17,13 @@ export class AppComponent {
   addTodo() {
     todos.addTodo(this.title);
     this.title = '';
+  }
+
+  getFromState() {
+    return todos.filter;
+  }
+
+  counter() {
+    return counter++;
   }
 }

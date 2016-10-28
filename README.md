@@ -59,6 +59,28 @@ export class AppComponent {
 }
 ```
 
+## reaction
+Aside from autorun, MobX allows you to react to specific data changes.
+
+Use `*mobxReaction="callback"` to automatically run change detection when specific observables change.
+
+For example:
+```
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `<div *mobxReaction="getStoreUpdates">
+    {{ store.value }}
+    {{ store.computedValue }}
+  </div>`
+})
+class AppComponent {
+  getStoreUpdates() {
+    return store.anotherValue;
+  }
+}
+```
+Here the change detection will run only when 'anotherValue' changes.
+
 ## Injectable stores
 You can easily make your stores injectable:
 ```
