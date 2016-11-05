@@ -48,7 +48,7 @@ import {store} from './store/counter';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div *mboxAutorun>
+    <div *mobxAutorun>
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
