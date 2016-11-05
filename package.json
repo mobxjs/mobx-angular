@@ -27,11 +27,11 @@
     "mobx": "2.6.0"
   },
   "devDependencies": {
-    "@angular/core": "~2.0.0",
+    "@angular/core": "^2.0.0",
     "ts-helpers": "^1.1.1",
     "typescript": "^2.0.0"
   },
   "peerDependencies": {
-    "@angular/core": "~2.0.0"
+    "@angular/core": "^2.0.0"
   }
 }
