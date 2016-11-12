@@ -1,22 +1,26 @@
 import { Directive, ViewContainerRef, TemplateRef, Input, NgModule } from '@angular/core';
-import { autorun, reaction } from 'mobx';
+import { autorun, reaction, autorunAsync } from 'mobx';
 
 @Directive({ selector: '[mobxAutorun]' })
 class MobxAutorunDirective {
-  private templateBindings = {};
-  private dispose:any;
+  protected templateBindings = {};
+  protected dispose:any;
 
   constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef) {}
+    protected templateRef: TemplateRef<any>,
+    protected viewContainer: ViewContainerRef) {}
 
   ngAfterViewInit() {
     const view = this.viewContainer.createEmbeddedView(this.templateRef);
 
     if (this.dispose) this.dispose();
 
-    this.dispose = autorun(() => {
-      view['detectChanges']();
+    this.autoDetect(view);
+  }
+
+  autoDetect(view) {
+    this.dispose = autorunAsync(() => {
+      view["detectChanges"]();
     });
   }
 
@@ -24,6 +28,19 @@ class MobxAutorunDirective {
     this.dispose();
   }
 }
+
+@Directive({ selector: '[mobxAutorunSync]' })
+class MobxAutorunSyncDirective extends MobxAutorunDirective {
+  constructor(
+    protected templateRef: TemplateRef<any>,
+    protected viewContainer: ViewContainerRef) {super(templateRef, viewContainer)}
+  autoDetect(view) {
+    this.dispose = autorun(() => {
+      view["detectChanges"]();
+    });
+  }
+}
+
 
 @Directive({ selector: '[mobxReaction]' })
 class MobxReactionDirective {
@@ -51,7 +68,7 @@ class MobxReactionDirective {
   }
 }
 
-const DIRECTIVES = [MobxAutorunDirective, MobxReactionDirective];
+const DIRECTIVES = [MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective];
 @NgModule({
   declarations: [
     DIRECTIVES

@@ -1,3 +1,7 @@
+<a name="1.1.3"></a>
+# 1.1.3 (2016-11-12)
+* Using autorunAsync instead of sync
+
 <a name="1.1.2"></a>
 # 1.1.2 (2016-11-10)
 * Relaxed Angular peer dependency requirement
