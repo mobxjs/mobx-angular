@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/ng2-mobx.svg)](https://badge.fury.io/js/ng2-mobx)
 # ng2-mobx
 
 ## MobX connector for Angular 2
