@@ -2,7 +2,7 @@ import { Directive, ViewContainerRef, TemplateRef, Input, NgModule } from '@angu
 import { autorun, reaction, autorunAsync } from 'mobx';
 
 @Directive({ selector: '[mobxAutorun]' })
-class MobxAutorunDirective {
+export class MobxAutorunDirective {
   protected templateBindings = {};
   protected dispose:any;
 
@@ -25,12 +25,12 @@ class MobxAutorunDirective {
   }
 
   ngOnDestroy() {
-    this.dispose();
+    if (this.dispose) this.dispose();
   }
 }
 
 @Directive({ selector: '[mobxAutorunSync]' })
-class MobxAutorunSyncDirective extends MobxAutorunDirective {
+export class MobxAutorunSyncDirective extends MobxAutorunDirective {
   constructor(
     protected templateRef: TemplateRef<any>,
     protected viewContainer: ViewContainerRef) {super(templateRef, viewContainer)}
@@ -43,7 +43,7 @@ class MobxAutorunSyncDirective extends MobxAutorunDirective {
 
 
 @Directive({ selector: '[mobxReaction]' })
-class MobxReactionDirective {
+export class MobxReactionDirective {
   private templateBindings = {};
   private dispose:any;
 

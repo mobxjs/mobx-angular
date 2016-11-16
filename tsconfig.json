@@ -12,6 +12,7 @@
   },
   "exclude": [
     "example",
+    "coverage",
     "node_modules",
     "dist"
   ],
