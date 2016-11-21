@@ -5,8 +5,7 @@
   "main": "dist/ng2-mobx.js",
   "typings": "dist/ng2-mobx.d.ts",
   "scripts": {
-    "karma": "karma",
-    "test": "npm run karma start",
+    "test": "karma start --single-run",
     "build": "tsc"
   },
   "repository": {
