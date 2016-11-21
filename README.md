@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/500tech/ng2-mobx.svg?branch=master)](https://travis-ci.org/500tech/ng2-mobx)
 [![npm version](https://badge.fury.io/js/ng2-mobx.svg)](https://badge.fury.io/js/ng2-mobx)
 # ng2-mobx
 
