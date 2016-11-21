@@ -27,11 +27,10 @@
     "mobx": "2.6.0"
   },
   "devDependencies": {
-    "@angular/core": "^2.1.2",
+    "@angular/core": "2.1.2",
+    "@angular/platform-browser-dynamic": "2.1.2",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.37",
-    "@angular/core": "^2.0.0",
-    "@angular/platform-browser-dynamic": "2.1.2",
     "angular-cli": "1.0.0-beta.19-3",
     "jasmine-core": "^2.5.2",
     "karma": "^1.2.0",
