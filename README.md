@@ -2,6 +2,8 @@
 # ng2-mobx
 
 ## MobX connector for Angular 2
+If you're looking for the Angular 1 version version, it's [here](https://github.com/500tech/ng-mobx) 
+
 MobX is a modern reactive state management library.
 
 This simple library connects MobX to Angular 2 components.
@@ -20,7 +22,7 @@ Performance and magic!
 
 This library brings the magic of automatic data binding, together with incredibly high performance.
 
-You can use it together with OnPush strategy, and wrap your template with a *mobxAutorun directive.
+You can use it together with OnPush strategy, and wrap your template with a `*mobxAutorun` directive.
 The directive will automatically run the change detection whenever any observables your template uses change.
 
 It will also dispose of the autorun callback when the component is destroyed.
@@ -42,7 +44,7 @@ import { Ng2MobxModule } from 'ng2-mobx';
 export class MyModule {}
 ```
 
-Then use *mobxDirective together with OnPush:
+Then use `*mobxAutorun` directive together with OnPush:
 ```
 import {store} from './store/counter';
 
