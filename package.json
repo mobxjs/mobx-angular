@@ -27,21 +27,24 @@
     "mobx": "2.6.0"
   },
   "devDependencies": {
-    "@angular/core": "2.2.1",
-    "@angular/platform-browser-dynamic": "2.2.1",
-    "@types/core-js": "^0.9.34",
-    "@types/jasmine": "^2.5.37",
+    "@angular/core": "2.2.4",
+    "@angular/common": "2.2.4",
+    "@angular/compiler": "2.2.4",
+    "@angular/platform-browser-dynamic": "2.2.4",
+    "@angular/platform-browser": "2.2.4",
+    "@types/core-js": "0.9.34",
+    "@types/jasmine": "2.5.37",
     "angular-cli": "1.0.0-beta.19-3",
-    "jasmine-core": "^2.5.2",
-    "karma": "^1.2.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.0.2",
+    "jasmine-core": "2.5.2",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-cli": "1.0.1",
+    "karma-jasmine": "1.0.2",
     "karma-typescript": "latest",
     "rxjs": "5.0.0-rc.4",
-    "ts-helpers": "^1.1.1",
-    "typescript": "^2.0.0",
-    "zone.js": "^0.6.26"
+    "ts-helpers": "1.1.1",
+    "typescript": "2.0.0",
+    "zone.js": "0.6.26"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0"
