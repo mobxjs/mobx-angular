@@ -3,7 +3,7 @@
 # ng2-mobx
 
 ## MobX connector for Angular 2
-If you're looking for the Angular 1 version version, it's [here](https://github.com/500tech/ng-mobx) 
+If you're looking for the Angular 1 version version, it's [here](https://github.com/500tech/ng-mobx)
 
 MobX is a modern reactive state management library.
 
@@ -97,12 +97,12 @@ class Store {
 
 ## Example
 See the `example` folder, specifically these files:
-/example/src/app/stores/todos.ts
-/example/src/app/app.component.ts
+/example/todos/src/app/stores/todos.ts
+/example/todos/src/app/app.component.ts
 
 To run it, clone this repo and run:
 ```
-$ cd example
+$ cd example/todos
 $ npm install
 $ npm install -g angular-cli
 $ ng serve
