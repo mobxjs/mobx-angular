@@ -17,12 +17,4 @@ export class AppComponent {
     todos.addTodo(this.title);
     this.title = '';
   }
-
-  getFromState() {
-    return todos.filter;
-  }
-
-  counter() {
-    return counter++;
-  }
 }

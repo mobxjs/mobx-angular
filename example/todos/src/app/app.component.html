@@ -2,7 +2,7 @@
   <section class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <input class="new-todo" placeholder="filter todos" [ngModel]="todos.filter" (ngModelChange)="todos.changeFilter($event)"/>
+      <input class="new-todo" placeholder="filter todos" [(ngModel)]="todos.filter"/>
       <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="title" (keyup.enter)="addTodo()">
     </header>
     <section class="main">

@@ -20,10 +20,6 @@ class Todos {
     this.todos.push(new Todo(title));
   }
 
-  @action changeFilter(text) {
-    this.filter = text;
-  }
-
   @computed get filteredTodos() {
     return this.todos.filter((todo) => new RegExp(this.filter, 'i').test(todo.title));
   }
