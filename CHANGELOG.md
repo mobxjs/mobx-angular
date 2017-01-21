@@ -1,3 +1,10 @@
+<a name="1.2.0"></a>
+# 1.2.0 (2017-01-21)
+* Update example to be like TodoMVC
+* Update target compilation to ES5
+* Fixed dependencies
+* Added AoT
+
 <a name="1.1.3"></a>
 # 1.1.3 (2016-11-12)
 * Using autorunAsync instead of sync

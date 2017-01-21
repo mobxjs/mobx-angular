@@ -4,6 +4,7 @@ module.exports = function(config) {
         frameworks: ["jasmine", "karma-typescript"],
 
         files: [
+            { pattern: "spec/**/*.ts" },
             { pattern: "lib/**/*.ts" },
             { pattern: "node_modules/reflect-metadata/Reflect.js" },
             { pattern: "node_modules/zone.js/dist/zone.js" },
@@ -16,6 +17,7 @@ module.exports = function(config) {
         ],
 
         preprocessors: {
+            "spec/**/*.ts": ["karma-typescript"],
             "lib/**/*.ts": ["karma-typescript"]
         },
 
@@ -31,7 +33,7 @@ module.exports = function(config) {
               sourceMap: true,
               target: "ES5"
           },
-          include: ["lib/**/*.ts"],
+          include: ["lib/**/*.ts", "spec/**/*.ts"],
         },
 
         // Uncomment below if you want to disable code coverage

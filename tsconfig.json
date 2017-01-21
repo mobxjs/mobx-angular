@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es5",
     "outDir": "dist/",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -10,12 +10,13 @@
     "inlineSources": true,
     "declaration": true
   },
-  "exclude": [
-    "example",
-    "coverage",
-    "node_modules",
-    "dist"
+  "include": [
+    "lib"
   ],
   "compileOnSave": false,
-  "buildOnSave": false
+  "buildOnSave": false,
+  "angularCompilerOptions": {
+    "genDir": "compiled",
+    "skipMetadataEmit": true
+  }
 }

@@ -4,7 +4,7 @@ import { TestBed, async, fakeAsync, tick } from "@angular/core/testing";
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@angular/platform-browser-dynamic/testing";
 
 import { observable, computed } from "mobx";
-import { MobxAutorunDirective, MobxAutorunSyncDirective } from "./ng2-mobx";
+import { MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective } from "../lib/ng2-mobx";
 
 // import {
 //   expect, it, iit, xit,
@@ -66,7 +66,30 @@ class TestComponentSync {
   }
 }
 
-let fullname, button, component;
+@Component({
+  template: `
+    <div *mobxReaction="getFirstLetter.bind(this)">
+      <span id="firstchar">{{char}}</span>
+    </div>
+    <button (click)="setLastName()">Set Name</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestComponentReaction {
+  private store = new TestStore();
+  constructor() {
+    fullNameCalculations = 0;
+  }
+  getFirstLetter() {
+    this.char = this.store.fullName[0];
+  }
+  setLastName() {
+    this.store.firstName = 'Michael';
+    this.store.lastName = 'Jackson';
+  }
+}
+
+let fullname, button, component, firstchar;
 
 describe('ng2Mobx', () => {
   TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
@@ -121,6 +144,44 @@ describe('ng2Mobx', () => {
       button.triggerEventHandler("click", null);
       expect(fullname.nativeElement.innerText).toEqual("James Dean");
       expect(fullNameCalculations).toEqual(2);
+    });
+  });
+
+  describe('mobxReaction', () => {
+    beforeEach((done) => {
+      component = TestBed
+        .configureTestingModule({ declarations: [ MobxReactionDirective, TestComponentReaction ] })
+        .createComponent(TestComponentReaction);
+
+      component.detectChanges(); // initial binding
+
+      firstchar = component.debugElement.query(By.css("#firstchar"));
+      button = component.debugElement.query(By.css("button"));
+      setTimeout(done);
+    });
+
+    // color tests
+    it("should call the reaction function once on init", () => {
+      expect(firstchar.nativeElement.innerText).toEqual("J");
+      expect(firstcharCalculations).toEqual(1);
+    });
+
+    it("should recompute value once", (done) => {
+      button.triggerEventHandler("click", null);
+      setTimeout(() => {
+        // no change detection has run yet
+        expect(firstchar.nativeElement.innerText).toEqual("J");
+        expect(component.char).toEqual("J");
+        expect(firstcharCalculations).toEqual(1);
+
+        component.detectChanges(); // initial binding
+
+        expect(firstchar.nativeElement.innerText).toEqual("M");
+        expect(component.char).toEqual("M");
+        expect(firstcharCalculations).toEqual(2);
+
+        done();
+      });
     });
   });
 });
