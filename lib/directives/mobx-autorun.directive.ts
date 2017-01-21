@@ -6,19 +6,20 @@ import { ng2MobxDebug } from '../utils/ng2-mobx-debug';
 export class MobxAutorunDirective {
   protected templateBindings = {};
   protected dispose:any;
+  protected view:any;
 
   constructor(
     protected templateRef: TemplateRef<any>,
     protected viewContainer: ViewContainerRef,
-    protected renderer:Renderer) {}
+    protected renderer:Renderer) {
+      this.view = this.viewContainer.createEmbeddedView(this.templateRef);
+    }
 
   ngAfterViewInit() {
-    const view = this.viewContainer.createEmbeddedView(this.templateRef);
-
     if (this.dispose) this.dispose();
 
-    this.autoDetect(view);
-    ng2MobxDebug(view, this.renderer, this.dispose);
+    this.autoDetect(this.view);
+    ng2MobxDebug(this.view, this.renderer, this.dispose);
   }
 
   autoDetect(view) {

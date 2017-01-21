@@ -17,12 +17,12 @@ export function ng2MobxDebug(view, renderer, observer) {
   if (!isDebugOn()) return;
 
   const element = view.rootNodes[0];
-  const {top,left,bottom,width} = element.getBoundingClientRect();
-  const debugElement = renderer.createElement(element, 'span');
-  renderer.setElementStyle(debugElement, 'position','fixed');
+
+  const debugElement = document.createElement('span');
+  element.prepend(debugElement); // No prepend in Angular Renderer
+  renderer.setElementStyle(debugElement, 'position','absolute');
   renderer.setElementStyle(debugElement, 'border','1px dotted red');
-  renderer.setElementStyle(debugElement, 'top',`${top}px`);
-  renderer.setElementStyle(debugElement, 'left', `${left}px`);
+  renderer.setElementStyle(debugElement, 'transform',`translateY(-25px)`);
   renderer.setElementStyle(debugElement, 'cursor', 'pointer');
   renderer.setElementStyle(debugElement, 'z-index', '1000000');
   renderer.setElementStyle(debugElement, 'padding', '5px 10px');
