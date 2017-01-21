@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+// table, th, td {
+//     border: 1px solid black;
+//     border-collapse: collapse;
+// }
+// td {
+//   width: 100px;
+//   height: 100px;
+// }
+
+ttt-root {
+  margin: 100px auto;
+  display: block;
+  width: 700px;
+  padding: 20px 40px;
+  background: #dff;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.3);
+}
+h1 {
+  display: inline-block;
+}
+button {
+  float: right;
+  margin-top: 15px;
+  font-size: 24px;
+  border-radius: 2px;
+  background: transparent;
+}
+table {
+  margin: 0 auto;
+}
+.cell-content {
+  cursor: pointer;
+  font-size: 48px;
+  background: white;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  line-height: 100px;
+  border-radius: 10px;
+  text-align: center;
+}
