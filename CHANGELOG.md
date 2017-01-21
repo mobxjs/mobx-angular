@@ -4,6 +4,7 @@
 * Update target compilation to ES5
 * Fixed dependencies
 * Added AoT
+* mobxReaction fires immediately
 
 <a name="1.1.3"></a>
 # 1.1.3 (2016-11-12)

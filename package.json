@@ -6,6 +6,7 @@
   "typings": "dist/ng2-mobx.d.ts",
   "scripts": {
     "test": "karma start --single-run",
+    "tdd": "karma start",
     "build": "ngc"
   },
   "repository": {

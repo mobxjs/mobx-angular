@@ -3,7 +3,7 @@ import { DebugElement, Component, ChangeDetectionStrategy } from "@angular/core"
 import { TestBed, async, fakeAsync, tick } from "@angular/core/testing";
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@angular/platform-browser-dynamic/testing";
 
-import { observable, computed } from "mobx";
+import { observable, computed, action } from "mobx";
 import { MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective } from "../lib/ng2-mobx";
 
 // import {
@@ -17,6 +17,7 @@ import { MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective }
 // Adapted from the official angular2 docs, https://angular.io/docs/ts/latest/guide/testing.html
 
 let fullNameCalculations;
+let firstCharCalculations;
 
 class TestStore {
   @observable firstName = "James";
@@ -25,6 +26,10 @@ class TestStore {
   @computed get fullName() {
     fullNameCalculations++;
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  @action setNames(firstName, lastName) {
+    Object.assign(this, {firstName, lastName});
   }
 }
 
@@ -77,15 +82,16 @@ class TestComponentSync {
 })
 class TestComponentReaction {
   private store = new TestStore();
+  char:string = 'J';
   constructor() {
-    fullNameCalculations = 0;
+    firstCharCalculations = 0;
   }
   getFirstLetter() {
-    this.char = this.store.fullName[0];
+    firstCharCalculations++;
+    return this.char = this.store.fullName[0];
   }
   setLastName() {
-    this.store.firstName = 'Michael';
-    this.store.lastName = 'Jackson';
+    this.store.setNames('Michael','Jackson');
   }
 }
 
@@ -163,22 +169,16 @@ describe('ng2Mobx', () => {
     // color tests
     it("should call the reaction function once on init", () => {
       expect(firstchar.nativeElement.innerText).toEqual("J");
-      expect(firstcharCalculations).toEqual(1);
+      expect(component.componentInstance.char).toEqual("J");
+      expect(firstCharCalculations).toEqual(1);
     });
 
     it("should recompute value once", (done) => {
       button.triggerEventHandler("click", null);
       setTimeout(() => {
-        // no change detection has run yet
-        expect(firstchar.nativeElement.innerText).toEqual("J");
-        expect(component.char).toEqual("J");
-        expect(firstcharCalculations).toEqual(1);
-
-        component.detectChanges(); // initial binding
-
         expect(firstchar.nativeElement.innerText).toEqual("M");
-        expect(component.char).toEqual("M");
-        expect(firstcharCalculations).toEqual(2);
+        expect(component.componentInstance.char).toEqual("M");
+        expect(firstCharCalculations).toEqual(2);
 
         done();
       });

@@ -19,7 +19,7 @@ export class MobxReactionDirective {
 
     this.dispose = reaction(this.mobxReaction, () => {
       view['detectChanges']();
-    });
+    }, { fireImmediately: true });
   }
 
   ngOnDestroy() {
