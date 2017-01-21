@@ -6,16 +6,6 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@ang
 import { observable, computed, action } from "mobx";
 import { MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective } from "../lib/ng2-mobx";
 
-// import {
-//   expect, it, iit, xit,
-//   describe, ddescribe, xdescribe,
-//   before, beforeEach, beforeEachProviders, withProviders,
-//   async, inject,
-//   testing
-// } from "@angular/core/testing";
-
-// Adapted from the official angular2 docs, https://angular.io/docs/ts/latest/guide/testing.html
-
 let fullNameCalculations;
 let firstCharCalculations;
 
@@ -44,7 +34,7 @@ class TestStore {
 })
 class TestComponent {
   private store = new TestStore();
-  constructor() {
+  ngAfterViewInit() {
     fullNameCalculations = 0;
   }
   setLastName() {
@@ -63,7 +53,7 @@ class TestComponent {
 })
 class TestComponentSync {
   private store = new TestStore();
-  constructor() {
+  ngAfterViewInit() {
     fullNameCalculations = 0;
   }
   setLastName() {
@@ -83,7 +73,7 @@ class TestComponentSync {
 class TestComponentReaction {
   private store = new TestStore();
   char:string = 'J';
-  constructor() {
+  ngAfterViewInit() {
     firstCharCalculations = 0;
   }
   getFirstLetter() {
@@ -126,6 +116,13 @@ describe('ng2Mobx', () => {
         done();
       });
     });
+
+    it("should not recompute every change detection", () => {
+      component.detectChanges();
+      component.detectChanges();
+      component.detectChanges();
+      expect(fullNameCalculations).toEqual(1);
+    });
   });
 
   describe('mobxAutorunSync', () => {
@@ -143,13 +140,20 @@ describe('ng2Mobx', () => {
     // color tests
     it("should have correct content", () => {
       expect(fullname.nativeElement.innerText).toEqual("James Bond");
-      expect(fullNameCalculations).toEqual(1);
+      expect(fullNameCalculations).toEqual(0);
     });
 
     it("should recompute value once", () => {
       button.triggerEventHandler("click", null);
       expect(fullname.nativeElement.innerText).toEqual("James Dean");
-      expect(fullNameCalculations).toEqual(2);
+      expect(fullNameCalculations).toEqual(1);
+    });
+
+    it("should not recompute every change detection", () => {
+      component.detectChanges();
+      component.detectChanges();
+      component.detectChanges();
+      expect(fullNameCalculations).toEqual(0);
     });
   });
 
@@ -170,7 +174,7 @@ describe('ng2Mobx', () => {
     it("should call the reaction function once on init", () => {
       expect(firstchar.nativeElement.innerText).toEqual("J");
       expect(component.componentInstance.char).toEqual("J");
-      expect(firstCharCalculations).toEqual(1);
+      expect(firstCharCalculations).toEqual(0);
     });
 
     it("should recompute value once", (done) => {
@@ -178,10 +182,17 @@ describe('ng2Mobx', () => {
       setTimeout(() => {
         expect(firstchar.nativeElement.innerText).toEqual("M");
         expect(component.componentInstance.char).toEqual("M");
-        expect(firstCharCalculations).toEqual(2);
+        expect(firstCharCalculations).toEqual(1);
 
         done();
       });
+    });
+
+    it("should not recompute every change detection", () => {
+      component.detectChanges();
+      component.detectChanges();
+      component.detectChanges();
+      expect(firstCharCalculations).toEqual(0);
     });
   });
 });

@@ -7,7 +7,8 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "build": "ngc"
+    "build": "ngc",
+    "prepublish": "npm run build && npm run test"
   },
   "repository": {
     "type": "git",
