@@ -27,6 +27,7 @@ export class GameService {
       this.board[2].filter(cell => cell).length;
   };
   @computed get winner():string {
+    console.log('winner', this._columnHasWinner(1));
     // rows:
     if (this._rowHasWinner(0)) return this.board[0][0];
     if (this._rowHasWinner(1)) return this.board[1][0];
@@ -38,8 +39,8 @@ export class GameService {
     if (this._columnHasWinner(2)) return this.board[0][2];
 
     // diagonals
-    if (this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) return this.board[0][0];
-    if (this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) return this.board[0][2];
+    if (this.board[0][0] && this.board[0][0] === this.board[1][1] && this.board[1][1] === this.board[2][2]) return this.board[0][0];
+    if (this.board[0][2] && this.board[0][2] === this.board[1][1] && this.board[1][1] === this.board[2][0]) return this.board[0][2];
 
     return null;
   }
@@ -61,11 +62,11 @@ export class GameService {
   }
 
   private _rowHasWinner(index) {
-    return (this.board[index][0] === this.board[index][1] && this.board[index][1] === this.board[index][2]);
+    return (this.board[index][0] && this.board[index][0] === this.board[index][1] && this.board[index][1] === this.board[index][2]);
   }
 
   private _columnHasWinner(index) {
-    return (this.board[0][index] === this.board[1][index] && this.board[1][index] === this.board[2][index]);
+    return (this.board[0][index] && this.board[0][index] === this.board[1][index] && this.board[1][index] === this.board[2][index]);
   }
 
   private _countScore() {
