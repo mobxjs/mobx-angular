@@ -96,6 +96,16 @@ class Store {
 }
 ```
 
+## Debugging MobX
+ng2-mobx comes with a handy debug tool, that:
+- console.log's everything that happens in MobX in a nice way
+- Allows you to console.log the dependency tree of your components that are using ng2-mobx directives
+
+to turn on / off the debug tool, run:
+```
+ng2MobxDebug(true / false)
+```
+
 ## Example
 See the `example` folder, specifically these files:
 /example/todos/src/app/stores/todos.ts
