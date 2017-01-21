@@ -1,5 +1,9 @@
 <a name="1.2.0"></a>
 # 1.2.0 (2017-01-21)
+* Added ng2MobxDebug
+
+<a name="1.2.0"></a>
+# 1.2.0 (2017-01-21)
 * Update example to be like TodoMVC
 * Update target compilation to ES5
 * Fixed dependencies
