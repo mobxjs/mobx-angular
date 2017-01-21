@@ -19,14 +19,10 @@ The advantages of MobX are:
 <a href="http://mobxjs.github.io/mobx" target="_blank">Read more about MobX</a>
 
 ## Why use this library
-Performance and magic!
-
-This library brings the magic of automatic data binding, together with incredibly high performance.
-
-You can use it together with OnPush strategy, and wrap your template with a `*mobxAutorun` directive.
-The directive will automatically run the change detection whenever any observables your template uses change.
-
-It will also dispose of the autorun callback when the component is destroyed.
+1. The library allows you to automatically observe all the observables that your component uses
+2. You can also use it together with OnPush strategy, to incredibly high performance
+3. It disposes of all the observers when the component is destroyed
+4. It gives you powerful debugging tools
 
 ## Usage
 
@@ -45,7 +41,8 @@ import { Ng2MobxModule } from 'ng2-mobx';
 export class MyModule {}
 ```
 
-Then use `*mobxAutorun` directive together with OnPush:
+## autorun
+Use `*mobxAutorun` directive in your template:
 ```
 import {store} from './store/counter';
 
@@ -63,13 +60,17 @@ export class AppComponent {
 }
 ```
 
+The directive will observe all the observables that your component uses, and will automatically run the change detection whenever there's a change.
+
+Use it together with onPush to gain maximum performance.
+
+## autorunSync
+The same as autorun, except it runs synchronously.
+
 ## reaction
 Aside from autorun, MobX allows you to react to specific data changes.
 
-Use `*mobxReaction="callback.bind(this)"` to automatically invoke `callback`.
-Change Detection will run automatically whenever the return value of `callback` changes.
-
-For example:
+Usage:
 ```
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -83,7 +84,11 @@ class AppComponent {
   }
 }
 ```
-Here the `parity` property will be updated according to `counter`,
+The `callback` function will automatically re-run whenever any observable that it uses changes.
+Change Detection will run automatically whenever the return value of `callback` changes.
+If you don't return anything, change detection will not run.
+
+In this example, the `parity` property will be updated according to `counter`,
 and change detection will run only when the `parity` changes.
 
 ## Injectable stores
