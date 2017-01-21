@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed, reaction } from 'mobx';
 
+const OPONENT = {
+  X: 'O',
+  O: 'X'
+};
+
 @Injectable()
 export class GameService {
   @observable board:string[][];
   @observable score = {X:0, O:0};
+  @observable firstPlayer = 'X';
 
   constructor() {
     this.resetGame();
     this._countScore();
+    this._changeStartingPlayer();
   }
 
   @computed get currentPlayer():string {
-    return this.moves % 2 ? 'O' : 'X';
+    return this.moves % 2 ? OPONENT[this.firstPlayer] : this.firstPlayer;
   }
   @computed get moves():number {
     return this.board[0].filter(cell => cell).length +
@@ -67,5 +74,13 @@ export class GameService {
         this.score[winner]++;
       }
     })
+  }
+
+  private _changeStartingPlayer() {
+    reaction(() => this.ended, (ended) => {
+      if (ended) {
+        this.firstPlayer = OPONENT[this.firstPlayer];
+      }
+    });
   }
 }
