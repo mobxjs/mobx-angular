@@ -111,15 +111,15 @@ to turn on / off the debug tool, run:
 ng2MobxDebug(true / false)
 ```
 
-## Example
-See the `example` folder, specifically these files:
-/example/todos/src/app/stores/todos.ts
-/example/todos/src/app/app.component.ts
+## Examples
+See the `example` folder, specifically these files:  
+`/example/todos/src/app/stores/todos.ts`  
+`/example/todos/src/app/app.component.ts`
 
-To run it, clone this repo and run:
+To run the examples, clone this repo and run:
 ```
-$ cd example/todos
-$ npm install
 $ npm install -g angular-cli
+$ cd example/*
+$ npm install
 $ ng serve
 ```
