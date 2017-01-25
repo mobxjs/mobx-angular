@@ -102,14 +102,14 @@ class Store {
 ```
 
 ## Debugging MobX
-ng2-mobx comes with a handy debug tool, that:
-- console.log's everything that happens in MobX in a nice way
-- Allows you to console.log the dependency tree of your components that are using ng2-mobx directives
-
-to turn on / off the debug tool, run:
+ng2-mobx comes with a handy debug tool.
+to turn on / off the debug tool, open developer tools' console, and run:
 ```
-ng2MobxDebug(true / false)
+ng2MobxDebug(true) // turn on
+ng2MobxDebug(false) // turn off
 ```
+Then you can hover over the components that use mobx directives, and you will have a small box to click on to console.log the dependencies of that component.
+Also, every action that happens in mobx will be console.logged in a nice way.
 
 ## Examples
 See the `example` folder, specifically these files:  
