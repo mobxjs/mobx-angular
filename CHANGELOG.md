@@ -1,3 +1,7 @@
+<a name="1.2.4"></a>
+# 1.2.4 (2017-02-04)
+* Replaced main / jsnext:main / module mismatch
+
 <a name="1.2.3"></a>
 # 1.2.3 (2017-02-04)
 * Added AoT metadata
