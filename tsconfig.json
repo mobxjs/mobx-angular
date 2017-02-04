@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "target": "es5",
     "outDir": "dist/",
@@ -8,15 +8,15 @@
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "declaration": true
+    "declaration": true,
+    "lib": ["es2015", "dom"]
   },
-  "include": [
-    "lib"
+  "files": [
+    "lib/ng2-mobx"
   ],
   "compileOnSave": false,
   "buildOnSave": false,
   "angularCompilerOptions": {
-    "genDir": "compiled",
-    "skipMetadataEmit": true
+    "skipTemplateCodegen": true
   }
 }

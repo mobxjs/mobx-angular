@@ -1,13 +1,18 @@
 {
   "name": "ng2-mobx",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Angular 2 connector to MobX",
+  "jsnext:main": "dist/ng2-mobx.umd.js",
+  "module": "dist/ng2-mobx.umd.js",
   "main": "dist/ng2-mobx.js",
   "typings": "dist/ng2-mobx.d.ts",
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "build": "ngc",
+    "lint": "tslint lib/**/*.ts",
+    "rollup": "rollup -c rollup.config.js dist/ng2-mobx.js > dist/ng2-mobx.umd.js",
+    "clean": "rimraf dist",
+    "build": "npm run lint && npm run clean && ngc && npm run rollup",
     "prepublish": "npm run build && npm run test"
   },
   "repository": {
@@ -29,32 +34,29 @@
   },
   "homepage": "https://github.com/500tech/ng2-mobx#readme",
   "devDependencies": {
-    "mobx": ">2.7.0",
-
     "@angular/common": "~2.4.0",
     "@angular/compiler": "~2.4.0",
     "@angular/compiler-cli": "^2.4.1",
     "@angular/core": "~2.4.0",
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-browser-dynamic": "~2.4.0",
-
-    "@types/core-js": "0.9.34",
-    "core-js": "^2.4.1",
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.7.4",
-
-    "angular-cli": "1.0.0-beta.19-3",
-
     "@types/jasmine": "2.5.37",
+    "angular-cli": "1.0.0-beta.19-3",
+    "codelyzer": "2.0.0-beta.4",
+    "core-js": "^2.4.1",
     "jasmine-core": "2.5.2",
     "karma": "1.2.0",
     "karma-chrome-launcher": "2.0.0",
     "karma-cli": "1.0.1",
     "karma-jasmine": "1.0.2",
     "karma-typescript": "latest",
-
+    "mobx": ">2.7.0",
+    "rimraf": "2.5.4",
+    "rxjs": "^5.0.1",
     "ts-helpers": "1.1.1",
-    "typescript": "^2.1.4"
+    "tslint": "4.4.2",
+    "typescript": "^2.1.4",
+    "zone.js": "^0.7.4"
   },
   "peerDependencies": {
     "mobx": ">2.7.0",

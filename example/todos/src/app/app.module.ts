@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { Ng2MobxModule } from "ng2-mobx";
+import { Ng2MobxModule } from 'ng2-mobx';
 
 @NgModule({
   declarations: [

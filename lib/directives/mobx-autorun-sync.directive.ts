@@ -7,11 +7,11 @@ export class MobxAutorunSyncDirective extends MobxAutorunDirective {
   constructor(
     protected templateRef: TemplateRef<any>,
     protected viewContainer: ViewContainerRef,
-    protected renderer:Renderer) {super(templateRef, viewContainer, renderer)}
+    protected renderer: Renderer) {super(templateRef, viewContainer, renderer); }
 
   autoDetect(view) {
     this.dispose = autorun(() => {
-      view["detectChanges"]();
+      view['detectChanges']();
     });
   }
 }

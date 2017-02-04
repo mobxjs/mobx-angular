@@ -1,3 +1,9 @@
+<a name="1.2.3"></a>
+# 1.2.3 (2017-02-04)
+* Added AoT metadata
+* Added UMD bundle
+* Checking for localStorage / console in debug
+
 <a name="1.2.2"></a>
 # 1.2.2 (2017-01-21)
 * Fixed change detection errors by creating element in constructor, and auto detecting in afterViewInit
