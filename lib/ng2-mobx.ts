@@ -13,10 +13,10 @@ export {
 const DIRECTIVES = [MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective];
 @NgModule({
   declarations: [
-    DIRECTIVES
+    ...DIRECTIVES
   ],
   exports: [
-    DIRECTIVES
+    ...DIRECTIVES
   ],
   imports: [],
   providers: []

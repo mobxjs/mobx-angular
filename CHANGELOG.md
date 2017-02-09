@@ -1,3 +1,7 @@
+<a name="1.2.6"></a>
+# 1.2.6 (2017-02-09)
+* Fixed exports / declarations in module
+
 <a name="1.2.5"></a>
 # 1.2.5 (2017-02-06)
 * Added observable proxy for test
