@@ -1,3 +1,7 @@
+<a name="1.2.7"></a>
+# 1.2.7 (2017-02-22)
+* Fixed using pipe - createEmbeddedView inside ngOnInit
+
 <a name="1.2.6"></a>
 # 1.2.6 (2017-02-09)
 * Fixed exports / declarations in module
