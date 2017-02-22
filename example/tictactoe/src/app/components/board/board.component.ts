@@ -15,7 +15,7 @@ import { GameService } from 'app/services/game.service';
   styles: []
 })
 export class BoardComponent implements OnInit {
-  constructor(private game:GameService) { window.game = game}
+  constructor(private game:GameService) { }
 
   ngOnInit() {
   }

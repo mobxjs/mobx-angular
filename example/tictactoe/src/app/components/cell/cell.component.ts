@@ -16,7 +16,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CellComponent implements OnInit {
   @Input() value:string;
   @Input() nextValue:string;
-  @Output() select:EventEmitter = new EventEmitter();
+  @Output() select:EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 

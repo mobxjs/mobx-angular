@@ -1,3 +1,8 @@
+<a name="1.2.8"></a>
+# 1.2.8 (2017-02-22)
+* Solved @computed twice issue
+* Deprecate mobxAutorunSync
+
 <a name="1.2.7"></a>
 # 1.2.7 (2017-02-22)
 * Fixed using pipe - createEmbeddedView inside ngOnInit

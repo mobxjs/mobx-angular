@@ -1,9 +1,9 @@
-import { Directive, ViewContainerRef, TemplateRef, HostListener, Renderer, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
-import { autorunAsync } from 'mobx';
+import { Directive, ViewContainerRef, TemplateRef, HostListener, Renderer, OnInit, OnDestroy } from '@angular/core';
+import { autorun } from 'mobx';
 import { ng2MobxDebug } from '../utils/ng2-mobx-debug';
 
 @Directive({ selector: '[mobxAutorun]' })
-export class MobxAutorunDirective implements AfterViewInit, OnInit, OnDestroy {
+export class MobxAutorunDirective implements OnInit, OnDestroy {
   protected templateBindings = {};
   protected dispose: any;
   protected view: any;
@@ -16,9 +16,7 @@ export class MobxAutorunDirective implements AfterViewInit, OnInit, OnDestroy {
 
   ngOnInit() {
     this.view = this.viewContainer.createEmbeddedView(this.templateRef);
-  }
 
-  ngAfterViewInit() {
     if (this.dispose) this.dispose();
 
     this.autoDetect(this.view);
@@ -26,7 +24,7 @@ export class MobxAutorunDirective implements AfterViewInit, OnInit, OnDestroy {
   }
 
   autoDetect(view) {
-    this.dispose = autorunAsync(() => {
+    this.dispose = autorun(() => {
       view['detectChanges']();
     });
   }

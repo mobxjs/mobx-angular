@@ -10,6 +10,8 @@ export class MobxAutorunSyncDirective extends MobxAutorunDirective {
     protected renderer: Renderer) {super(templateRef, viewContainer, renderer); }
 
   autoDetect(view) {
+    console.warn('mobxAutorunSync is deprected, please use mobxAutorun instead - it\'s doing exactly the same thing');
+
     this.dispose = autorun(() => {
       view['detectChanges']();
     });

@@ -48,7 +48,7 @@ export class GameService {
     return this.moves === 9 && !this.winner;
   };
   @computed get ended():boolean {
-    return this.winner || this.tie;
+    return !!this.winner || this.tie;
   }
 
   @action play(i,j) {
