@@ -1,3 +1,7 @@
+<a name="1.2.9"></a>
+# 1.2.9 (2017-02-25)
+* Added computed wrapper
+
 <a name="1.2.8"></a>
 # 1.2.8 (2017-02-22)
 * Solved @computed twice issue
