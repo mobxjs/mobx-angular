@@ -90,7 +90,7 @@ class Store {
 
 ## Debugging MobX
 mobx-angular comes with a handy debug tool.
-to turn on / off the debug tool, open developer tools' console, and run:
+To turn on / off the debug tool, open developer tools' console, and run:
 ```
 MobxAngularDebug(true) // turn on
 MobxAngularDebug(false) // turn off
@@ -106,7 +106,7 @@ See the `example` folder, specifically these files:
 To run the examples, clone this repo and run:
 ```
 $ npm install -g angular-cli
-$ cd example/*
+$ cd example/<example-folder>
 $ npm install
 $ ng serve
 ```
