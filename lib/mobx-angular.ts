@@ -22,7 +22,7 @@ const DIRECTIVES = [MobxAutorunDirective, MobxAutorunSyncDirective, MobxReaction
   imports: [],
   providers: []
 })
-export class Ng2MobxModule {
+export class MobxAngularModule {
 }
 
 export function observable(...args) {

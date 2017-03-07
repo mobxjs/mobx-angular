@@ -1,3 +1,7 @@
+<a name="1.3.0"></a>
+# 1.3.0 (2017-03-07)
+* Renamed to mobx-angular
+
 <a name="1.2.9"></a>
 # 1.2.9 (2017-02-25)
 * Added computed wrapper

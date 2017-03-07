@@ -4,7 +4,7 @@ import { TestBed, async, fakeAsync, tick } from "@angular/core/testing";
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from "@angular/platform-browser-dynamic/testing";
 
 import { observable, computed, action } from "mobx";
-import { MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective } from "../lib/ng2-mobx";
+import { MobxAutorunDirective, MobxAutorunSyncDirective, MobxReactionDirective } from "../lib/mobx-angular";
 
 let fullNameCalculations;
 let firstCharCalculations;
@@ -87,7 +87,7 @@ class TestComponentReaction {
 
 let fullname, button, component, firstchar;
 
-describe('ng2Mobx', () => {
+describe('mobxAngular', () => {
   TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
   describe('mobxAutorun', () => {
     beforeEach((done) => {

@@ -13,7 +13,7 @@ class Todo {
   }
 }
 const todo1 = new Todo('Buy Milk');
-const todo2 = new Todo('Write ng2-mobx connector');
+const todo2 = new Todo('Write mobx angular connector');
 
 class Todos {
   @observable todos = [todo1, todo2];

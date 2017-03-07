@@ -1,42 +1,29 @@
-[![Build Status](https://travis-ci.org/500tech/ng2-mobx.svg?branch=master)](https://travis-ci.org/500tech/ng2-mobx)
-[![npm version](https://badge.fury.io/js/ng2-mobx.svg)](https://badge.fury.io/js/ng2-mobx)
-# ng2-mobx
+[![Build Status](https://travis-ci.org/mobxjs/mobx-angular.svg?branch=master)](https://travis-ci.org/mobxjs/mobx-angular)
+[![npm version](https://badge.fury.io/js/mobx-angular.svg)](https://badge.fury.io/js/mobx-angular)
+# mobx-angular
 
-## MobX connector for Angular 2
-If you're looking for the Angular 1 version version, it's [here](https://github.com/500tech/ng-mobx)
+## MobX connector for Angular (> 2)
+If you're looking for the Angular 1 version version, it's [here](https://github.com/NgMobx/ng1-mobx)
 
-MobX is a modern reactive state management library.
-
-This simple library connects MobX to Angular 2 components.
-
-## Why use MobX
-The advantages of MobX are:
-* Normalized - MobX lets you define computed values that are based on the minimal state
-* Reactivity - MobX Automatically figures out when to re-invoke subscribers according to which observables they use. This allows for extremely performant applications
-* Plain objects - Use plain objects and classes with MobX decorators, or even observe existing objects (from external sources for example)
-* MobX is being used heavily in the community (mainly with React)
-
-<a href="http://mobxjs.github.io/mobx" target="_blank">Read more about MobX</a>
-
-## Why use this library
+## Features
 1. The library allows you to automatically observe all the observables that your component uses
-2. You can also use it together with OnPush strategy, to incredibly high performance
-3. It disposes of all the observers when the component is destroyed
-4. It gives you powerful debugging tools
+2. Automatically runs change detection - works with OnPush strategy
+3. Disposes of all the observers when the component is destroyed
+4. Debugging tools
 
 ## Usage
 
 Install:
 ```
-$ npm install --save ng2-mobx
+$ npm install --save mobx-angular
 ```
 
-Import the Ng2MobxModule:
+Import the MobxAngularModule:
 ```
-import { Ng2MobxModule } from 'ng2-mobx';
+import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
-    imports: [..., Ng2MobxModule]
+    imports: [..., MobxAngularModule]
 })
 export class MyModule {}
 ```
@@ -102,11 +89,11 @@ class Store {
 ```
 
 ## Debugging MobX
-ng2-mobx comes with a handy debug tool.
+mobx-angular comes with a handy debug tool.
 to turn on / off the debug tool, open developer tools' console, and run:
 ```
-ng2MobxDebug(true) // turn on
-ng2MobxDebug(false) // turn off
+MobxAngularDebug(true) // turn on
+MobxAngularDebug(false) // turn off
 ```
 Then you can hover over the components that use mobx directives, and you will have a small box to click on to console.log the dependencies of that component.
 Also, every action that happens in mobx will be console.logged in a nice way.

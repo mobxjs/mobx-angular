@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { Ng2MobxModule } from 'ng2-mobx';
+import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { Ng2MobxModule } from 'ng2-mobx';
     BrowserModule,
     FormsModule,
     HttpModule,
-    Ng2MobxModule
+    MobxAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]

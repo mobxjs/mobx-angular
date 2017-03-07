@@ -3,23 +3,23 @@
 import { extras, spy, isObservableArray, isObservableObject } from 'mobx';
 
 // function for turning debug on / off
-export const ng2MobxDebug = (() => {
+export const mobxAngularDebug = (() => {
   if (typeof localStorage === 'undefined' || typeof console === 'undefined') {
     return;
   }
-  window['ng2MobxDebug'] = (value) => {
-    if (value) localStorage['ng2-mobx-debug'] = true;
-    else delete localStorage['ng2-mobx-debug'];
+  window['mobxAngularDebug'] = (value) => {
+    if (value) localStorage['mobx-angular-debug'] = true;
+    else delete localStorage['mobx-angular-debug'];
   };
 
   function isDebugOn() {
-    return localStorage['ng2-mobx-debug'];
+    return localStorage['mobx-angular-debug'];
   }
 
   spy((change) => isDebugOn() && consoleLogChange(change, () => true));
 
   // Debugging element dependency tree
-  function ng2MobxDebug(view, renderer, observer) {
+  function mobxAngularDebug(view, renderer, observer) {
     if (!isDebugOn()) return;
 
     const element = view.rootNodes[0];
@@ -266,5 +266,5 @@ export const ng2MobxDebug = (() => {
     return value === null || value === undefined || typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean';
   }
 
-  return ng2MobxDebug;
+  return mobxAngularDebug;
 })();

@@ -1,28 +1,37 @@
 {
-  "name": "ng2-mobx",
-  "version": "1.2.9",
+  "name": "mobx-angular",
+  "version": "1.3.0",
   "description": "Angular 2 connector to MobX",
-  "jsnext:main": "dist/ng2-mobx.js",
-  "module": "dist/ng2-mobx.js",
-  "main": "dist/ng2-mobx.umd.js",
-  "typings": "dist/ng2-mobx.d.ts",
+  "jsnext:main": "dist/mobx-angular.js",
+  "module": "dist/mobx-angular.js",
+  "main": "dist/mobx-angular.umd.js",
+  "typings": "dist/mobx-angular.d.ts",
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
     "lint": "tslint lib/**/*.ts",
-    "rollup": "rollup -c rollup.config.js dist/ng2-mobx.js > dist/ng2-mobx.umd.js",
+    "rollup": "rollup -c rollup.config.js dist/mobx-angular.js > dist/mobx-angular.umd.js",
     "clean": "rimraf dist",
     "build": "npm run lint && npm run clean && ngc && npm run rollup",
     "prepublish": "npm run build && npm run test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/500tech/ng2-mobx.git"
+    "url": "git+https://github.com/mobxjs/mobx-angular.git"
   },
   "keywords": [
     "mobx",
     "angular2",
-    "ng2"
+    "ng2",
+    "angular",
+    "ng2-mobx",
+    "angular-mobx",
+    "angular2-mobx",
+    "mobx-angular",
+    "mobx-angular2",
+    "mobx-ng2",
+    "state management",
+    "mobxjs"
   ],
   "files": [
     "dist/"
@@ -30,9 +39,9 @@
   "author": "Adam Klein <adam@500tech.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/500tech/ng2-mobx/issues"
+    "url": "https://github.com/mobxjs/mobx-angular/issues"
   },
-  "homepage": "https://github.com/500tech/ng2-mobx#readme",
+  "homepage": "https://github.com/mobxjs/mobx-angular#readme",
   "devDependencies": {
     "@angular/common": "~2.4.0",
     "@angular/compiler": "~2.4.0",
