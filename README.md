@@ -105,7 +105,7 @@ See the `example` folder, specifically these files:
 
 To run the examples, clone this repo and run:
 ```
-$ npm install -g angular-cli
+$ npm install -g @angular/cli
 $ cd example/<example-folder>
 $ npm install
 $ ng serve
