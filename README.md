@@ -19,7 +19,7 @@ $ npm install --save mobx-angular
 ```
 
 Import the MobxAngularModule:
-```
+```ts
 import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
@@ -30,7 +30,7 @@ export class MyModule {}
 
 ## autorun
 Use `*mobxAutorun` directive in your template:
-```
+```ts
 import {store} from './store/counter';
 
 @Component({
@@ -58,7 +58,7 @@ The same as autorun, except it runs synchronously.
 Aside from autorun, MobX allows you to react to specific data changes.
 
 Usage:
-```
+```ts
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<div *mobxReaction="getParity.bind(this)">
@@ -80,7 +80,7 @@ and change detection will run only when the `parity` changes.
 
 ## Injectable stores
 You can easily make your stores injectable:
-```
+```ts
 @Injectable()
 class Store {
   @observable value;
@@ -91,7 +91,7 @@ class Store {
 ## Debugging MobX
 mobx-angular comes with a handy debug tool.
 To turn on / off the debug tool, open developer tools' console, and run:
-```
+```ts
 MobxAngularDebug(true) // turn on
 MobxAngularDebug(false) // turn off
 ```
