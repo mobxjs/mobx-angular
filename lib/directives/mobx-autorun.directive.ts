@@ -24,9 +24,10 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   }
 
   autoDetect(view) {
-    this.dispose = autorun(() => {
-      view['detectChanges']();
-    });
+    this.dispose = autorun(
+      `${view._view.parentView.context.constructor.name}.detectChanges()`,
+      () => view['detectChanges']()
+    );
   }
 
   ngOnDestroy() {
