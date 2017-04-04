@@ -1,5 +1,5 @@
-<a name="1.3.1"></a>
-# 1.3.1 (2017-04-04)
+<a name="1.4.1"></a>
+# 1.4.1 (2017-04-04)
 * Updated dependencies to support Angular 4
 
 <a name="1.3.0"></a>
