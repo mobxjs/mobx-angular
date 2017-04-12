@@ -31,6 +31,7 @@ export class MyModule {}
 ## autorun
 Use `*mobxAutorun` directive in your template:
 ```ts
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {store} from './store/counter';
 
 @Component({
@@ -59,6 +60,8 @@ Aside from autorun, MobX allows you to react to specific data changes.
 
 Usage:
 ```ts
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<div *mobxReaction="getParity.bind(this)">
@@ -81,6 +84,8 @@ and change detection will run only when the `parity` changes.
 ## Injectable stores
 You can easily make your stores injectable:
 ```ts
+import { observable, action } from 'mobx-angular';
+
 @Injectable()
 class Store {
   @observable value;
