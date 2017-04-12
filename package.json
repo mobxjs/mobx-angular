@@ -1,6 +1,6 @@
 {
   "name": "mobx-angular",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Angular connector to MobX (2 and above)",
   "jsnext:main": "dist/mobx-angular.js",
   "module": "dist/mobx-angular.js",

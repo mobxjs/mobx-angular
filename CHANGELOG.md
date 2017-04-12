@@ -1,3 +1,7 @@
+<a name="1.4.2"></a>
+# 1.4.2 (2017-04-12)
+* Updated bug with angular 4 debug name
+
 <a name="1.4.1"></a>
 # 1.4.1 (2017-04-04)
 * Updated dependencies to support Angular 4
