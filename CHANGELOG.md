@@ -1,3 +1,7 @@
+<a name="1.5.0"></a>
+# 1.5.0 (2017-04-19)
+* Added @action to proxy decorator
+
 <a name="1.4.2"></a>
 # 1.4.2 (2017-04-12)
 * Updated bug with angular 4 debug name
