@@ -2,5 +2,5 @@
 declare var process: any;
 
 export const Environment = {
-  PRODUCTION: process.env.NODE_ENV === 'production' || false
+  PRODUCTION: boolean = process.env.NODE_ENV === 'production'
 };
