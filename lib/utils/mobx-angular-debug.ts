@@ -1,11 +1,10 @@
 /* tslint:disable:max-line-length */
 /* tslint:disable:no-console */
 import { extras, spy, isObservableArray, isObservableObject } from 'mobx';
-import { Environment } from './environment';
 
 // function for turning debug on / off
 export const mobxAngularDebug = (() => {
-  if (typeof localStorage === 'undefined' || typeof console === 'undefined' || Environment.PRODUCTION) {
+  if (typeof localStorage === 'undefined' || typeof console === 'undefined') {
     return;
   }
   window['mobxAngularDebug'] = (value) => {
