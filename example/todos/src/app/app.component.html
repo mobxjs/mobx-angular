@@ -6,12 +6,12 @@
 		</form>
 	</header>
 	<section id="main" ng-show="todos.length" class="">
-		<input id="toggle-all" type="checkbox" ng-model="allChecked" (click)="todos.completeAll()">
+		<input id="toggle-all" type="checkbox" [checked]="todos.allComplete" (change)="todos.setCompleteAll(!todos.allComplete)">
 		<label for="toggle-all">Mark all as complete</label>
 		<ul id="todo-list">
 			<li *ngFor="let todo of todos.filteredTodos" [class.completed]="todo.completed">
 				<div class="view">
-					<input class="toggle" type="checkbox" [checked]="todo.completed" (change)="todo.toggle()">
+					<input class="toggle" type="checkbox" [checked]="todo.completed" (change)="todo.setCompleted(!todo.completed)">
 					<label>{{todo.title}}</label>
 					<button class="destroy" (click)="todos.removeTodo(todo)"></button>
 				</div>

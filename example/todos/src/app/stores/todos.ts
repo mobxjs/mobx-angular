@@ -9,11 +9,8 @@ class Todo {
     this.title = title;
   }
 
-  @action toggle() {
-    this.completed = !this.completed;
-  }
-  @action complete() {
-    this.completed = true;
+  @action setCompleted(value) {
+    this.completed = value;
   }
 }
 
@@ -42,8 +39,8 @@ class Todos {
     this.todos = this._filter(this.todos, 'ACTIVE');
   }
 
-  @action completeAll() {
-    this.todos.forEach((todo) => todo.complete())
+  @action setCompleteAll(value) {
+    this.todos.forEach((todo) => todo.setCompleted(value));
   }
 
   @computed get filteredTodos() {
@@ -54,6 +51,10 @@ class Todos {
 
   @computed get uncompletedItems() {
     return this._filter(this.todos, false).length;
+  }
+
+  @computed get allComplete() {
+    return this.uncompletedItems === 0;
   }
 
   private _filter(todos, value) {
