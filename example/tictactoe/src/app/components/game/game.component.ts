@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from 'app/services/game.service';
+import { GameStore } from 'app/services/game.store';
 
 @Component({
   selector: 'ttt-game',
@@ -9,7 +9,7 @@ import { GameService } from 'app/services/game.service';
     <ttt-score></ttt-score>
   `,
   styles: [],
-  providers: [GameService]
+  providers: [GameStore]
 })
 export class GameComponent implements OnInit {
 

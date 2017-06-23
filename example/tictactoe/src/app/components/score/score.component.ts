@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from 'app/services/game.service';
+import { GameStore } from 'app/services/game.store';
 
 @Component({
   selector: 'ttt-score',
@@ -13,7 +13,7 @@ import { GameService } from 'app/services/game.service';
 })
 export class ScoreComponent implements OnInit {
 
-  constructor(private game:GameService) { }
+  constructor(private game:GameStore) { }
 
   ngOnInit() {
   }

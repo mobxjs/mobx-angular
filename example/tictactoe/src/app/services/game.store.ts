@@ -7,9 +7,9 @@ const OPONENT = {
 };
 
 @Injectable()
-export class GameService {
-  @observable board:string[][];
-  @observable score = {X:0, O:0};
+export class GameStore {
+  @observable board: string[][];
+  @observable score = { X: 0, O: 0 };
   @observable firstPlayer = 'X';
 
   constructor() {
@@ -18,15 +18,15 @@ export class GameService {
     this._changeStartingPlayer();
   }
 
-  @computed get currentPlayer():string {
+  @computed get currentPlayer(): string {
     return this.moves % 2 ? OPONENT[this.firstPlayer] : this.firstPlayer;
   }
-  @computed get moves():number {
+  @computed get moves(): number {
     return this.board[0].filter(cell => cell).length +
       this.board[1].filter(cell => cell).length +
       this.board[2].filter(cell => cell).length;
   };
-  @computed get winner():string {
+  @computed get winner(): string {
     console.log('winner', this._columnHasWinner(1));
     // rows:
     if (this._rowHasWinner(0)) return this.board[0][0];
