@@ -1,9 +1,13 @@
-import { observable, computed, action } from 'mobx';
+import { observable, computed, action, autorun, toJS } from 'mobx';
 
 class Todo {
-  @observable completed:boolean = false;
+  @observable completed = false;
+  @observable title: string;
 
-  constructor(public title:string) {}
+  constructor({ title, completed }) {
+    this.completed = completed;
+    this.title = title;
+  }
 
   @action toggle() {
     this.completed = !this.completed;
@@ -12,15 +16,17 @@ class Todo {
     this.completed = true;
   }
 }
-const todo1 = new Todo('Buy Milk');
-const todo2 = new Todo('Write mobx angular connector');
 
 class Todos {
-  @observable todos = [todo1, todo2];
-  @observable filter = null;
+  @observable todos = [];
+  @observable filter = 'SHOW_ALL';
 
-  @action addTodo(title) {
-    this.todos.push(new Todo(title));
+  constructor() {
+    this.localStorageSync();
+  }
+
+  @action addTodo({ title, completed = false }) {
+    this.todos.push(new Todo({ title, completed }));
   }
 
   @action removeTodo(todo) {
@@ -28,9 +34,9 @@ class Todos {
     this.todos.splice(index, 1);
   }
 
-  @action showAll() {this.filter = null}
-  @action showCompleted() {this.filter = true}
-  @action showActive() {this.filter = false}
+  @action showAll() { this.filter = 'SHOW_ALL'; }
+  @action showCompleted() { this.filter = 'COMPLETED'; }
+  @action showActive() { this.filter = 'ACTIVE'; }
 
   @action clearCompleted() {
     this.todos = this._filter(this.todos, false);
@@ -41,7 +47,7 @@ class Todos {
   }
 
   @computed get filteredTodos() {
-    return this.filter !== null ?
+    return this.filter !== 'SHOW_ALL' ?
       this._filter(this.todos, this.filter) :
       this.todos;
   }
@@ -51,7 +57,21 @@ class Todos {
   }
 
   private _filter(todos, value) {
-    return todos.filter((todo) => todo.completed === value);
+    return todos.filter((todo) => this.filter === 'COMPLETED' ? todo.completed : !todo.completed);
+  }
+
+  private localStorageSync() {
+    const initialTodos = JSON.parse(localStorage.todos || '[]');
+    initialTodos.forEach((todo) => this.addTodo(todo));
+    this.filter = JSON.parse(localStorage.filter || '"SHOW_ALL"');
+
+    autorun(() => {
+      localStorage.todos = JSON.stringify(toJS(this.todos));
+      localStorage.filter = JSON.stringify(toJS(this.filter));
+    });
   }
 }
-export default new Todos();
+
+const todoStore = new Todos();
+
+export default todoStore;

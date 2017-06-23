@@ -14,7 +14,7 @@ export class AppComponent {
   todos = todos;
 
   addTodo() {
-    todos.addTodo(this.title);
+    todos.addTodo({ title: this.title });
     this.title = '';
   }
 }
