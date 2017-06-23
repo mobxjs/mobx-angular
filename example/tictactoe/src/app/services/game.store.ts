@@ -27,7 +27,6 @@ export class GameStore {
       this.board[2].filter(cell => cell).length;
   };
   @computed get winner(): string {
-    console.log('winner', this._columnHasWinner(1));
     // rows:
     if (this._rowHasWinner(0)) return this.board[0][0];
     if (this._rowHasWinner(1)) return this.board[1][0];
