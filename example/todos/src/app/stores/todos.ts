@@ -1,74 +1,58 @@
-import { observable, computed, action, autorun, toJS } from 'mobx';
 
 class Todo {
-  @observable completed = false;
-  @observable title: string;
+  completed = false;
+  title: string;
 
   constructor({ title, completed }) {
     this.completed = completed;
     this.title = title;
   }
 
-  @action toggle() {
+  toggle() {
     this.completed = !this.completed;
   }
-  @action complete() {
+  complete() {
     this.completed = true;
   }
 }
 
 class Todos {
-  @observable todos = [];
-  @observable filter = 'SHOW_ALL';
+  todos = [];
+  filter = 'SHOW_ALL';
 
-  constructor() {
-    this.localStorageSync();
-  }
-
-  @action addTodo({ title, completed = false }) {
+  addTodo({ title, completed = false }) {
     this.todos.push(new Todo({ title, completed }));
   }
 
-  @action removeTodo(todo) {
+  removeTodo(todo) {
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
   }
 
-  @action showAll() { this.filter = 'SHOW_ALL'; }
-  @action showCompleted() { this.filter = 'COMPLETED'; }
-  @action showActive() { this.filter = 'ACTIVE'; }
+  showAll() { this.filter = 'SHOW_ALL'; }
+  showCompleted() { this.filter = 'COMPLETED'; }
+  showActive() { this.filter = 'ACTIVE'; }
 
-  @action clearCompleted() {
-    this.todos = this._filter(this.todos, false);
+  clearCompleted() {
+    this.todos = this._filter(this.todos, 'ACTIVE');
   }
 
-  @action completeAll() {
-    this.todos.forEach((todo) => todo.complete())
+  completeAll() {
+    this.todos.forEach((todo) => todo.complete());
   }
 
-  @computed get filteredTodos() {
+  get filteredTodos() {
     return this.filter !== 'SHOW_ALL' ?
       this._filter(this.todos, this.filter) :
       this.todos;
   }
 
-  @computed get uncompletedItems() {
+  get uncompletedItems() {
     return this._filter(this.todos, false).length;
   }
 
   private _filter(todos, value) {
-    return todos.filter((todo) => this.filter === 'COMPLETED' ? todo.completed : !todo.completed);
-  }
-
-  private localStorageSync() {
-    const initialTodos = JSON.parse(localStorage.todos || '[]');
-    initialTodos.forEach((todo) => this.addTodo(todo));
-    this.filter = JSON.parse(localStorage.filter || '"SHOW_ALL"');
-
-    autorun(() => {
-      localStorage.todos = JSON.stringify(toJS(this.todos));
-      localStorage.filter = JSON.stringify(toJS(this.filter));
-    });
+    return todos.filter((todo) => value === 'ACTIVE' ? !todo.completed : todo.completed);
   }
 }
 
