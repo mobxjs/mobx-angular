@@ -12,5 +12,5 @@ before_install:
  - sudo apt-get install -y libappindicator1 fonts-liberation
  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
  - sudo dpkg -i google-chrome*.deb
- - apt-get install build-essential
- - /opt/local/bin/node-gyp node-pre-gyp install --fallback-to-build
+ - sudo apt-get install build-essential
+ - sudo /opt/local/bin/node-gyp node-pre-gyp install --fallback-to-build
