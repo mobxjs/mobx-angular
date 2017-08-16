@@ -1,6 +1,6 @@
 {
   "name": "mobx-angular",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Angular connector to MobX (2 and above)",
   "jsnext:main": "dist/mobx-angular.js",
   "module": "dist/mobx-angular.js",
@@ -59,7 +59,7 @@
     "karma-cli": "1.0.1",
     "karma-jasmine": "1.0.2",
     "karma-typescript": "3.0.0-beta.2",
-    "mobx": ">2.7.0",
+    "mobx": ">=2",
     "rimraf": "2.5.4",
     "rollup": "0.41.4",
     "rollup-plugin-node-resolve": "2.0.0",
@@ -72,5 +72,8 @@
   "peerDependencies": {
     "mobx": ">2.7.0",
     "@angular/core": ">=2.3.0"
+  },
+  "dependencies": {
+    "mobx": "3.2.2"
   }
 }

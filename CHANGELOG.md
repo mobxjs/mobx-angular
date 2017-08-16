@@ -1,3 +1,7 @@
+<a name="1.6.0"></a>
+# 1.6.0 (2017-08-17)
+* Upgraded to MobX 3.0.0
+
 <a name="1.5.0"></a>
 # 1.5.0 (2017-04-19)
 * Added @action to proxy decorator
