@@ -1,3 +1,7 @@
+<a name="1.7.0"></a>
+# 1.7.0 (2017-09-03)
+* Fixed MobX dependency
+
 <a name="1.6.0"></a>
 # 1.6.0 (2017-08-17)
 * Upgraded to MobX 3.0.0

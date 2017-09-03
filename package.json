@@ -1,6 +1,6 @@
 {
   "name": "mobx-angular",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Angular connector to MobX (2 and above)",
   "jsnext:main": "dist/mobx-angular.js",
   "module": "dist/mobx-angular.js",
@@ -70,10 +70,7 @@
     "zone.js": "^0.7.4"
   },
   "peerDependencies": {
-    "mobx": ">2.7.0",
+    "mobx": ">=2",
     "@angular/core": ">=2.3.0"
-  },
-  "dependencies": {
-    "mobx": "3.2.2"
   }
 }
