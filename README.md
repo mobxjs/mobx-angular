@@ -97,8 +97,8 @@ class Store {
 mobx-angular comes with a handy debug tool.
 To turn on / off the debug tool, open developer tools' console, and run:
 ```ts
-MobxAngularDebug(true) // turn on
-MobxAngularDebug(false) // turn off
+mobxAngularDebug(true) // turn on
+mobxAngularDebug(false) // turn off
 ```
 Then you can hover over the components that use mobx directives, and you will have a small box to click on to console.log the dependencies of that component.
 Also, every action that happens in mobx will be console.logged in a nice way.
