@@ -4,9 +4,14 @@ import { extras, spy, isObservableArray, isObservableObject } from 'mobx';
 
 // function for turning debug on / off
 export const mobxAngularDebug = (() => {
-  if (typeof localStorage === 'undefined' || typeof console === 'undefined') {
+  if (typeof localStorage === 'undefined' || typeof console === 'undefined' || typeof window === 'undefined') {
     return;
   }
+
+  if (!localStorage || !console || !window) {
+    return;
+  }
+
   window['mobxAngularDebug'] = (value) => {
     if (value) localStorage['mobx-angular-debug'] = true;
     else delete localStorage['mobx-angular-debug'];
