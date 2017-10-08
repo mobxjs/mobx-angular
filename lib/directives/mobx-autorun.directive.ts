@@ -1,5 +1,6 @@
 import { Directive, ViewContainerRef, TemplateRef, HostListener, Renderer, OnInit, OnDestroy } from '@angular/core';
 import { autorun } from 'mobx';
+import { Environment } from '../utils/environment';
 import { mobxAngularDebug } from '../utils/mobx-angular-debug';
 
 @Directive({ selector: '[mobxAutorun]' })
@@ -20,7 +21,10 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
     if (this.dispose) this.dispose();
 
     this.autoDetect(this.view);
-    mobxAngularDebug(this.view, this.renderer, this.dispose);
+
+    if(!Environment.PRODUCTION) {
+      mobxAngularDebug(this.view, this.renderer, this.dispose);
+    }
   }
 
   autoDetect(view) {
