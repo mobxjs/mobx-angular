@@ -73,7 +73,7 @@
   "dependencies": {
     "mobx": ">=2",
     "@angular/core": ">=2.3.0"
-  }
+  },
   "peerDependencies": {
     "mobx": ">=2",
     "@angular/core": ">=2.3.0"
