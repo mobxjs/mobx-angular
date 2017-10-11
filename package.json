@@ -70,6 +70,10 @@
     "typescript": "^2.2.1",
     "zone.js": "^0.7.4"
   },
+  "dependencies": {
+    "mobx": ">=2",
+    "@angular/core": ">=2.3.0"
+  },
   "peerDependencies": {
     "mobx": ">=2",
     "@angular/core": ">=2.3.0"
