@@ -15,7 +15,7 @@ If you're looking for the Angular 1 version version, it's [here](https://github.
 
 Install:
 ```
-$ npm install --save mobx-angular
+$ npm install --save mobx-angular mobx
 ```
 
 Import the MobxAngularModule:
