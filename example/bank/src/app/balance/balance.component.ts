@@ -3,8 +3,17 @@ import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-balance',
-  templateUrl: './balance.component.html',
-  styleUrls: ['./balance.component.css']
+  template: `
+    <p *mobxAutorun>
+      Your current balance:
+      <span [class.negative]="account.isNegative">$ {{ account.balance }}</span>
+    </p>
+  `,
+  styles: [
+    `.negative {
+      color: red;
+    }`
+  ]
 })
 export class BalanceComponent implements OnInit {
 

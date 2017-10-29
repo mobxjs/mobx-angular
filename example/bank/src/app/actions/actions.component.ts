@@ -3,8 +3,11 @@ import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-actions',
-  templateUrl: './actions.component.html',
-  styleUrls: ['./actions.component.css']
+  template: `
+    <input type="number" [(ngModel)]="amount"/>
+    <button (click)="account.deposit(amount)">deposit</button>
+    <button (click)="account.withdraw(amount)">withdraw</button>
+  `
 })
 export class ActionsComponent implements OnInit {
 

@@ -58,6 +58,10 @@
     "class": {
       "spec": false
     },
-    "component": {}
+    "component": {
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "changeDetection": "OnPush"
+    }
   }
 }
