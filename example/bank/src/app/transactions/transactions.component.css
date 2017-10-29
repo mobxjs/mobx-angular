@@ -1,0 +1,8 @@
+.transactions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.column {
+  margin: 20px 50px;
+}
