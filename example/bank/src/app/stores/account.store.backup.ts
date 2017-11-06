@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { observable, autorun, computed, action, reaction, when, toJS, useStrict } from 'mobx';
+import { observable, autorun, computed, action, reaction, when, toJS } from 'mobx';
 import { sum } from 'lodash';
-
-useStrict(true);
 
 @Injectable()
 export class Account {
