@@ -1,18 +1,18 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import todos from './stores/todos';
+import { Todos } from './stores/todos.store';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   title = '';
 
-  todos = todos;
+  constructor(private todos: Todos) {}
 
   addTodo() {
-    todos.addTodo({ title: this.title });
+    this.todos.addTodo({ title: this.title });
     this.title = '';
   }
 }

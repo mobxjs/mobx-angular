@@ -1,4 +1,5 @@
 import { observable, computed, action, autorun, toJS } from 'mobx';
+import { Injectable } from '@angular/core';
 
 class Todo {
   @observable completed = false;
@@ -14,7 +15,8 @@ class Todo {
   }
 }
 
-class Todos {
+@Injectable()
+export class Todos {
   @observable todos = [];
   @observable filter = 'SHOW_ALL';
 
@@ -72,7 +74,3 @@ class Todos {
     });
   }
 }
-
-const todoStore = new Todos();
-
-export default todoStore;

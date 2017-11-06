@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
 import { MobxAngularModule } from 'mobx-angular';
+import { Todos } from './stores/todos.store';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { MobxAngularModule } from 'mobx-angular';
     HttpModule,
     MobxAngularModule
   ],
-  providers: [],
+  providers: [Todos],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
