@@ -1,28 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-transactions',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div  *mobxAutorun class="transactions">
-      <div class="column">
-        <h2>Deposits</h2>
-        <div *ngFor="let deposit of account.deposits">{{ deposit }}</div>
+      <mat-card class="column">
+        <mat-card-header>
+          <mat-card-title>Deposits</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngFor="let deposit of account.deposits">{{ deposit }}</div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="column">
+        <mat-card-header>
+          <mat-card-title>Withdrawls</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngFor="let withdrawl of account.withdrawls">{{ withdrawl }}</div>
+        </mat-card-content>
+      </mat-card>
       </div>
-      <div class="column">
-        <h2>Withdrawls</h2>
-        <div *ngFor="let withdrawl of account.withdrawls">{{ withdrawl }}</div>
-      </div>
-    </div>
   `,
   styles: [
     `.transactions {
       display: flex;
       flex-direction: row;
-      justify-content: center;
     }`,
     `.column {
-      margin: 20px 50px;
+      width: 80px;
+      margin-top: 20px;
+      margin-right: 20px;
     }`
   ]
 })

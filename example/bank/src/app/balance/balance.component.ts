@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-balance',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <p *mobxAutorun>
       Your current balance:
@@ -10,6 +11,10 @@ import { Account } from '../stores/account.store';
     </p>
   `,
   styles: [
+    `
+    span {
+      color: green;
+    }`,
     `.negative {
       color: red;
     }`
