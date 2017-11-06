@@ -1,3 +1,7 @@
+<a name="1.9.0"></a>
+# 1.9.0 (2017-10-05)
+* Changed MobXDebug element to right-click
+
 <a name="1.8.1"></a>
 # 1.8.1 (2017-10-05)
 * Fixed MobxDebug on browsers where localStorage === null

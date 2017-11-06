@@ -29,27 +29,7 @@ export const mobxAngularDebug = (() => {
 
     const element = view.rootNodes[0];
 
-    const debugElement = document.createElement('span');
-    element.prepend(debugElement); // No prepend in Angular Renderer
-    renderer.setElementStyle(debugElement, 'position', 'absolute');
-    renderer.setElementStyle(debugElement, 'border', '1px dotted red');
-    renderer.setElementStyle(debugElement, 'transform', `translateY(-25px)`);
-    renderer.setElementStyle(debugElement, 'cursor', 'pointer');
-    renderer.setElementStyle(debugElement, 'z-index', '1000000');
-    renderer.setElementStyle(debugElement, 'padding', '5px 10px');
-    renderer.setElementStyle(debugElement, 'font-size', '14px');
-    renderer.setElementStyle(debugElement, 'line-height', '14px');
-    renderer.setElementStyle(debugElement, 'display', 'none');
-    renderer.createText(debugElement, 'mobx deps');
-
-    renderer.listen(element, 'mouseenter', () => {
-      renderer.setElementStyle(debugElement, 'display', 'inline');
-    });
-    renderer.listen(element, 'mouseleave', () => {
-      renderer.setElementStyle(debugElement, 'display', 'none');
-    });
-
-    renderer.listen(debugElement, 'click', () => {
+    renderer.listen(element, 'contextmenu', () => {
         console.log(extras.getDependencyTree(observer));
     });
   }
