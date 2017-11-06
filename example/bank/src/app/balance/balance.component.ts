@@ -1,11 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-balance',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <p *mobxAutorun>
+    <p>
       Your current balance:
       <span [class.negative]="account.isNegative">$ {{ account.balance }}</span>
     </p>
@@ -20,11 +19,8 @@ import { Account } from '../stores/account.store';
     }`
   ]
 })
-export class BalanceComponent implements OnInit {
+export class BalanceComponent {
 
   constructor(private account: Account) { }
-
-  ngOnInit() {
-  }
 
 }

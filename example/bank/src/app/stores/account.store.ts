@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, autorun, computed, action, reaction, when, toJS, useStrict } from 'mobx';
+import { observable, computed, action, toJS, useStrict } from 'mobx';
 import { sum } from 'lodash';
 
 useStrict(true);
@@ -7,15 +7,6 @@ useStrict(true);
 @Injectable()
 export class Account {
   @observable transactions: number[] = [];
-
-  constructor() {
-    if (localStorage.savedTransactions) {
-      this.transactions = JSON.parse(localStorage.savedTransactions);
-    }
-    autorun(() => {
-      localStorage.savedTransactions = JSON.stringify(this.transactions);
-    });
-  }
 
   @computed get balance(): number {
     return sum(this.transactions);
@@ -25,22 +16,11 @@ export class Account {
     return this.balance < 0;
   }
 
-  @computed get deposits(): number[] {
-    return this.transactions.filter((t) => t >= 0);
-  }
-
-  @computed get withdrawls(): number[] {
-    return this.transactions.filter((t) => t < 0);
-  }
-
   @action deposit(money: number) {
-    if (money) {
-      this.transactions = [...this.transactions, money];
-    }
+    this.transactions = [...this.transactions, money];
   }
+
   @action withdraw(money: number) {
-    if (money) {
-      this.transactions = [...this.transactions, -money];
-    }
+    this.transactions = [...this.transactions, -money];
   }
 }

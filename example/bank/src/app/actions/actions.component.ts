@@ -1,9 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-actions',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <button mat-raised-button (click)="deposit()">deposit</button>
     <button mat-raised-button (click)="withdraw()">withdraw</button>
@@ -15,7 +14,7 @@ import { Account } from '../stores/account.store';
     }`
   ]
 })
-export class ActionsComponent implements OnInit {
+export class ActionsComponent {
 
   constructor(private account: Account) { }
 
@@ -25,7 +24,4 @@ export class ActionsComponent implements OnInit {
   withdraw() {
     this.account.withdraw(parseInt(window.prompt('select amount')));
   }
-  ngOnInit() {
-  }
-
 }

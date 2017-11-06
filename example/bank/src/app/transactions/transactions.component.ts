@@ -3,23 +3,14 @@ import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-transactions',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div  *mobxAutorun class="transactions">
+    <div class="transactions">
       <mat-card class="column">
         <mat-card-header>
-          <mat-card-title>Deposits</mat-card-title>
+          <mat-card-title>Transactions</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <div *ngFor="let deposit of account.deposits">{{ deposit }}</div>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="column">
-        <mat-card-header>
-          <mat-card-title>Withdrawls</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div *ngFor="let withdrawl of account.withdrawls">{{ withdrawl }}</div>
+          <div *ngFor="let transaction of account.transactions">{{ transaction }}</div>
         </mat-card-content>
       </mat-card>
       </div>
@@ -30,9 +21,8 @@ import { Account } from '../stores/account.store';
       flex-direction: row;
     }`,
     `.column {
-      width: 80px;
+      width: 228px;
       margin-top: 20px;
-      margin-right: 20px;
     }`
   ]
 })
