@@ -5,12 +5,14 @@ import { autorun, extras } from 'mobx';
 @Component({
   selector: 'app-balance',
   template: `
-    <p>
-      Your bank account balance: $ {{ account.getBalance() }}
-    </p>
-    <p class="negative" *ngIf="account.isNegative()">
-      Your account is in overdraft
-    </p>
+    <div>
+      <p>
+        Your bank account balance: $ {{ account.getBalance() }}
+      </p>
+      <p class="negative" *ngIf="account.isNegative()">
+        Your account is in overdraft
+      </p>
+    </div>
   `,
   styles: [
     `
@@ -33,7 +35,7 @@ export class BalanceComponent {
     // });
     // console.log(extras.getDependencyTree(observer));
   }
-  // count() {
-  //   console.count('detect changes');
-  // }
+  count() {
+    console.count('detect changes');
+  }
 }
