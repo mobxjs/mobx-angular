@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <div>
       <div class="content">
-        <app-balance></app-balance>
         <app-actions></app-actions>
+        <app-balance></app-balance>
         <app-transactions></app-transactions>
       </div>
     </div>
