@@ -4,8 +4,8 @@ import { Account } from '../stores/account.store';
 @Component({
   selector: 'app-actions',
   template: `
-    <button mat-raised-button (click)="deposit()">deposit</button>
-    <button mat-raised-button (click)="withdraw()">withdraw</button>
+    <button mat-raised-button (click)="account.deposit(100)">deposit 100</button>
+    <button mat-raised-button (click)="account.withdraw(100)">withdraw 100</button>
   `,
   styles: [
     `button {
@@ -17,11 +17,4 @@ import { Account } from '../stores/account.store';
 export class ActionsComponent {
 
   constructor(private account: Account) { }
-
-  deposit() {
-    this.account.deposit(parseInt(window.prompt('select amount')));
-  }
-  withdraw() {
-    this.account.withdraw(parseInt(window.prompt('select amount')));
-  }
 }

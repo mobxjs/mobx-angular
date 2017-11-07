@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { Account } from '../stores/account.store';
+// import { extras } from 'mobx';
 
 @Component({
   selector: 'app-balance',
   template: `
     <p>
-      Your current balance:
-      <span [class.negative]="account.isNegative">$ {{ account.balance }}</span>
+      Your bank account balance:
+      <span [class.negative]="account.isNegative()">$ {{ account.getBalance() }}</span>
     </p>
   `,
   styles: [
