@@ -3,12 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <div>
-      <div class="content">
-        <app-actions></app-actions>
-        <app-balance></app-balance>
-        <app-transactions></app-transactions>
-      </div>
+    <div class="content">
+      <app-actions></app-actions>
+      <app-balance></app-balance>
+      <app-transactions></app-transactions>
     </div>
   `,
   styles: [
