@@ -5,10 +5,12 @@ import { Account } from '../stores/account.store';
   selector: 'app-actions',
   template: `
     <mat-form-field>
-      <input matInput placeholder="amount" type="number" [(ngModel)]="amount"/><br>
+      <input matInput placeholder="amount" type="number" [(ngModel)]="amount"/>
     </mat-form-field>
-    <button mat-raised-button (click)="account.deposit(amount)">deposit</button>
-    <button mat-raised-button (click)="account.withdraw(amount)">withdraw</button>
+    <div>
+      <button mat-raised-button (click)="account.deposit(amount)">deposit</button>
+      <button mat-raised-button (click)="account.withdraw(amount)">withdraw</button>
+    </div>
   `,
   styles: [
     `button {
