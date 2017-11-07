@@ -4,8 +4,9 @@ import { Account } from '../stores/account.store';
 @Component({
   selector: 'app-actions',
   template: `
-    <button mat-raised-button (click)="account.deposit(100)">deposit 100</button>
-    <button mat-raised-button (click)="account.withdraw(100)">withdraw 100</button>
+    <input type="number" [(ngModel)]="amount"/><br>
+    <button mat-raised-button (click)="account.deposit(amount)">deposit</button>
+    <button mat-raised-button (click)="account.withdraw(amount)">withdraw</button>
   `,
   styles: [
     `button {

@@ -13,7 +13,7 @@ import { Account } from '../stores/account.store';
           <div *ngFor="let transaction of account.transactions">{{ transaction }}</div>
         </mat-card-content>
       </mat-card>
-      </div>
+    </div>
   `,
   styles: [
     `.transactions {
