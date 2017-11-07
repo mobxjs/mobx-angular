@@ -7,7 +7,9 @@ import { Account } from '../stores/account.store';
   template: `
     <p>
       Your bank account balance:
-      <span [class.negative]="account.isNegative()">$ {{ account.getBalance() }}</span>
+      <span [class.negative]="account.isNegative()">
+        $ {{ account.getBalance() }}
+      </span>
     </p>
   `,
   styles: [
