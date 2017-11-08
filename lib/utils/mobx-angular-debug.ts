@@ -12,8 +12,14 @@ export const mobxAngularDebug = (() => {
     return () => {};
   }
 
+  const style = 'background: #222; color: #bada55';
+
   window['mobxAngularDebug'] = (value) => {
-    if (value) localStorage['mobx-angular-debug'] = true;
+    if (value) {
+        console.log('%c MobX will now log everything to the console', style);
+        console.log('%c Right-click any element to see its dependency tree', style);
+        localStorage['mobx-angular-debug'] = true;
+    }
     else delete localStorage['mobx-angular-debug'];
   };
 
@@ -21,16 +27,18 @@ export const mobxAngularDebug = (() => {
     return localStorage['mobx-angular-debug'];
   }
 
+  if (!isDebugOn()) {
+      console.log('%c Type mobxAngularDebug(true) or mobxAngularDebug(false) to trigger MobX debugging', style);
+  }
+
   spy((change) => isDebugOn() && consoleLogChange(change, () => true));
 
   // Debugging element dependency tree
   function mobxAngularDebug(view, renderer, observer) {
-    if (!isDebugOn()) return;
-
     const element = view.rootNodes[0];
 
     renderer.listen(element, 'contextmenu', () => {
-        console.log(extras.getDependencyTree(observer));
+        if (isDebugOn()) console.log(extras.getDependencyTree(observer));
     });
   }
 

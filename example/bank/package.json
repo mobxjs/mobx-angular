@@ -25,7 +25,7 @@
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
     "mobx": "3.3.1",
-    "mobx-angular": "1.8.1",
+    "mobx-angular": "1.9.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
