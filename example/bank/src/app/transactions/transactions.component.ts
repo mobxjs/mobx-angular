@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Account } from '../stores/account.store';
 
 @Component({
   selector: 'app-transactions',
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="transactions">
       <mat-card class="column">
@@ -26,11 +27,8 @@ import { Account } from '../stores/account.store';
     }`
   ]
 })
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent {
 
   constructor(private account: Account) { }
-
-  ngOnInit() {
-  }
 
 }
