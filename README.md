@@ -2,12 +2,12 @@
 [![npm version](https://badge.fury.io/js/mobx-angular.svg)](https://badge.fury.io/js/mobx-angular)
 # mobx-angular
 
-## MobX connector for Angular (> 2)
+## MobX connector for Angular (versions 2, 4, 5)
 If you're looking for the Angular 1 version version, it's [here](https://github.com/NgMobx/ng1-mobx)
 
 ## Features
 1. The library allows you to automatically observe all the observables that your component uses
-2. Automatically runs change detection - works with OnPush strategy
+2. Automatically runs change detection - works great with OnPush strategy
 3. Disposes of all the observers when the component is destroyed
 4. Debugging tools
 
@@ -92,6 +92,12 @@ class Store {
   @action doSomething() { ... }
 }
 ```
+## Using with OnPush or ngZone: 'noop'
+To achieve great performance, you can set `OnPush` change detection strategy on your components (this can be configured as default in `.angular-cli.json`).
+MobX will run change detection manually for you on the components that need to be updated.
+
+* In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop').
+Please note that this means that all 3rd-party components will stop working (because they rely on change detection to work via Zone).
 
 ## Debugging MobX
 mobx-angular comes with a handy debug tool.
