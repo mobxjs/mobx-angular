@@ -48,12 +48,28 @@ export class AppComponent {
 }
 ```
 
-The directive will observe all the observables that your component uses, and will automatically run the change detection whenever there's a change.
+The directive will do the following:
+- Run `detach` on the view under *mobxAutorun (disables change detection)
+- Observe all the observables / computed values that your component uses
+- Automatically run the `detectChanges` method whenever there's a relevant change
 
-Use it together with onPush to gain maximum performance.
+Under the hood, this magic happens by running `autorun(() => view.detecChanges)`
+
+## dontDetach
+If you rather not detach your view from Change Detection - you can pass a config object to mobxAutorun:
+```
+<ng-container *mobxAutorun="{ dontDetach: true }">
+  ...
+</ng-container>
+```
+
+But notice that this misses the purpose of using *mobxAutorun for better performance.
+If you need something outside of the store you have 2 options without disabling detach:
+- Define local component properties as observables or computed values
+- Surround with *mobxAutorun only the parts that actually use observable / computed values from the store
 
 ## autorunSync
-The same as autorun, except it runs synchronously.
+This method is deprecated - do not use it
 
 ## reaction
 Aside from autorun, MobX allows you to react to specific data changes.
