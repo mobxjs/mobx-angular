@@ -1,3 +1,7 @@
+<a name="2.0.0"></a>
+# 2.0.0 (2017-10-05)
+* Detaching from CD by default in mobxAutorun (allow to override with dontDetach=true)
+
 <a name="1.9.0"></a>
 # 1.9.0 (2017-10-05)
 * Changed MobXDebug element to right-click

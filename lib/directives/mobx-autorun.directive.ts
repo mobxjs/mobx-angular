@@ -1,4 +1,4 @@
-import { Directive, ViewContainerRef, TemplateRef, HostListener, Renderer, OnInit, OnDestroy } from '@angular/core';
+import { Directive, ViewContainerRef, TemplateRef, HostListener, Renderer, OnInit, OnDestroy, Input } from '@angular/core';
 import { autorun } from 'mobx';
 import { mobxAngularDebug } from '../utils/mobx-angular-debug';
 
@@ -7,6 +7,7 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   protected templateBindings = {};
   protected dispose: any;
   protected view: any;
+  @Input() mobxAutorun;
 
   constructor(
     protected templateRef: TemplateRef<any>,
@@ -19,8 +20,15 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
 
     if (this.dispose) this.dispose();
 
+    if (this.shouldDetach()) {
+      this.view.detach();
+    }
     this.autoDetect(this.view);
     mobxAngularDebug(this.view, this.renderer, this.dispose);
+  }
+
+  shouldDetach() {
+    return !this.mobxAutorun || !this.mobxAutorun.dontDetach;
   }
 
   autoDetect(view) {
