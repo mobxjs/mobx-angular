@@ -1,5 +1,9 @@
+<a name="2.0.1"></a>
+# 2.0.1 (2017-12-05)
+* Fixed console.log
+
 <a name="2.0.0"></a>
-# 2.0.0 (2017-10-05)
+# 2.0.0 (2017-11-30)
 * Detaching from CD by default in mobxAutorun (allow to override with dontDetach=true)
 
 <a name="1.9.0"></a>
