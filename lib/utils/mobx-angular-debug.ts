@@ -27,10 +27,6 @@ export const mobxAngularDebug = (() => {
     return localStorage['mobx-angular-debug'];
   }
 
-  if (!isDebugOn()) {
-      console.log('%c Type mobxAngularDebug(true) or mobxAngularDebug(false) to trigger MobX debugging', style);
-  }
-
   spy((change) => isDebugOn() && consoleLogChange(change, () => true));
 
   // Debugging element dependency tree
