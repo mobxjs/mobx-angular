@@ -120,6 +120,10 @@ mobxAngularDebug(false) // turn off
 Then you can right-click on the components that use mobx directives, and you will see a console log of the components' dependencies.
 Also, every action that happens in mobx will be console.logged in a nice way.
 
+## AoT
+Some people complained about AoT when using mobx decorators inside components. In case you do that - we export a proxy to the decorators from mobx-angular, which should be AoT compatible, e.g. `import { observable, computed } from 'mobx-angular'`
+The only thing you can't do when importing from mobx-angular is using the modifiers, such as `@observable.ref`.
+
 ## Examples
 See the `example` folder, specifically these files:  
 `/example/todos/src/app/stores/todos.ts`  
