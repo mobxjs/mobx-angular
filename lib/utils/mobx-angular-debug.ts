@@ -170,7 +170,7 @@ export const mobxAngularDebug = (() => {
       if (isGroupEnd) currentDepth--;
   }
 
-  const consoleSupportsGroups = typeof console.groupCollapsed === 'function';
+  const consoleSupportsGroups = false; // typeof console.groupCollapsed === 'function';
   let currentlyLoggedDepth = 0;
 
   function group(...args) {

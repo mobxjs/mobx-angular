@@ -1,3 +1,7 @@
+<a name="2.0.2"></a>
+# 2.0.2 (2018-1-18)
+* Not collapsing log in debug
+
 <a name="2.0.1"></a>
 # 2.0.1 (2017-12-05)
 * Fixed console.log
