@@ -1,7 +1,9 @@
 import { observable, computed, action, autorun, toJS } from 'mobx';
+import remotedev from 'mobx-remotedev/lib/dev';
 import { Injectable } from '@angular/core';
 
-class Todo {
+@remotedev({ name: 'Todo'})
+export class Todo {
   @observable completed = false;
   @observable title: string;
 

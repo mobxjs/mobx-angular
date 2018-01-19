@@ -15,16 +15,15 @@ import { GameStore } from 'app/services/game.store';
   styles: []
 })
 export class BoardComponent implements OnInit {
-  constructor(private game:GameStore) { }
+  constructor(public game: GameStore) { }
 
   ngOnInit() {
   }
   playCell(i, j) {
     if (this.game.board[i][j]) {
       alert('Please choose an empty cell!');
-    }
-    else {
-      this.game.play(i,j);
+    } else {
+      this.game.play(i, j);
     }
   }
 }

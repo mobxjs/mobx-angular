@@ -27,7 +27,7 @@ export class GameStore {
       this.board[2].filter(cell => cell).length;
   };
   @computed get winner(): string {
-    console.log('winner', this._columnHasWinner(1));
+    console.log('calc winner');
     // rows:
     if (this._rowHasWinner(0)) return this.board[0][0];
     if (this._rowHasWinner(1)) return this.board[1][0];
@@ -44,10 +44,10 @@ export class GameStore {
 
     return null;
   }
-  @computed get tie():boolean {
+  @computed get tie(): boolean {
     return this.moves === 9 && !this.winner;
   };
-  @computed get ended():boolean {
+  @computed get ended(): boolean {
     return !!this.winner || this.tie;
   }
 
@@ -74,7 +74,7 @@ export class GameStore {
       if (winner) {
         this.score[winner]++;
       }
-    })
+    });
   }
 
   private _changeStartingPlayer() {

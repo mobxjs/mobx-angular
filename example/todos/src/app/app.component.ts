@@ -9,7 +9,7 @@ import { Todos } from './stores/todos.store';
 export class AppComponent {
   title = '';
 
-  constructor(private todos: Todos) {}
+  constructor(public todos: Todos) {}
 
   addTodo() {
     this.todos.addTodo({ title: this.title });
