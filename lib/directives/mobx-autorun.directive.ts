@@ -28,7 +28,7 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   }
 
   shouldDetach() {
-    return !this.mobxAutorun || !this.mobxAutorun.dontDetach;
+    return this.mobxAutorun && this.mobxAutorun.detach;
   }
 
   autoDetect(view) {

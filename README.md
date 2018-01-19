@@ -55,13 +55,13 @@ The directive will do the following:
 
 Under the hood, this magic happens by running `autorun(() => view.detecChanges)`
 
-## dontDetach (and Upgrading from mobx-angular 1.X to 2.X)
-Notice that in 2.X the *default* behaviour of *mobxAutorun is to detach from Change Detection.
+## detach
+You can improve your component's performance by detaching it from CD (Change Detection), by supplying `*mobxAutorun="{ detach: true }"`. 
 
-If things stop working you have 3 options:
+This might cause things to stop updating. You have 3 options to manage that:
 - Define local component properties as observables or computed values
 - Surround with *mobxAutorun only the parts that actually use observable / computed values from the store
-- Disabling detach by specifying: `*mobxAutorun="{ dontDetach: true }">`. To retain good performance you can use OnPush CD strategy on the component
+- Instead of detaching, use OnPush CD strategy on the component
 
 ## autorunSync
 This method is deprecated - do not use it

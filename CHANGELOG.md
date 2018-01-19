@@ -1,3 +1,7 @@
+<a name="2.1.0"></a>
+# 2.0.0 (2018-01-19)
+* Not detaching from CD by default
+
 <a name="2.0.2"></a>
 # 2.0.2 (2018-1-18)
 * Not collapsing log in debug
