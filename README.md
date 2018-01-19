@@ -49,11 +49,10 @@ export class AppComponent {
 ```
 
 The directive will do the following:
-- Run `detach` on the view under *mobxAutorun (disables change detection)
 - Observe all the observables / computed values that your component uses
 - Automatically run the `detectChanges` method whenever there's a relevant change
 
-Under the hood, this magic happens by running `autorun(() => view.detecChanges)`
+Under the hood, this magic happens by running `autorun(() => view.detectChanges())`
 
 ## detach
 You can improve your component's performance by detaching it from CD (Change Detection), by supplying `*mobxAutorun="{ detach: true }"`. 
