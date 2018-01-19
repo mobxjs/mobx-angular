@@ -63,7 +63,7 @@ This might cause things to stop updating. You have 3 options to manage that:
 - Instead of detaching, use OnPush CD strategy on the component
 
 ## autorunSync
-This method is deprecated - do not use it
+This method is deprecated - do not use it.
 
 ## reaction
 Aside from autorun, MobX allows you to react to specific data changes.
@@ -120,12 +120,15 @@ Then you can right-click on the components that use mobx directives, and you wil
 Also, every action that happens in mobx will be console.logged in a nice way.
 
 ## AoT
-Some people complained about AoT when using mobx decorators inside components. In case you do that - we export a proxy to the decorators from mobx-angular, which should be AoT compatible, e.g. `import { observable, computed } from 'mobx-angular'`
+Some people complained about AoT when using mobx decorators inside components. 
+In case you do that - we export a proxy to the decorators from mobx-angular, which should be AoT compatible, e.g.:  
+`import { observable, computed } from 'mobx-angular'`
+
 The only thing you can't do when importing from mobx-angular is using the modifiers, such as `@observable.ref`.
 
 ## Examples
 See the `example` folder, specifically these files:  
-`/example/todos/src/app/stores/todos.ts`  
+`/example/todos/src/app/stores/todos.store.ts`  
 `/example/todos/src/app/app.component.ts`
 
 To run the examples, clone this repo and run:
@@ -133,5 +136,5 @@ To run the examples, clone this repo and run:
 $ npm install -g @angular/cli
 $ cd example/<example-folder>
 $ npm install
-$ ng serve
+$ npm start
 ```
