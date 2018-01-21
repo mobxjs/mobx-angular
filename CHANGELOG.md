@@ -1,3 +1,7 @@
+<a name="2.1.1"></a>
+# 2.1.1 (2018-01-21)
+* Fixing build problem
+
 <a name="2.1.0"></a>
 # 2.1.0 (2018-01-19)
 * Not detaching from CD by default
