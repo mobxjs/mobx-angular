@@ -3,7 +3,7 @@
 # mobx-angular
 
 ## MobX connector for Angular (versions 2, 4, 5)
-If you're looking for the Angular 1 version version, it's [here](https://github.com/NgMobx/ng1-mobx)
+If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx)
 
 ## Features
 1. The library allows you to automatically observe all the observables that your component uses
