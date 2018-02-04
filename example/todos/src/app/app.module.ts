@@ -7,10 +7,16 @@ import remotedev from 'mobx-remotedev/lib/dev';
 import { MobxAngularModule } from 'mobx-angular';
 import { Todos } from './stores/todos.store';
 import { AppComponent } from './app.component';
+import { SectionComponent } from './components/section/section.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CountComponent } from './components/count/count.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SectionComponent,
+    FooterComponent,
+    CountComponent
   ],
   imports: [
     BrowserModule,
