@@ -1,3 +1,7 @@
+<a name="3.0.0"></a>
+# 3.0.0 (2018-03-13)
+* Support MobX 4
+
 <a name="2.1.1"></a>
 # 2.1.1 (2018-01-21)
 * Fixing build problem

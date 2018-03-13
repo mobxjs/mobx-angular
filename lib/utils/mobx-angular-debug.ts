@@ -1,6 +1,6 @@
 /* tslint:disable:max-line-length */
 /* tslint:disable:no-console */
-import { extras, spy, isObservableArray, isObservableObject } from 'mobx';
+import { getDebugName, getDependencyTree, spy, isObservableArray, isObservableObject } from 'mobx';
 
 // function for turning debug on / off
 export const mobxAngularDebug = (() => {
@@ -34,7 +34,7 @@ export const mobxAngularDebug = (() => {
     const element = view.rootNodes[0];
 
     renderer.listen(element, 'contextmenu', () => {
-        if (isDebugOn()) console.log(extras.getDependencyTree(observer));
+        if (isDebugOn()) console.log(getDependencyTree(observer));
     });
   }
 
@@ -226,7 +226,7 @@ export const mobxAngularDebug = (() => {
   }
 
   function observableName(object) {
-      return extras.getDebugName(object);
+      return getDebugName(object);
   }
 
   function formatValue(value) {
