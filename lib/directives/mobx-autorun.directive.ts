@@ -1,6 +1,6 @@
 import { Directive, ViewContainerRef, TemplateRef, HostListener, Renderer, OnInit, OnDestroy, Input } from '@angular/core';
 import { autorun } from 'mobx';
-import { mobxAngularDebug } from '../utils/mobx-angular-debug';
+// import { mobxAngularDebug } from '../utils/mobx-angular-debug';
 
 @Directive({ selector: '[mobxAutorun]' })
 export class MobxAutorunDirective implements OnInit, OnDestroy {
@@ -24,7 +24,7 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
       this.view.detach();
     }
     this.autoDetect(this.view);
-    mobxAngularDebug(this.view, this.renderer, this.dispose);
+    // mobxAngularDebug(this.view, this.renderer, this.dispose);
   }
 
   shouldDetach() {

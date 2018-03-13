@@ -109,7 +109,7 @@ MobX will run change detection manually for you on the components that need to b
 * In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop').
 Please note that this means that all 3rd-party components will stop working (because they rely on change detection to work via Zone).
 
-## Debugging MobX
+## Debugging MobX (only for mobx-angular versions 2.X and below)
 mobx-angular comes with a handy debug tool.
 To turn on / off the debug tool, open developer tools' console, and run:
 ```ts
@@ -118,6 +118,8 @@ mobxAngularDebug(false) // turn off
 ```
 Then you can right-click on the components that use mobx directives, and you will see a console log of the components' dependencies.
 Also, every action that happens in mobx will be console.logged in a nice way.
+
+TBD - support debugging for MobX 4
 
 ## AoT
 Some people complained about AoT when using mobx decorators inside components. 

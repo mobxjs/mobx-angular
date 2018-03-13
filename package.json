@@ -1,6 +1,6 @@
 {
   "name": "mobx-angular",
-  "version": "2.2.0",
+  "version": "3.0.1",
   "description": "Angular connector to MobX (2 and above)",
   "jsnext:main": "dist/mobx-angular.js",
   "module": "dist/mobx-angular.js",
@@ -9,11 +9,11 @@
   "scripts": {
     "test": "karma start --single-run",
     "tdd": "karma start",
-    "lint": "tslint lib/**/*.ts",
+    "lint": "node_modules/.bin/tslint lib/**/*.ts",
     "rollup": "rollup -c rollup.config.js dist/mobx-angular.js > dist/mobx-angular.umd.js",
     "clean": "rimraf dist",
     "build": "npm run lint && npm run clean && ngc && npm run rollup",
-    "prepublishOnly": "npm run build && npm run test"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
