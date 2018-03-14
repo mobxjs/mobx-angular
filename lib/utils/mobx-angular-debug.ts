@@ -4,7 +4,17 @@ import { getDebugName, getDependencyTree, spy, isObservableArray, isObservableOb
 
 // function for turning debug on / off
 export const mobxAngularDebug = (() => {
-  if (typeof localStorage === 'undefined' || typeof console === 'undefined' || typeof window === 'undefined') {
+  const isLocalStorageAllowed = function () {
+      try {
+          window.localStorage.setItem('test', 'test');
+          window.localStorage.removeItem('test');
+          return false;
+      } catch (ex) {
+          return true
+      }
+  }
+
+  if (isLocalStorageAllowed ||typeof localStorage === 'undefined' || typeof console === 'undefined' || typeof window === 'undefined') {
     return () => {};
   }
 
