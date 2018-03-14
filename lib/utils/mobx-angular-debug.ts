@@ -14,7 +14,7 @@ export const mobxAngularDebug = (() => {
       }
   }
 
-  if (isLocalStorageAllowed ||typeof localStorage === 'undefined' || typeof console === 'undefined' || typeof window === 'undefined') {
+  if (isLocalStorageAllowed || typeof localStorage === 'undefined' || typeof console === 'undefined' || typeof window === 'undefined') {
     return () => {};
   }
 
