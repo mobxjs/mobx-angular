@@ -54,6 +54,10 @@ The directive will do the following:
 
 Under the hood, this magic happens by running `autorun(() => view.detectChanges())`
 
+## Why directive and not decorator?
+In order to inject the change detector, and implement lifecycle hooks like ngOnDestroy, this library uses a directive, which is the most elegant solution in Angular.
+It also has the benefit of allowing you to easily have multiple observed sections of your component's template, in case it is required.
+
 ## detach
 You can improve your component's performance by detaching it from CD (Change Detection), by supplying `*mobxAutorun="{ detach: true }"`. 
 
