@@ -22,7 +22,7 @@ import { Account } from '../stores/account.store';
 })
 export class BalanceComponent implements OnInit {
 
-  constructor(private account: Account) { }
+  constructor(public account: Account) { }
 
   ngOnInit() {
   }
