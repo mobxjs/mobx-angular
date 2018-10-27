@@ -7,8 +7,8 @@ describe('example App', function() {
     page = new ExamplePage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying todos', async () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(await page.getParagraphText()).toEqual('todos');
   });
 });

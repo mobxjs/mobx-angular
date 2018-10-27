@@ -38,7 +38,7 @@ import { Account } from '../stores/account.store';
 })
 export class TransactionsComponent implements OnInit {
 
-  constructor(private account: Account) { }
+  constructor(public account: Account) { }
 
   ngOnInit() {
   }
