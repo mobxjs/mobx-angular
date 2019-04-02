@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/mobx-angular.svg)](https://badge.fury.io/js/mobx-angular)
 # mobx-angular
 
-## MobX connector for Angular (versions 2, 4, 5)
+## MobX connector for Angular (versions 2-7)
 If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx)
 
 ## Features
