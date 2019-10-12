@@ -1,4 +1,4 @@
-import { Directive, ViewContainerRef, TemplateRef, Input, Renderer } from '@angular/core';
+import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
 import { reaction } from 'mobx';
 import {MobxAutorunDirective} from './mobx-autorun.directive';
 
@@ -8,8 +8,7 @@ export class MobxReactionDirective extends MobxAutorunDirective {
 
   constructor(
     protected templateRef: TemplateRef<any>,
-    protected viewContainer: ViewContainerRef,
-    protected renderer: Renderer) {super(templateRef, viewContainer, renderer); }
+    protected viewContainer: ViewContainerRef) {super(templateRef, viewContainer); }
 
   autoDetect(view) {
     this.dispose = reaction(this.mobxReaction, () => {

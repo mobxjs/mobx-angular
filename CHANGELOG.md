@@ -1,3 +1,7 @@
+<a name="3.0.2"></a>
+# 3.0.2 (2019-10-12)
+* Removed deprecated Renderer
+
 <a name="3.0.1"></a>
 # 3.0.1 (2018-03-13)
 * Remove Debug
