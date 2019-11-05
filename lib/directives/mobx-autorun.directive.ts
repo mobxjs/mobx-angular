@@ -1,4 +1,4 @@
-import { Directive, ViewContainerRef, TemplateRef, OnInit, OnDestroy, Input } from '@angular/core';
+import { Directive, ViewContainerRef, TemplateRef, OnInit, OnDestroy, Input, EmbeddedViewRef } from '@angular/core';
 import { autorun } from 'mobx';
 // import { mobxAngularDebug } from '../utils/mobx-angular-debug';
 
@@ -6,7 +6,7 @@ import { autorun } from 'mobx';
 export class MobxAutorunDirective implements OnInit, OnDestroy {
   protected templateBindings = {};
   protected dispose: any;
-  protected view: any;
+  protected view: EmbeddedViewRef<any>;
   @Input() mobxAutorun;
 
   constructor(
@@ -30,14 +30,9 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
     return this.mobxAutorun && this.mobxAutorun.detach;
   }
 
-  autoDetect(view) {
-    const autorunName = view._view.component
-      ? `${view._view.component.constructor.name}.detectChanges()` // angular 4+
-      : `${view._view.parentView.context.constructor.name}.detectChanges()`; // angular 2
-
+  autoDetect(view: EmbeddedViewRef<any>) {
     this.dispose = autorun(
-      () => view['detectChanges'](),
-      { name: autorunName }
+      () => view.detectChanges(),
     );
   }
 
