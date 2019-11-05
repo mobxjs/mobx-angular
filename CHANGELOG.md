@@ -1,3 +1,7 @@
+<a name="3.0.3"></a>
+# 3.0.3 (2019-11-05)
+* Removed deprecated _view usage
+
 <a name="3.0.2"></a>
 # 3.0.2 (2019-10-12)
 * Removed deprecated Renderer
