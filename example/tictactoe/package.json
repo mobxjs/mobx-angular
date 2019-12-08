@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/router": "3.2.1",
     "core-js": "^2.4.1",
-    "lodash": "4.17.15",
+    "lodash": "4.17.13",
     "mobx": "3.0.2",
     "mobx-angular": "^1.5.0",
     "rxjs": "5.0.0-beta.12",
