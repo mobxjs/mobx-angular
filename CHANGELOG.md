@@ -1,3 +1,7 @@
+<a name="3.1.0"></a>
+# 3.1.0 (2019-12-08)
+* Added observable/computed/action modifiers to proxy methods
+
 <a name="3.0.3"></a>
 # 3.0.3 (2019-11-05)
 * Removed deprecated _view usage

@@ -29,11 +29,14 @@ export class MobxAngularModule {
 export function action(...args) {
   return (mobxAction as any)(...args);
 }
+Object.assign(action, mobxAction);
 
 export function computed(...args) {
   return (mobxComputed as any)(...args);
 }
+Object.assign(computed, mobxComputed);
 
 export function observable(...args) {
   return (mobxObservable as any)(...args);
 }
+Object.assign(observable, mobxObservable);

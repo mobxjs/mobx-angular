@@ -8,7 +8,8 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "prepare": "../../node_modules/.bin/relative-deps"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,9 @@
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
+  },
+  "relativeDependencies": {
+    "mobx-angular": "../../"
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.2.1",
