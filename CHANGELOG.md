@@ -1,3 +1,8 @@
+<a name="4.0.0"></a>
+# 4.0.0 (2019-12-09)
+* Removed mobxAutorunSync
+* Tests changed to Jest
+
 <a name="3.1.0"></a>
 # 3.1.0 (2019-12-08)
 * Added observable/computed/action modifiers to proxy methods
