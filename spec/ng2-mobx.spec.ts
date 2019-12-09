@@ -1,14 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { action, computed, observable } from 'mobx';
-import { MobxAutorunDirective, MobxReactionDirective } from '../lib/mobx-angular';
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { action, computed, observable } from "mobx";
+import {
+  MobxAutorunDirective,
+  MobxReactionDirective
+} from "../lib/mobx-angular";
 
 let fullNameCalculations = 0;
 let firstCharCalculations = 0;
 
 class TestStore {
-  @observable firstName = 'James';
-  @observable lastName = 'Bond';
+  @observable firstName = "James";
+  @observable lastName = "Bond";
 
   @computed get fullName() {
     fullNameCalculations++;
@@ -16,14 +19,14 @@ class TestStore {
   }
 
   @action setNames(firstName, lastName) {
-    Object.assign(this, {firstName, lastName});
+    Object.assign(this, { firstName, lastName });
   }
 }
 
 @Component({
   template: `
     <div *mobxAutorun>
-      <span id="fullname">{{store.fullName}}</span>
+      <span id="fullname">{{ store.fullName }}</span>
     </div>
     <button (click)="setLastName()">Set Name</button>
   `,
@@ -37,14 +40,14 @@ class TestComponent {
   }
 
   setLastName() {
-    this.store.lastName = 'Dean';
+    this.store.lastName = "Dean";
   }
 }
 
 @Component({
   template: `
     <div *mobxReaction="getFirstLetter.bind(this)">
-      <span id="firstchar">{{char}}</span>
+      <span id="firstchar">{{ char }}</span>
     </div>
     <button (click)="setLastName()">Set Name</button>
   `,
@@ -52,7 +55,7 @@ class TestComponent {
 })
 class TestComponentReaction {
   private store = new TestStore();
-  char = 'J';
+  char = "J";
 
   constructor() {
     firstCharCalculations = 0;
@@ -60,48 +63,48 @@ class TestComponentReaction {
 
   getFirstLetter() {
     firstCharCalculations++;
-    return this.char = this.store.fullName[0];
+    return (this.char = this.store.fullName[0]);
   }
 
   setLastName() {
-    this.store.setNames('Michael', 'Jackson');
+    this.store.setNames("Michael", "Jackson");
   }
 }
 
-describe('mobxAngular', () => {
+describe("mobxAngular", () => {
   let component: TestComponent;
   let fixture: ComponentFixture<any>;
   let fullname, button, firstchar;
 
-  describe('mobxAutorun', () => {
+  describe("mobxAutorun", () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
-        declarations: [MobxAutorunDirective, TestComponent],
+        declarations: [MobxAutorunDirective, TestComponent]
       });
       fixture = TestBed.createComponent(TestComponent);
       fixture.detectChanges();
       component = fixture.componentInstance;
 
-      fullname = fixture.nativeElement.querySelector('#fullname');
-      button = fixture.nativeElement.querySelector('button');
+      fullname = fixture.nativeElement.querySelector("#fullname");
+      button = fixture.nativeElement.querySelector("button");
     });
 
-    it('should have correct content', () => {
-      expect(fullname.textContent).toEqual('James Bond');
+    it("should have correct content", () => {
+      expect(fullname.textContent).toEqual("James Bond");
       expect(fullNameCalculations).toEqual(1);
     });
 
-    it('should recompute value once', (done) => {
+    it("should recompute value once", done => {
       button.click();
       setTimeout(() => {
-        expect(fullname.textContent).toEqual('James Dean');
+        expect(fullname.textContent).toEqual("James Dean");
         expect(fullNameCalculations).toEqual(2);
         done();
       });
     });
   });
 
-  describe('mobxReaction', () => {
+  describe("mobxReaction", () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [MobxReactionDirective, TestComponentReaction]
@@ -110,28 +113,28 @@ describe('mobxAngular', () => {
       fixture.detectChanges();
       component = fixture.componentInstance;
 
-      firstchar = fixture.nativeElement.querySelector('#firstchar');
-      button = fixture.nativeElement.querySelector('button');
+      firstchar = fixture.nativeElement.querySelector("#firstchar");
+      button = fixture.nativeElement.querySelector("button");
     });
 
-    it('should call the reaction function once on init', () => {
-      expect(firstchar.textContent).toEqual('J');
-      expect(fixture.componentInstance.char).toEqual('J');
+    it("should call the reaction function once on init", () => {
+      expect(firstchar.textContent).toEqual("J");
+      expect(fixture.componentInstance.char).toEqual("J");
       expect(firstCharCalculations).toEqual(1);
     });
 
-    it('should recompute value once', (done) => {
+    it("should recompute value once", done => {
       button.click();
       setTimeout(() => {
-        expect(firstchar.textContent).toEqual('M');
-        expect(fixture.componentInstance.char).toEqual('M');
+        expect(firstchar.textContent).toEqual("M");
+        expect(fixture.componentInstance.char).toEqual("M");
         expect(firstCharCalculations).toEqual(2);
 
         done();
       });
     });
 
-    it('should not recompute every change detection', () => {
+    it("should not recompute every change detection", () => {
       fixture.detectChanges();
       fixture.detectChanges();
       fixture.detectChanges();
