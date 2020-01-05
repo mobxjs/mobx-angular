@@ -1,4 +1,12 @@
-import { Directive, ViewContainerRef, TemplateRef, OnInit, OnDestroy, Input, EmbeddedViewRef } from '@angular/core';
+import {
+  Directive,
+  ViewContainerRef,
+  TemplateRef,
+  OnInit,
+  OnDestroy,
+  Input,
+  EmbeddedViewRef
+} from '@angular/core';
 import { autorun } from 'mobx';
 // import { mobxAngularDebug } from '../utils/mobx-angular-debug';
 
@@ -11,8 +19,8 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
 
   constructor(
     protected templateRef: TemplateRef<any>,
-    protected viewContainer: ViewContainerRef) {
-    }
+    protected viewContainer: ViewContainerRef
+  ) {}
 
   ngOnInit() {
     this.view = this.viewContainer.createEmbeddedView(this.templateRef);
@@ -31,9 +39,7 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   }
 
   autoDetect(view: EmbeddedViewRef<any>) {
-    this.dispose = autorun(
-      () => view.detectChanges(),
-    );
+    this.dispose = autorun(() => view.detectChanges());
   }
 
   ngOnDestroy() {

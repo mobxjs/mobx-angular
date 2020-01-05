@@ -12,8 +12,32 @@
     "lint": "node_modules/.bin/tslint lib/**/*.ts",
     "rollup": "rollup -c rollup.config.js dist/mobx-angular.js > dist/mobx-angular.umd.js",
     "clean": "rimraf dist",
+    "prettier:all": "prettier --write './+(lib|spec)/**/*.{js,ts,tsx}'",
     "build": "npm run lint && npm run clean && ngc && npm run rollup",
     "prepublishOnly": "npm run build"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true,
+    "requirePragma": false
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "./node_modules/.bin/prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "git reset",
+      "pre-commit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
@@ -54,9 +78,12 @@
     "angular-cli": "1.0.0-beta.19-3",
     "codelyzer": "2.0.0-beta.4",
     "core-js": "^2.4.1",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "jest-preset-angular": "^8.0.0",
+    "lint-staged": "^9.5.0",
     "mobx": "4.0.1",
+    "prettier": "^1.19.1",
     "relative-deps": "^0.2.0",
     "rimraf": "2.5.4",
     "rollup": "0.41.4",
