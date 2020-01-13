@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { MobxAutorunDirective } from './directives/mobx-autorun.directive';
 import { MobxAutorunSyncDirective } from './directives/mobx-autorun-sync.directive';
 import { MobxReactionDirective } from './directives/mobx-reaction.directive';
-import { action as mobxAction } from 'mobx';
+import {
+  action as mobxAction,
+  IObservableFactory,
+  IObservableFactories,
+  IEnhancer
+} from 'mobx';
 import { computed as mobxComputed } from 'mobx';
 import { observable as mobxObservable } from 'mobx';
 
@@ -25,17 +30,27 @@ const DIRECTIVES = [
 })
 export class MobxAngularModule {}
 
-export function action(...args) {
+export function actionInternal(...args) {
   return (mobxAction as any)(...args);
 }
-Object.assign(action, mobxAction);
+export const action: typeof mobxAction = Object.assign(
+  actionInternal,
+  mobxAction
+) as any;
 
-export function computed(...args) {
+function computedInternal(...args) {
   return (mobxComputed as any)(...args);
 }
-Object.assign(computed, mobxComputed);
+export const computed: typeof mobxComputed = Object.assign(
+  computedInternal,
+  mobxComputed
+) as any;
 
-export function observable(...args) {
+function observableInternal(...args) {
   return (mobxObservable as any)(...args);
 }
-Object.assign(observable, mobxObservable);
+
+export const observable: typeof mobxObservable = Object.assign(
+  observableInternal,
+  mobxObservable
+) as any;
