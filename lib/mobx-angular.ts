@@ -23,8 +23,8 @@ const DIRECTIVES = [
   MobxReactionDirective
 ];
 @NgModule({
-  declarations: [...DIRECTIVES],
-  exports: [...DIRECTIVES],
+  declarations: DIRECTIVES,
+  exports: DIRECTIVES,
   imports: [],
   providers: []
 })
