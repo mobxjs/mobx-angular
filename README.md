@@ -130,8 +130,6 @@ Some people complained about AoT when using mobx decorators inside components.
 In case you do that - we export a proxy to the decorators from mobx-angular, which should be AoT compatible, e.g.:  
 `import { observable, computed } from 'mobx-angular'`
 
-The only thing you can't do when importing from mobx-angular is using the modifiers, such as `@observable.ref`.
-
 ## Examples
 See the `example` folder, specifically these files:  
 `/example/todos/src/app/stores/todos.store.ts`  
