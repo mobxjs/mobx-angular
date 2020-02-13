@@ -1,27 +1,15 @@
 import { NgModule } from '@angular/core';
 import { MobxAutorunDirective } from './directives/mobx-autorun.directive';
-import { MobxAutorunSyncDirective } from './directives/mobx-autorun-sync.directive';
 import { MobxReactionDirective } from './directives/mobx-reaction.directive';
 import {
   action as mobxAction,
-  IObservableFactory,
-  IObservableFactories,
-  IEnhancer
+  computed as mobxComputed,
+  observable as mobxObservable
 } from 'mobx';
-import { computed as mobxComputed } from 'mobx';
-import { observable as mobxObservable } from 'mobx';
 
-export {
-  MobxAutorunDirective,
-  MobxAutorunSyncDirective,
-  MobxReactionDirective
-};
+export { MobxAutorunDirective, MobxReactionDirective };
 
-const DIRECTIVES = [
-  MobxAutorunDirective,
-  MobxAutorunSyncDirective,
-  MobxReactionDirective
-];
+const DIRECTIVES = [MobxAutorunDirective, MobxReactionDirective];
 @NgModule({
   declarations: DIRECTIVES,
   exports: DIRECTIVES,
