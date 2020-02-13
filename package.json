@@ -1,20 +1,54 @@
 {
-  "name": "mobx-angular",
-  "version": "3.1.1",
-  "description": "Angular connector to MobX (2 and above)",
-  "jsnext:main": "dist/mobx-angular.js",
-  "module": "dist/mobx-angular.js",
-  "main": "dist/mobx-angular.umd.js",
-  "typings": "dist/mobx-angular.d.ts",
+  "name": "mobx-angular-cli",
+  "version": "0.0.0",
   "scripts": {
-    "test": "jest",
-    "tdd": "jest --watchAll",
-    "lint": "node_modules/.bin/tslint lib/**/*.ts",
-    "rollup": "rollup -c rollup.config.js dist/mobx-angular.js > dist/mobx-angular.umd.js",
-    "clean": "rimraf dist",
-    "prettier:all": "prettier --write './+(lib|spec)/**/*.{js,ts,tsx}'",
-    "build": "npm run lint && npm run clean && ngc && npm run rollup",
-    "prepublishOnly": "npm run build"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.0.0",
+    "@angular/common": "~9.0.0",
+    "@angular/compiler": "~9.0.0",
+    "@angular/core": "~9.0.0",
+    "@angular/forms": "~9.0.0",
+    "@angular/platform-browser": "~9.0.0",
+    "@angular/platform-browser-dynamic": "~9.0.0",
+    "@angular/router": "~9.0.0",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.2",
+    "@angular-devkit/build-ng-packagr": "~0.900.2",
+    "@angular/cli": "~9.0.1",
+    "@angular/compiler-cli": "~9.0.0",
+    "@angular/language-service": "~9.0.0",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "husky": "^4.2.3",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.0.7",
+    "mobx": "^4.0.1",
+    "ng-packagr": "^9.0.0",
+    "prettier": "^1.19.1",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~3.7.5"
   },
   "prettier": {
     "printWidth": 80,
@@ -28,73 +62,19 @@
     "requirePragma": false
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "./node_modules/.bin/prettier --write",
-      "git add"
+    "*.{js,ts,json}": [
+      "./node_modules/.bin/prettier --write"
+    ],
+    "*.ts": [
+      "tslint"
     ]
   },
   "husky": {
     "hooks": {
       "post-commit": "git reset",
-      "pre-commit": "lint-staged"
+      "pre-commit": [
+        "lint-staged"
+      ]
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mobxjs/mobx-angular.git"
-  },
-  "keywords": [
-    "mobx",
-    "angular2",
-    "ng2",
-    "angular",
-    "ng2-mobx",
-    "angular-mobx",
-    "angular2-mobx",
-    "mobx-angular",
-    "mobx-angular2",
-    "mobx-ng2",
-    "state management",
-    "mobxjs"
-  ],
-  "files": [
-    "dist/"
-  ],
-  "author": "Adam Klein <adam@500tech.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mobxjs/mobx-angular/issues"
-  },
-  "homepage": "https://github.com/mobxjs/mobx-angular#readme",
-  "devDependencies": {
-    "@angular/common": "^5.2.0",
-    "@angular/compiler": "^5.2.0",
-    "@angular/compiler-cli": "^5.2.0",
-    "@angular/core": "^5.2.0",
-    "@angular/platform-browser": "^5.2.0",
-    "@angular/platform-browser-dynamic": "^5.2.0",
-    "@types/core-js": "0.9.43",
-    "@types/jest": "^24.0.23",
-    "angular-cli": "1.0.0-beta.19-3",
-    "codelyzer": "2.0.0-beta.4",
-    "core-js": "^2.4.1",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "jest-preset-angular": "^8.0.0",
-    "lint-staged": "^9.5.0",
-    "mobx": "4.0.1",
-    "prettier": "^1.19.1",
-    "relative-deps": "^0.2.0",
-    "rimraf": "2.5.4",
-    "rollup": "0.41.4",
-    "rollup-plugin-node-resolve": "2.0.0",
-    "rxjs": "^5.0.1",
-    "tslint": "4.4.2",
-    "typescript": "^3.0.3",
-    "zone.js": "^0.7.4"
-  },
-  "peerDependencies": {
-    "mobx": ">=2",
-    "@angular/core": ">=2.3.0"
   }
 }

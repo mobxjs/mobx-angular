@@ -1,22 +1,24 @@
 {
-  "compilerOptions": {
-    "module": "es2015",
-    "moduleResolution": "node",
-    "target": "es5",
-    "outDir": "dist/",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "declaration": true,
-    "lib": ["es2015", "dom"]
-  },
-  "files": [
-    "lib/mobx-angular"
-  ],
   "compileOnSave": false,
-  "buildOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "mobx-angular": ["dist/mobx-angular/mobx-angular", "dist/mobx-angular"]
+    }
+  },
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }
