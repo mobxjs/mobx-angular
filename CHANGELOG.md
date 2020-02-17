@@ -1,3 +1,7 @@
+<a name="4.0.0"></a>
+# 4.0.0 (2020-02-14)
+* Refactor to CLI packager
+
 <a name="3.1.1"></a>
 # 3.1.1 (2020-02-11)
 * Added support for Angular 9 (removed spread operator)
