@@ -7,7 +7,6 @@ import { computed as mobxComputed } from 'mobx';
 import { observable as mobxObservable } from 'mobx';
 
 export * from './lib/mobx-autorun.directive';
-export * from './lib/mobx-autorun-sync.directive';
 export * from './lib/mobx-reaction.directive';
 export * from './lib/mobx-angular.module';
 
