@@ -1,3 +1,8 @@
+<a name="4.1.0"></a>
+# 4.1.0 (2020-02-19)
+* Removed mobxAutorunSync Directive
+* Added examples in Angular 9.0.0
+
 <a name="4.0.0"></a>
 # 4.0.0 (2020-02-14)
 * Refactor to CLI packager
