@@ -5,15 +5,15 @@ import { Todos } from '../../stores/todos.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-section',
   template: `
-    <section id="main" ng-show="todos.length" class="" *mobxAutorun>
+    <section class="main" *mobxAutorun>
       <input
-        id="toggle-all"
+        class="toggle-all"
         type="checkbox"
         [checked]="todos.allComplete"
         (change)="todos.setCompleteAll(!todos.allComplete)"
       />
       <label for="toggle-all">Mark all as complete</label>
-      <ul id="todo-list">
+      <ul class="todo-list">
         <li
           *ngFor="let todo of todos.filteredTodos"
           [class.completed]="todo.completed"

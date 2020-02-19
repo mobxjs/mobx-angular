@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-// import remotedev from 'mobx-remotedev/lib/dev';
+import remotedev from 'mobx-remotedev';
 
 import { MobxAngularModule } from 'mobx-angular';
 import { Todos } from './stores/todos.store';
@@ -18,9 +17,10 @@ import { CountComponent } from './components/count/count.component';
     FooterComponent,
     CountComponent
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, MobxAngularModule],
-  providers: [Todos],
-  // providers: [{ provide: Todos, useClass: remotedev(Todos) }],
+  imports: [BrowserModule, FormsModule, MobxAngularModule],
+  providers: [
+    { provide: Todos, useClass: remotedev(Todos, { global: true }), deps: [] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
