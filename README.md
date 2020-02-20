@@ -32,7 +32,7 @@ export class MyModule {}
 Use `*mobxAutorun` directive in your template:
 ```ts
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import {store} from './store/counter';
+import { store } from './store/counter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,9 +65,6 @@ This might cause things to stop updating. You have 3 options to manage that:
 - Define local component properties as observables or computed values
 - Surround with *mobxAutorun only the parts that actually use observable / computed values from the store
 - Instead of detaching, use OnPush CD strategy on the component
-
-## autorunSync
-This method is deprecated - do not use it.
 
 ## reaction
 Aside from autorun, MobX allows you to react to specific data changes.
@@ -131,14 +128,14 @@ In case you do that - we export a proxy to the decorators from mobx-angular, whi
 `import { observable, computed } from 'mobx-angular'`
 
 ## Examples
-See the `example` folder, specifically these files:  
-`/example/todos/src/app/stores/todos.store.ts`  
-`/example/todos/src/app/app.component.ts`
+See the `projects` folder, specifically these files:  
+`/projects/todo/src/app/stores/todos.store.ts`  
+`/projects/todo/src/app/app.component.ts`
 
 To run the examples, clone this repo and run:
 ```
 $ npm install -g @angular/cli
-$ cd example/<example-folder>
 $ npm install
-$ npm start
+$ npm run build
+$ npm run start <example>
 ```
