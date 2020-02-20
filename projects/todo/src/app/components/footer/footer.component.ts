@@ -5,9 +5,9 @@ import { Todos } from '../../stores/todos.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-footer',
   template: `
-    <footer id="footer" *mobxAutorun>
+    <footer class="footer" *mobxAutorun>
       <app-count></app-count>
-      <ul id="filters">
+      <ul class="filters">
         <li>
           <a
             [class.selected]="todos.filter === 'SHOW_ALL'"
@@ -30,7 +30,7 @@ import { Todos } from '../../stores/todos.store';
           >
         </li>
       </ul>
-      <button id="clear-completed" (click)="todos.clearCompleted()">
+      <button class="clear-completed" (click)="todos.clearCompleted()">
         Clear completed
       </button>
     </footer>

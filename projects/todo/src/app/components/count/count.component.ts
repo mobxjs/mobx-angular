@@ -5,7 +5,7 @@ import { Todos } from '../../stores/todos.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-count',
   template: `
-    <span id="todo-count" *mobxAutorun>
+    <span class="todo-count" *mobxAutorun>
       <strong>{{ todos.uncompletedItems }}</strong> items left
     </span>
   `

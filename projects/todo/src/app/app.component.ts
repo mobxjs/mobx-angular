@@ -6,12 +6,12 @@ import { Todos } from './stores/todos.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
   template: `
-    <section id="todoapp">
-      <header id="header">
+    <section class="todoapp">
+      <header class="header">
         <h1>todos</h1>
-        <form name="new-todo" id="todo-form" (submit)="addTodo()">
+        <form name="new-todo" class="todo-form" (submit)="addTodo()">
           <input
-            id="new-todo"
+            class="new-todo"
             name="title"
             placeholder="What needs to be done?"
             [(ngModel)]="title"
