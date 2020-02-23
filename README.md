@@ -2,14 +2,20 @@
 [![npm version](https://badge.fury.io/js/mobx-angular.svg)](https://badge.fury.io/js/mobx-angular)
 # mobx-angular
 
-## MobX connector for Angular (versions 2-7)
+## MobX connector for Angular (versions 2-9)
 If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx)
 
-## Features
-1. The library allows you to automatically observe all the observables that your component uses
+## Why MobX?
+Angular's change detection is great, but it updates the entire UI on every change, and doesn't have any knowledge of how our components use our services.  
+MobX automatically knows what properties your components use from the stores and listens to changes. It allows you to automatically react to changes and update only the parts of the UI that need to be updated, making your app performant.  
+With MobX you manage your app's state using mutable objects and classes. It also helps you create computed values and side-effects.
+
+[Learn more about MobX](https://mobx.js.org/README.html)
+
+## This library
+1. Automatically observe all the observables that your component uses
 2. Automatically runs change detection - works great with OnPush strategy
 3. Disposes of all the observers when the component is destroyed
-4. Debugging tools
 
 ## Usage
 
@@ -126,6 +132,25 @@ TBD - support debugging for MobX 4
 Some people complained about AoT when using mobx decorators inside components. 
 In case you do that - we export a proxy to the decorators from mobx-angular, which should be AoT compatible, e.g.:  
 `import { observable, computed } from 'mobx-angular'`
+
+## DevTools
+Check out `projects/todo` for an example of how to use `mobx-remotedev` with Angular:
+
+$ npm install mobx-remotedev
+
+```
+// app.module.ts
+import remotedev from 'mobx-remotedev';
+import { Todos } from './stores/todos.store';
+
+@NgModule({
+  ...
+  providers: [
+    { provide: Todos, useClass: remotedev(Todos, { global: true }), deps: [] }
+  ],
+})
+
+```
 
 ## Examples
 See the `projects` folder, specifically these files:  
