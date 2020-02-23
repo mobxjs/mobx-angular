@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -21,6 +21,9 @@
     "@angular/platform-browser": "~9.0.0",
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
+    "@types/jest": "^25.1.3",
+    "jest": "^24.9.0",
+    "jest-preset-angular": "^8.0.0",
     "mobx-remotedev": "^0.3.6",
     "rxjs": "~6.5.4",
     "todomvc-app-css": "^2.3.0",
