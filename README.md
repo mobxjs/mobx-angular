@@ -137,5 +137,5 @@ To run the examples, clone this repo and run:
 $ npm install -g @angular/cli
 $ npm install
 $ npm run build
-$ npm run start <example>
+$ npm run start <example> # for example `npm run start todo`
 ```
