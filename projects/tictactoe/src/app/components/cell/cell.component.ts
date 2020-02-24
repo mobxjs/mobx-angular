@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'ttt-cell',
   template: `
-    <span class="cell-content" (click)="select.emit()">
+    <span class="cell-content" (click)="selectCell.emit()">
       <span *ngIf="value">{{ value }}</span>
       <span class="next-value" *ngIf="!value">{{ nextValue }}</span>
     </span>
