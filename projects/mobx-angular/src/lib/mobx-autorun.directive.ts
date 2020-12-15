@@ -7,7 +7,7 @@ import {
   Input,
   EmbeddedViewRef
 } from '@angular/core';
-import { autorun } from 'mobx';
+import { autorun, IAutorunOptions } from 'mobx';
 // import { mobxAngularDebug } from '../utils/mobx-angular-debug';
 
 @Directive({ selector: '[mobxAutorun]' })
@@ -41,7 +41,17 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   }
 
   autoDetect(view: EmbeddedViewRef<any>) {
-    this.dispose = autorun(() => view.detectChanges());
+    const opts: IAutorunOptions = {};
+
+    if (this.mobxAutorun?.name) {
+      opts.name = this.mobxAutorun.name;
+    }
+
+    if (this.mobxAutorun?.delay) {
+      opts.delay = this.mobxAutorun.delay;
+    }
+
+    this.dispose = autorun(() => view.detectChanges(), opts);
   }
 
   ngOnDestroy() {
