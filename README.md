@@ -53,7 +53,7 @@ import { store } from './store/counter';
   template: `
     <div *mobxAutorun>
       {{ store.value }} - {{ store.computedValue }}
-      <button (click)="(store.action)">Action</button>
+      <button (click)="store.action">Action</button>
     </div>
   `
 })
@@ -131,7 +131,7 @@ import { comparer } from 'mobx';
   template: `
     <div *mobxAutorun="{ name: 'foo', delay: 3000 }">
       {{ store.value }} - {{ store.computedValue }}
-      <button (click)="(store.action)">Action</button>
+      <button (click)="store.action">Action</button>
     </div>
     <div *mobxReaction="{ name: 'parity reaction', dataFn: getParity.bind(this), equals: comparer.shallow }">
       {{ parity }}
