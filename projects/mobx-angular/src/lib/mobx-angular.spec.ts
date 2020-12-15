@@ -43,7 +43,7 @@ class TestComponent {
 
 @Component({
   template: `
-    <div *mobxReaction="getFirstLetter.bind(this)">
+    <div *mobxReaction="{dataFn: getFirstLetter.bind(this)}">
       <span id="firstchar">{{ char }}</span>
     </div>
     <button (click)="setLastName()">Set Name</button>

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { observable, computed, action } from 'mobx-angular';
+import { observable, computed, action, spy } from 'mobx';
 import { Todos } from './stores/todos.store';
 
 @Component({
@@ -30,7 +30,9 @@ export class AppComponent {
     return [this.title];
   }
 
-  constructor(public todos: Todos) {}
+  constructor(public todos: Todos) {
+    spy(ev => console.log(ev));
+  }
 
   @action.bound addTodo() {
     this.todos.addTodo({ title: this.title });

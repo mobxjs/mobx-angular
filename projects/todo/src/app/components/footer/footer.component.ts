@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Todos } from '../../stores/todos.store';
+import { comparer } from 'mobx';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,6 +30,13 @@ import { Todos } from '../../stores/todos.store';
             >Completed</a
           >
         </li>
+        <li>
+          <button
+            *mobxReaction='{dataFn: getParity.bind(this), name: "parity reaction", equals: comparer.shallow}'
+          >
+            {{ parity }}
+          </button>
+        </li>
       </ul>
       <button class="clear-completed" (click)="todos.clearCompleted()">
         Clear completed
@@ -37,5 +45,11 @@ import { Todos } from '../../stores/todos.store';
   `
 })
 export class FooterComponent {
+  parity;
+  comparer = comparer;
   constructor(public todos: Todos) {}
+
+  getParity() {
+    return (this.parity = this.todos.todos.length % 2 !== 0 ? 'Odd' : 'Even');
+  }
 }
