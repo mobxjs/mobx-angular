@@ -43,11 +43,11 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   autoDetect(view: EmbeddedViewRef<any>) {
     const opts: IAutorunOptions = {};
 
-    if (this.mobxAutorun.name) {
+    if (this.mobxAutorun?.name) {
       opts.name = this.mobxAutorun.name;
     }
 
-    if (this.mobxAutorun.delay) {
+    if (this.mobxAutorun?.delay) {
       opts.delay = this.mobxAutorun.delay;
     }
 
