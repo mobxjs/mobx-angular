@@ -195,7 +195,7 @@ In case you do that - we export a proxy to the decorators from mobx-angular, whi
 
 Check out `projects/todo` for an example of how to use `mobx-remotedev` with Angular:
 
-\$ npm install mobx-remotedev
+$ npm install mobx-remotedev
 
 ```
 // app.module.ts
