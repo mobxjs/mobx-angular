@@ -96,14 +96,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div *mobxReaction="{dataFn: getParity.bind(this)}">
+    <div *mobxReaction="getParity.bind(this)">
       {{ parity }}
     </div>
   `
 })
 class AppComponent {
   getParity() {
-    return this.parity = store.counter % 2 ? 'Odd' : 'Even';
+    return (this.parity = store.counter % 2 ? 'Odd' : 'Even');
   }
 }
 ```
@@ -129,11 +129,13 @@ import { comparer } from 'mobx';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div *mobxAutorun="{ name: 'foo', delay: 3000 }">
+    <div *mobxAutorun="{ detach: true, name: 'foo', delay: 3000 }">
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
-    <div *mobxReaction="{ name: 'parity reaction', dataFn: getParity.bind(this), equals: comparer.shallow }">
+    <div
+      *mobxReaction="getParity.bind(this); options: { name: 'parity reaction', equals: comparer.shallow }"
+    >
       {{ parity }}
     </div>
   `
@@ -143,7 +145,7 @@ export class AppComponent {
   comparer = comparer;
 
   getParity() {
-    return this.parity = store.counter % 2 ? 'Odd' : 'Even';
+    return (this.parity = store.counter % 2 ? 'Odd' : 'Even');
   }
 }
 ```
@@ -167,8 +169,8 @@ class Store {
 To achieve great performance, you can set `OnPush` change detection strategy on your components (this can be configured as default in `.angular-cli.json`).
 MobX will run change detection manually for you on the components that need to be updated.
 
-- In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop').
-  Please note that this means that all 3rd-party components will stop working (because they rely on change detection to work via Zone).
+- In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop'). 
+- Please note that this means that all 3rd-party components will stop working (because they rely on change detection to work via Zone).
 
 ## Debugging MobX (only for mobx-angular versions 2.X and below)
 
