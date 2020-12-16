@@ -15,12 +15,14 @@ export class MobxReactionDirective extends MobxAutorunDirective {
   }
 
   autoDetect(view) {
+    const opts: IReactionOptions = Object.assign({ fireImmediately: true }, this.mobxReactionOptions);
+
     this.dispose = reaction(
       this.mobxReaction,
       () => {
         view.detectChanges();
       },
-      this.mobxReactionOptions
+      opts
     );
   }
 }
