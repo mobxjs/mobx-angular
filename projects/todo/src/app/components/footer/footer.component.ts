@@ -30,13 +30,6 @@ import { comparer } from 'mobx';
             >Completed</a
           >
         </li>
-        <li>
-          <button
-            *mobxReaction='{dataFn: getParity.bind(this), name: "parity reaction", equals: comparer.shallow}'
-          >
-            {{ parity }}
-          </button>
-        </li>
       </ul>
       <button class="clear-completed" (click)="todos.clearCompleted()">
         Clear completed
@@ -45,11 +38,5 @@ import { comparer } from 'mobx';
   `
 })
 export class FooterComponent {
-  parity;
-  comparer = comparer;
   constructor(public todos: Todos) {}
-
-  getParity() {
-    return (this.parity = this.todos.todos.length % 2 !== 0 ? 'Odd' : 'Even');
-  }
 }

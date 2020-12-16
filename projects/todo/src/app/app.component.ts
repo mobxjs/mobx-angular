@@ -30,9 +30,7 @@ export class AppComponent {
     return [this.title];
   }
 
-  constructor(public todos: Todos) {
-    spy(ev => console.log(ev));
-  }
+  constructor(public todos: Todos) {}
 
   @action.bound addTodo() {
     this.todos.addTodo({ title: this.title });

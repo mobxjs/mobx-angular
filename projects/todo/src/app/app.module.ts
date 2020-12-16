@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import remotedev from 'mobx-remotedev';
 
-import { MobxAngularModule } from '../../../mobx-angular/src/lib/mobx-angular.module';
+import { MobxAngularModule } from 'mobx-angular';
 import { Todos } from './stores/todos.store';
 import { AppComponent } from './app.component';
 import { SectionComponent } from './components/section/section.component';
