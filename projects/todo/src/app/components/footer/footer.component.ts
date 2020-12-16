@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Todos } from '../../stores/todos.store';
-import { comparer } from 'mobx';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

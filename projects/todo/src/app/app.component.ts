@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { observable, computed, action, spy } from 'mobx';
+import { observable, computed, action } from 'mobx-angular';
 import { Todos } from './stores/todos.store';
 
 @Component({
