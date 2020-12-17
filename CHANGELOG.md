@@ -1,3 +1,7 @@
+<a name="4.2.0"></a>
+# 4.2.0 (2020-12-17)
+* Allow to pass MobX options to autorun and reaction directive
+
 <a name="4.1.0"></a>
 # 4.1.0 (2020-02-19)
 * Removed mobxAutorunSync Directive
