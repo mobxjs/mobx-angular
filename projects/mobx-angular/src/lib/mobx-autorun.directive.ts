@@ -15,6 +15,13 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   protected templateBindings = {};
   protected dispose: any;
   protected view: EmbeddedViewRef<any>;
+  private readonly allAutorunOptions: Array<keyof IAutorunOptions> = [
+    'delay',
+    'scheduler',
+    'requiresObservable',
+    'name',
+    'onError'
+  ];
   @Input() mobxAutorun;
 
   constructor(
@@ -41,17 +48,18 @@ export class MobxAutorunDirective implements OnInit, OnDestroy {
   }
 
   autoDetect(view: EmbeddedViewRef<any>) {
-    const opts: IAutorunOptions = {};
-
-    if (this.mobxAutorun?.name) {
-      opts.name = this.mobxAutorun.name;
-    }
-
-    if (this.mobxAutorun?.delay) {
-      opts.delay = this.mobxAutorun.delay;
-    }
+    const opts: IAutorunOptions = this.getAutorunOptions();
 
     this.dispose = autorun(() => view.detectChanges(), opts);
+  }
+
+  getAutorunOptions(): IAutorunOptions {
+    return Object.keys(this.mobxAutorun || {}).reduce((opts, current) => {
+      if (this.allAutorunOptions.includes(current as keyof IAutorunOptions)) {
+        opts[current] = this.mobxAutorun[current];
+      }
+      return opts;
+    }, {});
   }
 
   ngOnDestroy() {

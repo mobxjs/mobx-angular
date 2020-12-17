@@ -1,10 +1,11 @@
 import { Directive, ViewContainerRef, TemplateRef, Input } from '@angular/core';
-import { reaction } from 'mobx';
+import { IReactionOptions, reaction } from 'mobx';
 import { MobxAutorunDirective } from './mobx-autorun.directive';
 
 @Directive({ selector: '[mobxReaction]' })
 export class MobxReactionDirective extends MobxAutorunDirective {
   @Input() mobxReaction;
+  @Input() mobxReactionOptions: IReactionOptions;
 
   constructor(
     protected templateRef: TemplateRef<any>,
@@ -14,12 +15,14 @@ export class MobxReactionDirective extends MobxAutorunDirective {
   }
 
   autoDetect(view) {
+    const opts: IReactionOptions = Object.assign({ fireImmediately: true }, this.mobxReactionOptions);
+
     this.dispose = reaction(
       this.mobxReaction,
       () => {
         view.detectChanges();
       },
-      { fireImmediately: true }
+      opts
     );
   }
 }
