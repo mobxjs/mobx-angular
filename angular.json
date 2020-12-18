@@ -385,6 +385,129 @@
           }
         }
       }
+    },
+    "todo-v6": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "style": "scss"
+        }
+      },
+      "root": "projects/todo-v6",
+      "sourceRoot": "projects/todo-v6/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/todo-v6",
+            "index": "projects/todo-v6/src/index.html",
+            "main": "projects/todo-v6/src/main.ts",
+            "polyfills": "projects/todo-v6/src/polyfills.ts",
+            "tsConfig": "projects/todo-v6/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/todo-v6/src/favicon.ico",
+              "projects/todo-v6/src/assets"
+            ],
+            "styles": [
+              "projects/todo-v6/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/todo-v6/src/environments/environment.ts",
+                  "with": "projects/todo-v6/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "todo-v6:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "todo-v6:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "todo-v6:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/todo-v6/src/test.ts",
+            "polyfills": "projects/todo-v6/src/polyfills.ts",
+            "tsConfig": "projects/todo-v6/tsconfig.spec.json",
+            "karmaConfig": "projects/todo-v6/karma.conf.js",
+            "assets": [
+              "projects/todo-v6/src/favicon.ico",
+              "projects/todo-v6/src/assets"
+            ],
+            "styles": [
+              "projects/todo-v6/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/todo-v6/tsconfig.app.json",
+              "projects/todo-v6/tsconfig.spec.json",
+              "projects/todo-v6/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/todo-v6/e2e/protractor.conf.js",
+            "devServerTarget": "todo-v6:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todo-v6:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "cli": {
