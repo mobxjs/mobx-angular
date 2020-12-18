@@ -166,11 +166,12 @@ class Store {
 
 ## MobX v6
 
-In order to become compatible with modern ES standards, decorators are not used by default in MobX v6. It still supports decorators, but they are not recommended for greenfield projects and require some extra setup as opposed to previous versions.
+
+In order to become compatible with modern ES standards, decorators are not used by default in MobX v6. It still supports decorators, but they are not recommended for greenfield projects.
 [Read More](https://michel.codes/blogs/mobx6)
 
-- In order to use MobX 6 with decorators `makeObservable(this)` should be added to the constructor, and "useDefineForClassFields": true should be added to tsconfig.json.
-- Note that for decorator-less syntax, `makeAutoObservable` does not work with @Injectable stores
+- In order to use MobX 6 with decorators `makeObservable(this)` should be added to the constructor, and "useDefineForClassFields": true should be added to tsconfig.json. 
+-  For the full migration guide, click [here](https://mobx.js.org/migrating-from-4-or-5.html).
 
 Check out `projects/todo-v6` for a working example.
 
