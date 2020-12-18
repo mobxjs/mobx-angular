@@ -164,6 +164,17 @@ class Store {
 }
 ```
 
+## MobX v6
+
+In order to become compatible with modern ES standards, decorators are not used by default in MobX v6. It still supports decorators, but they are not recommended for greenfield projects and require some extra setup as opposed to previous versions.
+[Read More](https://michel.codes/blogs/mobx6)
+
+- In order to use MobX 6 with decorators `makeObservable(this)` should be added to the constructor, and "useDefineForClassFields": true should be added to tsconfig.json.
+- Note that for decorator-less syntax, `makeAutoObservable` does not work with @Injectable stores
+
+Check out `projects/todo-v6` for a working example.
+
+
 ## Using with OnPush or ngZone: 'noop'
 
 To achieve great performance, you can set `OnPush` change detection strategy on your components (this can be configured as default in `.angular-cli.json`).

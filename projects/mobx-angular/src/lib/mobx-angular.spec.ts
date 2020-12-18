@@ -1,21 +1,25 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { action, computed, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { MobxAutorunDirective, MobxReactionDirective } from '../public-api';
 
 let fullNameCalculations = 0;
 let firstCharCalculations = 0;
 
 class TestStore {
-  @observable firstName = 'James';
-  @observable lastName = 'Bond';
+  firstName = 'James';
+  lastName = 'Bond';
 
-  @computed get fullName() {
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  get fullName() {
     fullNameCalculations++;
     return `${this.firstName} ${this.lastName}`;
   }
 
-  @action setNames(firstName, lastName) {
+  setNames(firstName, lastName) {
     Object.assign(this, { firstName, lastName });
   }
 }
