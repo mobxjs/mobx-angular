@@ -5,7 +5,7 @@ import {
   TestBed,
   tick
 } from '@angular/core/testing';
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, reaction } from 'mobx';
 import { MobxAutorunDirective, MobxReactionDirective } from '../public-api';
 import { RouterStore } from './router-store.service';
 import { Router } from '@angular/router';
@@ -225,7 +225,7 @@ describe('mobxAngular', () => {
       expect(location.path()).toBe('/target');
     }));
 
-    it('should update the @observable url', fakeAsync(() => {
+    it('should update the observable url', fakeAsync(() => {
       button = fixture.nativeElement.querySelector('button');
       button.click();
       tick();
@@ -237,6 +237,30 @@ describe('mobxAngular', () => {
       tick();
 
       expect(routerStore.url).toBe('/');
+    }));
+
+    it('change to the observable url should trigger observers', fakeAsync(() => {
+      let count = 0;
+      reaction(
+        () => routerStore.url,
+        () => {
+          count++;
+        }
+      );
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(count).toBe(3);
     }));
   });
 });
