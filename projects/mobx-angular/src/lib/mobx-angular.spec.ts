@@ -239,7 +239,7 @@ describe('mobxAngular', () => {
       expect(routerStore.url).toBe('/');
     }));
 
-    it('change to the observable url should trigger observers', fakeAsync(() => {
+    it('should react to changes in the observable url', fakeAsync(() => {
       let count = 0;
       reaction(
         () => routerStore.url,
