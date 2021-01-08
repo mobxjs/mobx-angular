@@ -181,7 +181,7 @@ import { RouterStore } from 'mobx-angular';
 })
 export class AppComponent {
   constructor(public routerStore: RouterStore) {
-    // You get access to the url as a mobx observable through router.url
+    // You get access to the url as a mobx observable through routerStore.url
   }
 }
 ```
