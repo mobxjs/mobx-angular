@@ -207,7 +207,6 @@ describe('mobxAngular', () => {
 
       fixture = TestBed.createComponent(TestRouterRootComponent);
       fixture.detectChanges();
-      component = fixture.componentInstance;
 
       router = TestBed.inject(Router);
       location = TestBed.inject(Location);

@@ -15,7 +15,10 @@ export class MobxReactionDirective extends MobxAutorunDirective {
   }
 
   autoDetect(view) {
-    const opts: IReactionOptions = Object.assign({ fireImmediately: true }, this.mobxReactionOptions);
+    const opts: IReactionOptions = Object.assign(
+      { fireImmediately: true },
+      this.mobxReactionOptions
+    );
 
     this.dispose = reaction(
       this.mobxReaction,
