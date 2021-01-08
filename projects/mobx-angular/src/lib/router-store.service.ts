@@ -3,7 +3,7 @@ import { action, observable } from 'mobx';
 import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RouterStore {
   @observable url = '';
 
