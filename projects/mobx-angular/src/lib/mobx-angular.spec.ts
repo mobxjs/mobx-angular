@@ -92,7 +92,7 @@ class TestRouterRootComponent {}
 @Component({
   template: `
     <div>home</div>
-    <button (click)="routerStore.navigate('/target')">Back to Home</button>
+    <button (click)="routerStore.navigate('/target')">Go to Target</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
