@@ -1,7 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick
+} from '@angular/core/testing';
 import { makeAutoObservable } from 'mobx';
 import { MobxAutorunDirective, MobxReactionDirective } from '../public-api';
+import { RouterStore } from './router-store.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 let fullNameCalculations = 0;
 let firstCharCalculations = 0;
@@ -70,6 +79,36 @@ class TestReactionComponent {
   setLastName() {
     this.store.setNames('Michael', 'Jackson');
   }
+}
+
+@Component({
+  template: `
+    <router-outlet></router-outlet>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestRouterRootComponent {}
+
+@Component({
+  template: `
+    <div>home</div>
+    <button (click)="routerStore.navigate('/target')">Back to Home</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestRouterHomeComponent {
+  constructor(public routerStore: RouterStore) {}
+}
+
+@Component({
+  template: `
+    <div>target</div>
+    <button (click)="routerStore.navigate('/')">Back to Home</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestRouterTargetComponent {
+  constructor(public routerStore: RouterStore) {}
 }
 
 describe('mobxAngular', () => {
@@ -143,5 +182,61 @@ describe('mobxAngular', () => {
       fixture.detectChanges();
       expect(firstCharCalculations).toEqual(1);
     });
+  });
+
+  describe('routerStore', () => {
+    let location: Location;
+    let router: Router;
+    let routerStore: RouterStore;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          RouterTestingModule.withRoutes([
+            { path: '', component: TestRouterHomeComponent },
+            { path: 'target', component: TestRouterTargetComponent }
+          ])
+        ],
+        declarations: [
+          TestRouterRootComponent,
+          TestRouterHomeComponent,
+          TestRouterTargetComponent
+        ],
+        providers: [RouterStore]
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(TestRouterRootComponent);
+      fixture.detectChanges();
+      component = fixture.componentInstance;
+
+      router = TestBed.inject(Router);
+      location = TestBed.inject(Location);
+      routerStore = TestBed.inject(RouterStore);
+      fixture.ngZone.run(() => {
+        router.initialNavigation();
+      });
+    });
+
+    it('should route to the target component', fakeAsync(() => {
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(location.path()).toBe('/target');
+    }));
+
+    it('should update the @observable url', fakeAsync(() => {
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(routerStore.url).toBe('/target');
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(routerStore.url).toBe('/');
+    }));
   });
 });
