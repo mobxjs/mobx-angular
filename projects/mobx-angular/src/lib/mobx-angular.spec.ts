@@ -92,23 +92,31 @@ class TestRouterRootComponent {}
 @Component({
   template: `
     <div>home</div>
-    <button (click)="routerStore.navigate('/target')">Go to Target</button>
+    <button (click)="navigate()">Go to Target</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestRouterHomeComponent {
-  constructor(public routerStore: RouterStore) {}
+  constructor(public routerStore: RouterStore, private router: Router) {}
+
+  navigate() {
+    this.router.navigateByUrl('/target');
+  }
 }
 
 @Component({
   template: `
     <div>target</div>
-    <button (click)="routerStore.navigate('/')">Back to Home</button>
+    <button (click)="navigate()">Back to Home</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestRouterTargetComponent {
-  constructor(public routerStore: RouterStore) {}
+  constructor(public routerStore: RouterStore, private router: Router) {}
+
+  navigate() {
+    this.router.navigateByUrl('/');
+  }
 }
 
 describe('mobxAngular', () => {
@@ -215,14 +223,6 @@ describe('mobxAngular', () => {
         router.initialNavigation();
       });
     });
-
-    it('should route to the target component', fakeAsync(() => {
-      button = fixture.nativeElement.querySelector('button');
-      button.click();
-      tick();
-
-      expect(location.path()).toBe('/target');
-    }));
 
     it('should update the observable url', fakeAsync(() => {
       button = fixture.nativeElement.querySelector('button');

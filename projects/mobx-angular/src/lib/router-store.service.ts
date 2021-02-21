@@ -18,7 +18,4 @@ export class RouterStore {
   private routeListener(event: NavigationEnd) {
     this.url = event.urlAfterRedirects;
   }
-  navigate(url: string, extras?: NavigationExtras) {
-    return this.router.navigate([url], extras);
-  }
 }
