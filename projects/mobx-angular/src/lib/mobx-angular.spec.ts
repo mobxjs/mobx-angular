@@ -6,8 +6,11 @@ import {
   tick
 } from '@angular/core/testing';
 import { makeAutoObservable, reaction } from 'mobx';
-import { MobxAutorunDirective, MobxReactionDirective } from '../public-api';
-import { RouterStore } from '../public-api';
+import {
+  MobxAutorunDirective,
+  MobxReactionDirective,
+  RouterStore
+} from '../public-api';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';

@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { makeAutoObservable } from 'mobx';
-import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  NavigationEnd,
+  Router
+} from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class RouterStore {
   url = '';
+  route: ActivatedRouteSnapshot = null;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     makeAutoObservable(this);
 
     router.events
@@ -16,6 +22,7 @@ export class RouterStore {
   }
 
   private routeListener(event: NavigationEnd) {
+    this.route = this.activatedRoute.snapshot;
     this.url = event.urlAfterRedirects;
   }
 }
