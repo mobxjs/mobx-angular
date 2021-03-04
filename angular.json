@@ -412,9 +412,7 @@
               "projects/todo-v6/src/favicon.ico",
               "projects/todo-v6/src/assets"
             ],
-            "styles": [
-              "projects/todo-v6/src/styles.scss"
-            ],
+            "styles": ["projects/todo-v6/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -476,9 +474,7 @@
               "projects/todo-v6/src/favicon.ico",
               "projects/todo-v6/src/assets"
             ],
-            "styles": [
-              "projects/todo-v6/src/styles.scss"
-            ],
+            "styles": ["projects/todo-v6/src/styles.scss"],
             "scripts": []
           }
         },
@@ -490,9 +486,7 @@
               "projects/todo-v6/tsconfig.spec.json",
               "projects/todo-v6/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -504,6 +498,120 @@
           "configurations": {
             "production": {
               "devServerTarget": "todo-v6:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "bank-v11": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/bank-v11",
+      "sourceRoot": "projects/bank-v11/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bank-v11",
+            "index": "projects/bank-v11/src/index.html",
+            "main": "projects/bank-v11/src/main.ts",
+            "polyfills": "projects/bank-v11/src/polyfills.ts",
+            "tsConfig": "projects/bank-v11/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/bank-v11/src/favicon.ico",
+              "projects/bank-v11/src/assets"
+            ],
+            "styles": ["projects/bank-v11/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bank-v11/src/environments/environment.ts",
+                  "with": "projects/bank-v11/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bank-v11:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bank-v11:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bank-v11:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bank-v11/src/test.ts",
+            "polyfills": "projects/bank-v11/src/polyfills.ts",
+            "tsConfig": "projects/bank-v11/tsconfig.spec.json",
+            "karmaConfig": "projects/bank-v11/karma.conf.js",
+            "assets": [
+              "projects/bank-v11/src/favicon.ico",
+              "projects/bank-v11/src/assets"
+            ],
+            "styles": ["projects/bank-v11/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bank-v11/tsconfig.app.json",
+              "projects/bank-v11/tsconfig.spec.json",
+              "projects/bank-v11/e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bank-v11/e2e/protractor.conf.js",
+            "devServerTarget": "bank-v11:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bank-v11:serve:production"
             }
           }
         }
