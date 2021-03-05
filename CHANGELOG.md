@@ -1,3 +1,8 @@
+<a name="4.3.0"></a>
+# 4.3.0 (2021-03-05)
+* Added support for Angular 11
+* Added an example project in Angular 11
+
 <a name="4.2.0"></a>
 # 4.2.0 (2020-12-17)
 * Allow to pass MobX options to autorun and reaction directive
