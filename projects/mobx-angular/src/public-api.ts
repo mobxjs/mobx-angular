@@ -8,6 +8,7 @@ import { observable as mobxObservable } from 'mobx';
 
 export * from './lib/mobx-autorun.directive';
 export * from './lib/mobx-reaction.directive';
+export * from './lib/router-store.service';
 export * from './lib/mobx-angular.module';
 
 // Re-export mobx operators to be able to use inside components with AOT:

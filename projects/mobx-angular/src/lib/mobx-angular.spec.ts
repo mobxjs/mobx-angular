@@ -1,7 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { makeAutoObservable } from 'mobx';
-import { MobxAutorunDirective, MobxReactionDirective } from '../public-api';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick
+} from '@angular/core/testing';
+import { makeAutoObservable, reaction } from 'mobx';
+import {
+  MobxAutorunDirective,
+  MobxReactionDirective,
+  RouterStore
+} from '../public-api';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 let fullNameCalculations = 0;
 let firstCharCalculations = 0;
@@ -72,6 +84,42 @@ class TestReactionComponent {
   }
 }
 
+@Component({
+  template: ` <router-outlet></router-outlet> `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestRouterRootComponent {}
+
+@Component({
+  template: `
+    <div>home</div>
+    <button (click)="navigate()">Go to Target</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestRouterHomeComponent {
+  constructor(public routerStore: RouterStore, private router: Router) {}
+
+  navigate() {
+    this.router.navigateByUrl('/target');
+  }
+}
+
+@Component({
+  template: `
+    <div>target</div>
+    <button (click)="navigate()">Back to Home</button>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class TestRouterTargetComponent {
+  constructor(public routerStore: RouterStore, private router: Router) {}
+
+  navigate() {
+    this.router.navigateByUrl('/');
+  }
+}
+
 describe('mobxAngular', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<any>;
@@ -97,7 +145,7 @@ describe('mobxAngular', () => {
       expect(fullNameCalculations).toEqual(1);
     });
 
-    it('should recompute value once', done => {
+    it('should recompute value once', (done) => {
       button.click();
       setTimeout(() => {
         expect(fullname.textContent).toEqual('James Dean');
@@ -126,7 +174,7 @@ describe('mobxAngular', () => {
       expect(firstCharCalculations).toEqual(1);
     });
 
-    it('should recompute value once', done => {
+    it('should recompute value once', (done) => {
       button.click();
       setTimeout(() => {
         expect(firstchar.textContent).toEqual('M');
@@ -143,5 +191,76 @@ describe('mobxAngular', () => {
       fixture.detectChanges();
       expect(firstCharCalculations).toEqual(1);
     });
+  });
+
+  describe('routerStore', () => {
+    let location: Location;
+    let router: Router;
+    let routerStore: RouterStore;
+
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          RouterTestingModule.withRoutes([
+            { path: '', component: TestRouterHomeComponent },
+            { path: 'target', component: TestRouterTargetComponent }
+          ])
+        ],
+        declarations: [
+          TestRouterRootComponent,
+          TestRouterHomeComponent,
+          TestRouterTargetComponent
+        ],
+        providers: [RouterStore]
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(TestRouterRootComponent);
+      fixture.detectChanges();
+
+      router = TestBed.inject(Router);
+      location = TestBed.inject(Location);
+      routerStore = TestBed.inject(RouterStore);
+      fixture.ngZone.run(() => {
+        router.initialNavigation();
+      });
+    });
+
+    it('should update the observable url', fakeAsync(() => {
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(routerStore.url).toBe('/target');
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(routerStore.url).toBe('/');
+    }));
+
+    it('should react to changes in the observable url', fakeAsync(() => {
+      let count = 0;
+      reaction(
+        () => routerStore.url,
+        () => {
+          count++;
+        }
+      );
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      button = fixture.nativeElement.querySelector('button');
+      button.click();
+      tick();
+
+      expect(count).toBe(3);
+    }));
   });
 });
