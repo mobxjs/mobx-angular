@@ -166,8 +166,8 @@ class Store {
 
 ## Router store
 
-Using the `RouterStore`, you can observe route changes and navigate.
-By injecting this store to a component you will get access to the url as a MobX observable and a navigate action.
+Using the `RouterStore`, you can observe route changes.
+By injecting this store to a component you will get access to the url as a MobX observable, and the entire activated route snapshot.
 
 Usage:
 
@@ -177,11 +177,12 @@ import { RouterStore } from 'mobx-angular';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<button click="routerStore.navigate('/')">Navigate</button`
+  template: `<div></div>`
 })
 export class AppComponent {
   constructor(public routerStore: RouterStore) {
     // You get access to the url as a mobx observable through routerStore.url
+    // And to the activated route snapshot through routerStore.route
   }
 }
 ```
