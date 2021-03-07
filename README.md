@@ -35,7 +35,7 @@ Import the MobxAngularModule:
 import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
-    imports: [..., MobxAngularModule]
+            imports: [..., MobxAngularModule]
 })
 export class MyModule {}
 ```
@@ -49,14 +49,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+             changeDetection: ChangeDetectionStrategy.OnPush,
+             template: `
     <div *mobxAutorun>
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
   `
-})
+           })
 export class AppComponent {
   store = store;
 }
@@ -94,13 +94,13 @@ Usage:
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+             changeDetection: ChangeDetectionStrategy.OnPush,
+             template: `
     <div *mobxReaction="getParity.bind(this)">
       {{ parity }}
     </div>
   `
-})
+           })
 class AppComponent {
   getParity() {
     return (this.parity = store.counter % 2 ? 'Odd' : 'Even');
@@ -127,8 +127,8 @@ import { store } from './store/counter';
 import { comparer } from 'mobx';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+             changeDetection: ChangeDetectionStrategy.OnPush,
+             template: `
     <div *mobxAutorun="{ detach: true, name: 'foo', delay: 3000 }">
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
@@ -139,7 +139,7 @@ import { comparer } from 'mobx';
       {{ parity }}
     </div>
   `
-})
+           })
 export class AppComponent {
   store = store;
   comparer = comparer;
@@ -164,24 +164,45 @@ class Store {
 }
 ```
 
-## MobX v6
+## Router store
 
+Using the `RouterStore`, you can observe route changes.
+By injecting this store to a component you will get access to the url as a MobX observable, and the entire activated route snapshot.
+
+Usage:
+
+```ts
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterStore } from 'mobx-angular';
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `<div></div>`
+})
+export class AppComponent {
+  constructor(public routerStore: RouterStore) {
+    // You get access to the url as a mobx observable through routerStore.url
+    // And to the activated route snapshot through routerStore.routeSnapshot
+  }
+}
+```
+
+## MobX v6
 
 In order to become compatible with modern ES standards, decorators are not used by default in MobX v6. It still supports decorators, but they are not recommended for greenfield projects.
 [Read More](https://michel.codes/blogs/mobx6)
 
-- In order to use MobX 6 with decorators `makeObservable(this)` should be added to the constructor, and "useDefineForClassFields": true should be added to tsconfig.json. 
--  For the full migration guide, click [here](https://mobx.js.org/migrating-from-4-or-5.html).
+- In order to use MobX 6 with decorators `makeObservable(this)` should be added to the constructor, and "useDefineForClassFields": true should be added to tsconfig.json.
+- For the full migration guide, click [here](https://mobx.js.org/migrating-from-4-or-5.html).
 
 Check out `projects/todo-v6` for a working example.
-
 
 ## Using with OnPush or ngZone: 'noop'
 
 To achieve great performance, you can set `OnPush` change detection strategy on your components (this can be configured as default in `.angular-cli.json`).
 MobX will run change detection manually for you on the components that need to be updated.
 
-- In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop'). 
+- In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop').
 - Please note that this means that all 3rd-party components will stop working (because they rely on change detection to work via Zone).
 
 ## Debugging MobX (only for mobx-angular versions 2.X and below)
