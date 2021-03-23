@@ -3,7 +3,7 @@
 
 # mobx-angular
 
-## MobX connector for Angular (versions 2-9)
+## MobX connector for Angular
 
 If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx)
 
