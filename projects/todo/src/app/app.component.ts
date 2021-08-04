@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { observable, computed, action } from 'mobx-angular';
 import { Todos } from './stores/todos.store';
+import { makeObservable } from 'mobx';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,7 +31,9 @@ export class AppComponent {
     return [this.title];
   }
 
-  constructor(public todos: Todos) {}
+  constructor(public todos: Todos) {
+    makeObservable(this);
+  }
 
   @action.bound addTodo() {
     this.todos.addTodo({ title: this.title });

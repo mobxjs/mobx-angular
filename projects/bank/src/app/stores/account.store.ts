@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, autorun, computed, action } from 'mobx';
+import { observable, autorun, computed, action, makeObservable } from 'mobx';
 import { sum } from 'lodash';
 
 @Injectable()
@@ -7,6 +7,7 @@ export class Account {
   @observable transactions: number[] = [];
 
   constructor() {
+    makeObservable(this);
     if (localStorage.savedTransactions) {
       this.transactions = JSON.parse(localStorage.savedTransactions);
     }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, action, computed, reaction } from 'mobx';
+import { observable, action, computed, reaction, makeObservable } from 'mobx';
 
 const OPONENT = {
   X: 'O',
@@ -13,6 +13,7 @@ export class GameStore {
   @observable firstPlayer = 'X';
 
   constructor() {
+    makeObservable(this);
     this.resetGame();
     this._countScore();
     this._changeStartingPlayer();

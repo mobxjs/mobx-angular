@@ -1,4 +1,4 @@
-import { observable, computed, action, autorun, toJS } from 'mobx';
+import { observable, computed, action, autorun, toJS, makeObservable } from 'mobx';
 import { Injectable } from '@angular/core';
 
 export class Todo {
@@ -6,6 +6,7 @@ export class Todo {
   @observable title: string;
 
   constructor({ title, completed }) {
+    makeObservable(this);
     this.completed = completed;
     this.title = title;
   }
@@ -21,6 +22,7 @@ export class Todos {
   @observable filter = 'SHOW_ALL';
 
   constructor() {
+    makeObservable(this);
     this.localStorageSync();
   }
 
