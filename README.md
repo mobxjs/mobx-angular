@@ -3,6 +3,13 @@
 
 # mobx-angular
 
+## Looking for maintainers
+Hi!
+Although this library is very small and simple, it still needs a little bit of attention here and there.  
+
+If there's anyone from the community that's willing to step up, we would be happy to add you to the MobX organization. Just reply to the issue:  
+https://github.com/mobxjs/mobx-angular/issues/141
+
 ## MobX connector for Angular
 
 If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx)
