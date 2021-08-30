@@ -267,3 +267,13 @@ $ npm install
 $ npm run build
 $ npm run start <example> # for example `npm run start todo`
 ```
+
+## Contributing
+
+Important things to always consider when changing code in this library:  
+- Make it readable, add comments when necessary
+- Add unit tests for the new functionality. Think about edge cases. Make sure tests pass before merging.
+- Keep backwards compatibility. Don't force users to refactor their code, even if it means adding a new API instead of changing an exsiting one.
+- Keep SEMVER. If breaking changes is unavoidable - increase a major version. New features, however small should increase a minor version, and patch is for bugfixes/performance/refactoring
+- Think about bundle size and speed
+
