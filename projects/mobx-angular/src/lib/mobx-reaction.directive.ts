@@ -5,7 +5,7 @@ import { MobxAutorunDirective } from './mobx-autorun.directive';
 @Directive({ selector: '[mobxReaction]' })
 export class MobxReactionDirective extends MobxAutorunDirective {
   @Input() mobxReaction;
-  @Input() mobxReactionOptions: IReactionOptions;
+  @Input() mobxReactionOptions: IReactionOptions<any>;
 
   constructor(
     protected templateRef: TemplateRef<any>,
