@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "jest",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "jest": "^24.9.0",
     "jest-preset-angular": "^8.0.0",
     "lodash": "^4.17.21",
+    "husky": "^7.0.4",
     "mobx": "^6.1.8",
     "mobx-remotedev": "^0.3.6",
     "rxjs": "~6.6.3",
@@ -44,7 +46,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
-    "husky": "^4.2.3",
+    "husky": "^7.0.4",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.7",
@@ -73,18 +75,10 @@
   },
   "lint-staged": {
     "*.{js,ts,json}": [
-      "./node_modules/.bin/prettier --write"
+      "prettier --write"
     ],
     "*.ts": [
       "tslint"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "post-commit": "git reset",
-      "pre-commit": [
-        "lint-staged"
-      ]
-    }
   }
 }
