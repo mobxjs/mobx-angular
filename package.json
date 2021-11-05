@@ -28,7 +28,7 @@
     "jest": "^24.9.0",
     "jest-preset-angular": "^8.0.0",
     "lodash": "^4.17.21",
-    "mobx": "^6.1.8",
+    "mobx": "^6.3.6",
     "mobx-remotedev": "^0.3.6",
     "rxjs": "^7.4.0",
     "todomvc-app-css": "^2.3.0",
