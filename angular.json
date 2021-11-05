@@ -60,13 +60,18 @@
             "main": "projects/todo/src/main.ts",
             "polyfills": "projects/todo/src/polyfills.ts",
             "tsConfig": "projects/todo/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/todo/src/favicon.ico",
               "projects/todo/src/assets"
             ],
             "styles": ["projects/todo/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -97,7 +102,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -175,13 +181,18 @@
             "main": "projects/tictactoe/src/main.ts",
             "polyfills": "projects/tictactoe/src/polyfills.ts",
             "tsConfig": "projects/tictactoe/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/tictactoe/src/favicon.ico",
               "projects/tictactoe/src/assets"
             ],
             "styles": ["projects/tictactoe/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -212,7 +223,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -290,13 +302,18 @@
             "main": "projects/bank/src/main.ts",
             "polyfills": "projects/bank/src/polyfills.ts",
             "tsConfig": "projects/bank/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/bank/src/favicon.ico",
               "projects/bank/src/assets"
             ],
             "styles": ["projects/bank/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -327,7 +344,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -407,13 +425,18 @@
             "main": "projects/todo-v6/src/main.ts",
             "polyfills": "projects/todo-v6/src/polyfills.ts",
             "tsConfig": "projects/todo-v6/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/todo-v6/src/favicon.ico",
               "projects/todo-v6/src/assets"
             ],
             "styles": ["projects/todo-v6/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -444,7 +467,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -522,13 +546,18 @@
             "main": "projects/bank-v11/src/main.ts",
             "polyfills": "projects/bank-v11/src/polyfills.ts",
             "tsConfig": "projects/bank-v11/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/bank-v11/src/favicon.ico",
               "projects/bank-v11/src/assets"
             ],
             "styles": ["projects/bank-v11/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -558,7 +587,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
