@@ -28,16 +28,6 @@
             "tsConfig": "projects/mobx-angular/tsconfig.spec.json",
             "karmaConfig": "projects/mobx-angular/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/mobx-angular/tsconfig.lib.json",
-              "projects/mobx-angular/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     },
@@ -60,13 +50,18 @@
             "main": "projects/todo/src/main.ts",
             "polyfills": "projects/todo/src/polyfills.ts",
             "tsConfig": "projects/todo/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/todo/src/favicon.ico",
               "projects/todo/src/assets"
             ],
             "styles": ["projects/todo/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -79,7 +74,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -97,7 +91,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -129,17 +124,6 @@
             ],
             "styles": ["projects/todo/src/styles.scss"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/todo/tsconfig.app.json",
-              "projects/todo/tsconfig.spec.json",
-              "projects/todo/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -175,13 +159,18 @@
             "main": "projects/tictactoe/src/main.ts",
             "polyfills": "projects/tictactoe/src/polyfills.ts",
             "tsConfig": "projects/tictactoe/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/tictactoe/src/favicon.ico",
               "projects/tictactoe/src/assets"
             ],
             "styles": ["projects/tictactoe/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -194,7 +183,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -212,7 +200,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -244,17 +233,6 @@
             ],
             "styles": ["projects/tictactoe/src/styles.scss"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/tictactoe/tsconfig.app.json",
-              "projects/tictactoe/tsconfig.spec.json",
-              "projects/tictactoe/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -290,13 +268,18 @@
             "main": "projects/bank/src/main.ts",
             "polyfills": "projects/bank/src/polyfills.ts",
             "tsConfig": "projects/bank/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/bank/src/favicon.ico",
               "projects/bank/src/assets"
             ],
             "styles": ["projects/bank/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -309,7 +292,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -327,7 +309,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -359,17 +342,6 @@
             ],
             "styles": ["projects/bank/src/styles.scss"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/bank/tsconfig.app.json",
-              "projects/bank/tsconfig.spec.json",
-              "projects/bank/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -407,13 +379,18 @@
             "main": "projects/todo-v6/src/main.ts",
             "polyfills": "projects/todo-v6/src/polyfills.ts",
             "tsConfig": "projects/todo-v6/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/todo-v6/src/favicon.ico",
               "projects/todo-v6/src/assets"
             ],
             "styles": ["projects/todo-v6/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -426,7 +403,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -444,7 +420,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -476,17 +453,6 @@
             ],
             "styles": ["projects/todo-v6/src/styles.scss"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/todo-v6/tsconfig.app.json",
-              "projects/todo-v6/tsconfig.spec.json",
-              "projects/todo-v6/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -522,13 +488,18 @@
             "main": "projects/bank-v11/src/main.ts",
             "polyfills": "projects/bank-v11/src/polyfills.ts",
             "tsConfig": "projects/bank-v11/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/bank-v11/src/favicon.ico",
               "projects/bank-v11/src/assets"
             ],
             "styles": ["projects/bank-v11/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -558,7 +529,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -592,17 +564,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/bank-v11/tsconfig.app.json",
-              "projects/bank-v11/tsconfig.spec.json",
-              "projects/bank-v11/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -613,6 +574,105 @@
             "production": {
               "devServerTarget": "bank-v11:serve:production"
             }
+          }
+        }
+      }
+    },
+    "bank-v13": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/bank-v13",
+      "sourceRoot": "projects/bank-v13/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bank-v13",
+            "index": "projects/bank-v13/src/index.html",
+            "main": "projects/bank-v13/src/main.ts",
+            "polyfills": "projects/bank-v13/src/polyfills.ts",
+            "tsConfig": "projects/bank-v13/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/bank-v13/src/favicon.ico",
+              "projects/bank-v13/src/assets"
+            ],
+            "styles": ["projects/bank-v13/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/bank-v13/src/environments/environment.ts",
+                  "with": "projects/bank-v13/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bank-v13:build:production"
+            },
+            "development": {
+              "browserTarget": "bank-v13:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bank-v13:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bank-v13/src/test.ts",
+            "polyfills": "projects/bank-v13/src/polyfills.ts",
+            "tsConfig": "projects/bank-v13/tsconfig.spec.json",
+            "karmaConfig": "projects/bank-v13/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/bank-v13/src/favicon.ico",
+              "projects/bank-v13/src/assets"
+            ],
+            "styles": ["projects/bank-v13/src/styles.scss"],
+            "scripts": []
           }
         }
       }
