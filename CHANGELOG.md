@@ -1,5 +1,5 @@
 <a name="4.4.0"></a>
-# 4.3.0 (2021-11-06)
+# 4.4.0 (2021-11-06)
 * Added support for Angular 13
 * Added an example project in Angular 13
 * Updated example project in Angular 11
