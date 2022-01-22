@@ -41,8 +41,8 @@ Import the MobxAngularModule:
 ```ts
 import { MobxAngularModule } from 'mobx-angular';
 
-@NgModule({
-            imports: [..., MobxAngularModule]
+@NgModule({ 
+  imports: [..., MobxAngularModule]
 })
 export class MyModule {}
 ```
@@ -55,15 +55,15 @@ Use `*mobxAutorun` directive in your template:
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 
-@Component({
-             changeDetection: ChangeDetectionStrategy.OnPush,
-             template: `
+@Component({ 
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *mobxAutorun>
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
   `
-           })
+})
 export class AppComponent {
   store = store;
 }
@@ -99,15 +99,16 @@ Usage:
 
 ```ts
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { store } from './store/counter';
 
-@Component({
-             changeDetection: ChangeDetectionStrategy.OnPush,
-             template: `
+@Component({ 
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *mobxReaction="getParity.bind(this)">
       {{ parity }}
     </div>
   `
-           })
+})
 class AppComponent {
   getParity() {
     return (this.parity = store.counter % 2 ? 'Odd' : 'Even');
@@ -133,20 +134,18 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 import { comparer } from 'mobx';
 
-@Component({
-             changeDetection: ChangeDetectionStrategy.OnPush,
-             template: `
+@Component({ 
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *mobxAutorun="{ detach: true, name: 'foo', delay: 3000 }">
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
-    <div
-      *mobxReaction="getParity.bind(this); options: { name: 'parity reaction', equals: comparer.shallow }"
-    >
+    <div *mobxReaction="getParity.bind(this); options: { name: 'parity reaction', equals: comparer.shallow }">
       {{ parity }}
     </div>
   `
-           })
+})
 export class AppComponent {
   store = store;
   comparer = comparer;
@@ -239,7 +238,7 @@ Check out `projects/todo` for an example of how to use `mobx-remotedev` with Ang
 
 $ npm install mobx-remotedev
 
-```
+```ts
 // app.module.ts
 import remotedev from 'mobx-remotedev';
 import { Todos } from './stores/todos.store';
@@ -261,7 +260,7 @@ See the `projects` folder, specifically these files:
 
 To run the examples, clone this repo and run:
 
-```
+```shell
 $ npm install -g @angular/cli
 $ npm install
 $ npm run build
@@ -276,4 +275,3 @@ Important things to always consider when changing code in this library:
 - Keep backwards compatibility. Don't force users to refactor their code, even if it means adding a new API instead of changing an exsiting one.
 - Keep SEMVER. If breaking changes is unavoidable - increase a major version. New features, however small should increase a minor version, and patch is for bugfixes/performance/refactoring
 - Think about bundle size and speed
-
