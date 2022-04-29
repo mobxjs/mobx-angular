@@ -41,7 +41,7 @@ Import the MobxAngularModule:
 ```ts
 import { MobxAngularModule } from 'mobx-angular';
 
-@NgModule({ 
+@NgModule({
   imports: [..., MobxAngularModule]
 })
 export class MyModule {}
@@ -55,7 +55,7 @@ Use `*mobxAutorun` directive in your template:
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 
-@Component({ 
+@Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div *mobxAutorun>
@@ -101,7 +101,7 @@ Usage:
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 
-@Component({ 
+@Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div *mobxReaction="getParity.bind(this)">
@@ -134,7 +134,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 import { comparer } from 'mobx';
 
-@Component({ 
+@Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div *mobxAutorun="{ detach: true, name: 'foo', delay: 3000 }">
@@ -236,7 +236,9 @@ In case you do that - we export a proxy to the decorators from mobx-angular, whi
 
 Check out `projects/todo` for an example of how to use `mobx-remotedev` with Angular:
 
+```
 $ npm install mobx-remotedev
+```
 
 ```ts
 // app.module.ts
