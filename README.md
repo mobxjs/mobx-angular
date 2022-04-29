@@ -99,6 +99,7 @@ Usage:
 
 ```ts
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { store } from './store/counter';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -140,9 +141,7 @@ import { comparer } from 'mobx';
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
-    <div
-      *mobxReaction="getParity.bind(this); options: { name: 'parity reaction', equals: comparer.shallow }"
-    >
+    <div *mobxReaction="getParity.bind(this); options: { name: 'parity reaction', equals: comparer.shallow }">
       {{ parity }}
     </div>
   `
@@ -263,7 +262,7 @@ See the `projects` folder, specifically these files:
 
 To run the examples, clone this repo and run:
 
-```
+```shell
 $ npm install -g @angular/cli
 $ npm install
 $ npm run build
@@ -278,4 +277,3 @@ Important things to always consider when changing code in this library:
 - Keep backwards compatibility. Don't force users to refactor their code, even if it means adding a new API instead of changing an exsiting one.
 - Keep SEMVER. If breaking changes is unavoidable - increase a major version. New features, however small should increase a minor version, and patch is for bugfixes/performance/refactoring
 - Think about bundle size and speed
-
