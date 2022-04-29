@@ -42,7 +42,7 @@ Import the MobxAngularModule:
 import { MobxAngularModule } from 'mobx-angular';
 
 @NgModule({
-            imports: [..., MobxAngularModule]
+  imports: [..., MobxAngularModule]
 })
 export class MyModule {}
 ```
@@ -56,14 +56,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { store } from './store/counter';
 
 @Component({
-             changeDetection: ChangeDetectionStrategy.OnPush,
-             template: `
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *mobxAutorun>
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
     </div>
   `
-           })
+})
 export class AppComponent {
   store = store;
 }
@@ -101,13 +101,13 @@ Usage:
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-             changeDetection: ChangeDetectionStrategy.OnPush,
-             template: `
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *mobxReaction="getParity.bind(this)">
       {{ parity }}
     </div>
   `
-           })
+})
 class AppComponent {
   getParity() {
     return (this.parity = store.counter % 2 ? 'Odd' : 'Even');
@@ -134,8 +134,8 @@ import { store } from './store/counter';
 import { comparer } from 'mobx';
 
 @Component({
-             changeDetection: ChangeDetectionStrategy.OnPush,
-             template: `
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *mobxAutorun="{ detach: true, name: 'foo', delay: 3000 }">
       {{ store.value }} - {{ store.computedValue }}
       <button (click)="store.action">Action</button>
@@ -146,7 +146,7 @@ import { comparer } from 'mobx';
       {{ parity }}
     </div>
   `
-           })
+})
 export class AppComponent {
   store = store;
   comparer = comparer;
@@ -237,9 +237,11 @@ In case you do that - we export a proxy to the decorators from mobx-angular, whi
 
 Check out `projects/todo` for an example of how to use `mobx-remotedev` with Angular:
 
-$ npm install mobx-remotedev
-
 ```
+$ npm install mobx-remotedev
+```
+
+```ts
 // app.module.ts
 import remotedev from 'mobx-remotedev';
 import { Todos } from './stores/todos.store';
