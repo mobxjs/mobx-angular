@@ -1,3 +1,7 @@
+<a name="4.6.0"></a>
+# 4.6.0 (2022-06-27)
+* Added support for Angular 14
+
 <a name="4.5.0"></a>
 # 4.5.0 (2022-01-05)
 * Update mobx-angular peerDependencies for Angular 13
