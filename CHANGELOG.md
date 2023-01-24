@@ -1,3 +1,8 @@
+<a name="4.7.0"></a>
+# 4.7.0 (2022-12-05)
+* Added support for Angular 15
+
+
 <a name="4.6.0"></a>
 # 4.6.0 (2022-06-27)
 * Added support for Angular 14
