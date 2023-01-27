@@ -1,3 +1,7 @@
+<a name="4.7.1"></a>
+# 4.7.1 (2023-01-26)
+* Fix npm publish
+
 <a name="4.7.0"></a>
 # 4.7.0 (2022-12-05)
 * Added support for Angular 15
