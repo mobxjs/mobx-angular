@@ -680,6 +680,5 @@
   },
   "cli": {
     "analytics": false
-  },
-  "defaultProject": "mobx-angular"
+  }
 }
