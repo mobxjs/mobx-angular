@@ -7,15 +7,23 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": false,
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2018", "dom"],
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "paths": {
-      "mobx-angular": ["dist/mobx-angular/mobx-angular", "dist/mobx-angular"]
+      "mobx-angular": [
+        "dist/mobx-angular/mobx-angular",
+        "dist/mobx-angular"
+      ]
     }
   },
   "angularCompilerOptions": {
