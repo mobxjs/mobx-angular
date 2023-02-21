@@ -88,7 +88,7 @@ class TestReactionComponent {
   template: ` <router-outlet></router-outlet> `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-class TestRouterRootComponent {}
+class TestRouterRootComponent { }
 
 @Component({
   template: `
@@ -98,7 +98,7 @@ class TestRouterRootComponent {}
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestRouterHomeComponent {
-  constructor(public routerStore: RouterStore, private router: Router) {}
+  constructor(public routerStore: RouterStore, private router: Router) { }
 
   navigate() {
     this.router.navigateByUrl('/target');
@@ -113,7 +113,7 @@ class TestRouterHomeComponent {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class TestRouterTargetComponent {
-  constructor(public routerStore: RouterStore, private router: Router) {}
+  constructor(public routerStore: RouterStore, private router: Router) { }
 
   navigate() {
     this.router.navigateByUrl('/');
@@ -220,12 +220,12 @@ describe('mobxAngular', () => {
       router = TestBed.inject(Router);
       location = TestBed.inject(Location);
       routerStore = TestBed.inject(RouterStore);
-      fixture.ngZone.run(() => {
-        router.initialNavigation();
-      });
     });
 
     it('should update the observable url', fakeAsync(() => {
+      router.navigate(['']);
+      tick();
+
       button = fixture.nativeElement.querySelector('button');
       button.click();
       tick();
@@ -240,6 +240,9 @@ describe('mobxAngular', () => {
     }));
 
     it('should react to changes in the observable url', fakeAsync(() => {
+      router.navigate(['']);
+      tick();
+
       let count = 0;
       reaction(
         () => routerStore.url,
