@@ -12,18 +12,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018","dom"],
     "paths": {
-      "mobx-angular": [
-        "dist/mobx-angular/mobx-angular",
-        "dist/mobx-angular"
-      ]
+      "mobx-angular": ["dist/mobx-angular/mobx-angular","dist/mobx-angular"]
     }
   },
   "angularCompilerOptions": {
