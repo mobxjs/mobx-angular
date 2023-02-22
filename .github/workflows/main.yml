@@ -29,4 +29,5 @@ jobs:
     - name: "Compare bundle sizes"
       uses: preactjs/compressed-size-action@2.5.0
       with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
         build-script: "build:mobx-angular"
