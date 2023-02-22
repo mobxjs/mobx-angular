@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "jest",
+    "build:mobx-angular": "ng build mobx-angular",
+    "test": "ng test --code-coverage",
+    "test:ci": "ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prepare": "husky install"
