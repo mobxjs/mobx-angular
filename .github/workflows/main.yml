@@ -28,11 +28,6 @@ jobs:
         Xvfb -ac :99 -screen 0 1280x1024x16 &
         export DISPLAY=:99
         npm run testci:mobxangular
-
-    - name: "Install Node"
-      uses: actions/setup-node@v3.6.0
-      with:
-        node-version: '14'
     
     - name: "Compare bundle sizes"
       uses: preactjs/compressed-size-action@2.5.0
