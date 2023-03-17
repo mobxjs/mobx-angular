@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MobxAngularModule } from 'mobx-angular';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { Account } from './stores/account.store';
 import { AppComponent } from './app.component';
 import { BalanceComponent } from './balance/balance.component';
@@ -33,6 +33,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule
   ],
   providers: [Account],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

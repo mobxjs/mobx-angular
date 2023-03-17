@@ -6,7 +6,7 @@ import { Account } from '../stores/account.store';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div *mobxAutorun class="transactions">
-      <mat-card class="column">
+      <mat-card appearance="outlined" class="column">
         <mat-card-header>
           <mat-card-title>Deposits</mat-card-title>
         </mat-card-header>
@@ -14,7 +14,7 @@ import { Account } from '../stores/account.store';
           <div *ngFor="let deposit of account.deposits">{{ deposit }}</div>
         </mat-card-content>
       </mat-card>
-      <mat-card class="column">
+      <mat-card appearance="outlined" class="column">
         <mat-card-header>
           <mat-card-title>Withdrawls</mat-card-title>
         </mat-card-header>

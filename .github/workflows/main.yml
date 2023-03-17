@@ -8,9 +8,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2-beta
+    - name: "Clone Repository"
+      uses: actions/checkout@v3
       with:
         fetch-depth: 1
-    - uses: preactjs/compressed-size-action@v1
+
+    - name: "Install Node"
+      uses: actions/setup-node@v3.6.0
+      with:
+        node-version: '18'
+
+    - name: "Install Project Dependencies"
+      shell: bash
+      run: npm install
+
+    - name: "Run Project unit tests"
+      shell: bash
+      run: |
+        Xvfb -ac :99 -screen 0 1280x1024x16 &
+        export DISPLAY=:99
+        npm run testci:mobxangular
+    
+    - name: "Compare bundle sizes"
+      uses: preactjs/compressed-size-action@2.5.0
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        build-script: "build:mobx-angular"

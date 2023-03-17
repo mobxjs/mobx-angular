@@ -1,5 +1,5 @@
 <div *mobxAutorun class="transactions">
-  <mat-card class="column">
+  <mat-card appearance="outlined" class="column">
     <mat-card-header>
       <mat-card-title>Deposits</mat-card-title>
     </mat-card-header>
@@ -7,7 +7,7 @@
       <div *ngFor="let deposit of account.deposits">{{ deposit }}</div>
     </mat-card-content>
   </mat-card>
-  <mat-card class="column">
+  <mat-card appearance="outlined" class="column">
     <mat-card-header>
       <mat-card-title>Withdrawls</mat-card-title>
     </mat-card-header>
