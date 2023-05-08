@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mobxjs/mobx-angular.svg?branch=master)](https://travis-ci.org/mobxjs/mobx-angular)
+[![Tests](https://github.com/mobxjs/mobx-angular/actions/workflows/main.yml/badge.svg)](https://github.com/mobxjs/mobx-angular/actions/workflows/main.yml)
 [![npm version](https://badge.fury.io/js/mobx-angular.svg)](https://badge.fury.io/js/mobx-angular)
 
 # mobx-angular
