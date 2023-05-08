@@ -1,14 +1,7 @@
 [![Tests](https://github.com/mobxjs/mobx-angular/actions/workflows/main.yml/badge.svg)](https://github.com/mobxjs/mobx-angular/actions/workflows/main.yml)
 [![npm version](https://badge.fury.io/js/mobx-angular.svg)](https://badge.fury.io/js/mobx-angular)
 
-# mobx-angular
-
-## Looking for maintainers
-Hi!
-Although this library is very small and simple, it still needs a little bit of attention here and there.  
-
-If there's anyone from the community that's willing to step up, we would be happy to add you to the MobX organization. Just reply to the issue:  
-https://github.com/mobxjs/mobx-angular/issues/141
+# MobX Angular
 
 ## MobX connector for Angular
 
@@ -32,8 +25,8 @@ With MobX you manage your app's state using mutable objects and classes. It also
 
 Install:
 
-```
-$ npm install --save mobx-angular mobx
+```shell
+npm install --save mobx-angular mobx
 ```
 
 Import the MobxAngularModule:
@@ -47,7 +40,7 @@ import { MobxAngularModule } from 'mobx-angular';
 export class MyModule {}
 ```
 
-## autorun
+## Autorun
 
 Use `*mobxAutorun` directive in your template:
 
@@ -81,7 +74,7 @@ Under the hood, this magic happens by running `autorun(() => view.detectChanges(
 In order to inject the change detector, and implement lifecycle hooks like ngOnDestroy, this library uses a directive, which is the most elegant solution in Angular.
 It also has the benefit of allowing you to easily have multiple observed sections of your component's template, in case it is required.
 
-## detach
+## Detach
 
 You can improve your component's performance by detaching it from CD (Change Detection), by supplying `*mobxAutorun="{ detach: true }"`.
 
@@ -91,7 +84,7 @@ This might cause things to stop updating. You have 3 options to manage that:
 - Surround with \*mobxAutorun only the parts that actually use observable / computed values from the store
 - Instead of detaching, use OnPush CD strategy on the component
 
-## reaction
+## Reaction
 
 Aside from autorun, MobX allows you to react to specific data changes.
 
@@ -123,7 +116,7 @@ If you don't return anything, change detection will not run.
 In this example, the `parity` property will be updated according to `counter`,
 and change detection will run only when the `parity` changes.
 
-## options
+## Options
 
 It is possible to pass an options object to `*mobxAutorun` and `*mobxReaction` directives. For a list of possible options visit the official [docs](https://mobx.js.org/reactions.html).
 
@@ -236,8 +229,8 @@ In case you do that - we export a proxy to the decorators from mobx-angular, whi
 
 Check out `projects/todo` for an example of how to use `mobx-remotedev` with Angular:
 
-```
-$ npm install mobx-remotedev
+```shell
+npm install mobx-remotedev
 ```
 
 ```ts
@@ -263,15 +256,16 @@ See the `projects` folder, specifically these files:
 To run the examples, clone this repo and run:
 
 ```shell
-$ npm install -g @angular/cli
-$ npm install
-$ npm run build
-$ npm run start <example> # for example `npm run start todo`
+npm install -g @angular/cli
+npm install
+npm run build
+npm run start <example> # for example `npm run start todo`
 ```
 
 ## Contributing
 
 Important things to always consider when changing code in this library:  
+
 - Make it readable, add comments when necessary
 - Add unit tests for the new functionality. Think about edge cases. Make sure tests pass before merging.
 - Keep backwards compatibility. Don't force users to refactor their code, even if it means adding a new API instead of changing an exsiting one.
