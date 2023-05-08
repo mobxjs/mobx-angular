@@ -1,9 +1,10 @@
-name: Compressed Size
+name: Tests
 
 on: [pull_request]
 
 jobs:
   build:
+    name: "Units Test & Verify Bundle Size"
 
     runs-on: ubuntu-latest
 
@@ -22,7 +23,7 @@ jobs:
       shell: bash
       run: npm install
 
-    - name: "Run Project unit tests"
+    - name: "Unit tests"
       shell: bash
       run: |
         Xvfb -ac :99 -screen 0 1280x1024x16 &
