@@ -3,17 +3,15 @@
 
 # MobX Angular
 
-## MobX connector for Angular
-
-If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx)
-
 ## Why MobX?
 
-Angular's change detection is great, but it updates the entire UI on every change, and doesn't have any knowledge of how our components use our services.  
-MobX automatically knows what properties your components use from the stores and listens to changes. It allows you to automatically react to changes and update only the parts of the UI that need to be updated, making your app performant.  
+Angular's change detection is great, but it updates the entire UI on every change, and doesn't have any knowledge of how our components use our services.
+
+MobX automatically knows what properties your components use from the stores and listens to changes. It allows you to automatically react to changes and update only the parts of the UI that need to be updated, making your app performant.
+
 With MobX you manage your app's state using mutable objects and classes. It also helps you create computed values and side-effects.
 
-[Learn more about MobX](https://mobx.js.org/README.html)
+[Learn more about MobX](https://mobx.js.org/README.html)!
 
 ## This library
 
@@ -72,6 +70,7 @@ Under the hood, this magic happens by running `autorun(() => view.detectChanges(
 ## Why directive and not decorator?
 
 In order to inject the change detector, and implement lifecycle hooks like ngOnDestroy, this library uses a directive, which is the most elegant solution in Angular.
+
 It also has the benefit of allowing you to easily have multiple observed sections of your component's template, in case it is required.
 
 ## Detach
@@ -204,21 +203,6 @@ MobX will run change detection manually for you on the components that need to b
 - In Angular 5 there's a new option, which is to disable Zone completely when bootstrapping the app (ngZone: 'noop').
 - Please note that this means that all 3rd-party components will stop working (because they rely on change detection to work via Zone).
 
-## Debugging MobX (only for mobx-angular versions 2.X and below)
-
-mobx-angular comes with a handy debug tool.
-To turn on / off the debug tool, open developer tools' console, and run:
-
-```ts
-mobxAngularDebug(true); // turn on
-mobxAngularDebug(false); // turn off
-```
-
-Then you can right-click on the components that use mobx directives, and you will see a console log of the components' dependencies.
-Also, every action that happens in mobx will be console.logged in a nice way.
-
-TBD - support debugging for MobX 4
-
 ## AoT
 
 Some people complained about AoT when using mobx decorators inside components.
@@ -262,12 +246,31 @@ npm run build
 npm run start <example> # for example `npm run start todo`
 ```
 
+## Debugging MobX (only for mobx-angular versions 2.X and below)
+
+mobx-angular comes with a handy debug tool.
+To turn on / off the debug tool, open developer tools' console, and run:
+
+```ts
+mobxAngularDebug(true); // turn on
+mobxAngularDebug(false); // turn off
+```
+
+Then you can right-click on the components that use mobx directives, and you will see a console log of the components' dependencies.
+Also, every action that happens in mobx will be console.logged in a nice way.
+
+TBD - support debugging for MobX 4
+
+## Legacy Versions
+
+If you're looking for the Angular 1 version version, it's [here](https://github.com/mobxjs/ng1-mobx).
+
 ## Contributing
 
 Important things to always consider when changing code in this library:  
 
-- Make it readable, add comments when necessary
+- Make it readable, add comments when necessary.
 - Add unit tests for the new functionality. Think about edge cases. Make sure tests pass before merging.
-- Keep backwards compatibility. Don't force users to refactor their code, even if it means adding a new API instead of changing an exsiting one.
-- Keep SEMVER. If breaking changes is unavoidable - increase a major version. New features, however small should increase a minor version, and patch is for bugfixes/performance/refactoring
-- Think about bundle size and speed
+- Keep backwards compatibility. Don't force users to refactor their code, even if it means adding a new API instead of changing an existing one.
+- Keep SEMVER. If breaking changes is unavoidable - increase a major version. New features, however small should increase a minor version, and patch is for bugfixes/performance/refactoring.
+- Think about bundle size and speed.
