@@ -97,18 +97,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "todo:build"
+            "buildTarget": "todo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "todo:build:production"
+              "buildTarget": "todo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "todo:build"
+            "buildTarget": "todo:build"
           }
         },
         "test": {
@@ -206,18 +206,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tictactoe:build"
+            "buildTarget": "tictactoe:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tictactoe:build:production"
+              "buildTarget": "tictactoe:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tictactoe:build"
+            "buildTarget": "tictactoe:build"
           }
         },
         "test": {
@@ -315,18 +315,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bank:build"
+            "buildTarget": "bank:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bank:build:production"
+              "buildTarget": "bank:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bank:build"
+            "buildTarget": "bank:build"
           }
         },
         "test": {
@@ -426,18 +426,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "todo-v6:build"
+            "buildTarget": "todo-v6:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "todo-v6:build:production"
+              "buildTarget": "todo-v6:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "todo-v6:build"
+            "buildTarget": "todo-v6:build"
           }
         },
         "test": {
@@ -535,18 +535,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bank-v11:build"
+            "buildTarget": "bank-v11:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bank-v11:build:production"
+              "buildTarget": "bank-v11:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bank-v11:build"
+            "buildTarget": "bank-v11:build"
           }
         },
         "test": {
@@ -645,10 +645,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bank-v13:build:production"
+              "buildTarget": "bank-v13:build:production"
             },
             "development": {
-              "browserTarget": "bank-v13:build:development"
+              "buildTarget": "bank-v13:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -656,7 +656,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bank-v13:build"
+            "buildTarget": "bank-v13:build"
           }
         },
         "test": {
