@@ -1,6 +1,6 @@
 {
   "name": "mobx-angular",
-  "version": "4.7.2",
+  "version": "4.8.0",
   "description": "Angular connector to MobX (2 and above)",
   "peerDependencies": {
     "@angular/common": ">=11.1.1",
